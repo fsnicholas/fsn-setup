@@ -2,7 +2,7 @@
 #set -e
 ##################################################################################################################
 # Author    : Erik Dubois
-# Frank Nicholas (with thanks)  
+# Frank Nicholas (with thanks)
 ##################################################################################################################
 #tput setaf 0 = black
 #tput setaf 1 = red
@@ -50,7 +50,7 @@ echo "--------------------------------------------------------------------------
 
 git config --global pull.rebase false
 git config --global push.default simple
-git config --global user.name "Frank Nicholas"
+git config --global user.name "fsnicholas"
 git config --global user.email "frank.nicholas@gmail.com"
 sudo git config --system core.editor nano
 #git config --global credential.helper cache
