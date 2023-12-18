@@ -12,6 +12,6 @@ Information : https://arcolinux.info
 
 More information about: [Arcolinux Nemesis](https://www.youtube.com/watch?v=Ej-VKHzs1p8&list=PLlloYVGq5pS7JqJE1zGS6W2jNV_oBSJCk&pp=iAQB)
 
-Original Eric Dubois' Arcolinux-Nemesis scripts cna be found at
+Original Eric Dubois' Arcolinux-Nemesis scripts can be found at
 
 -   https://github.com/erikdubois/arcolinux-nemesis
