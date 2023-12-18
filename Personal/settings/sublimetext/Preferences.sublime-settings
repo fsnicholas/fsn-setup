@@ -1,0 +1,9 @@
+{
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"overlay_scroll_bars":"disabled",
+	"font_size": 11,
+ 	"remember_workspace": false,
+}

@@ -1,0 +1,12 @@
+* {
+    /* added 00 to both bg to give transparent baground */
+    bg-col:  #181f2100;
+    bg-col-light: #22292b00;
+    border-col: #272e30;
+    selected-col: #31383a;
+    blue: #67b0e8;
+    fg-col: #dadada;
+    fg-col2: #d5d5d5;
+    grey: #363d3f;
+    width: 600;
+}

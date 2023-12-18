@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+
+clear
+
+#Colour Varibles
+RED='\033[0;31m'
+BRED='\033[1;31m'         # Bold Red
+BYell='\033[1;33m'         # Bold Yellow
+NC='\033[0m' # No Color
+
+echo -e  "${BYell}${System} Compiling chadwm ${NC}"
+echo
+cd "/home/nicholas/.config/arco-chadwm/chadwm/"
+
+echo -e  "${BYell}${System} Running make clean ${NC}"
+if [ -f config.h ]
+then
+    make clean
+    # rm config.h
+    echo -e  "${BRED} 'config.h' deleted ${NC}" 
+fi
+
+echo 
+echo
+
+echo -e  "${BYell}${System} Running make ${NC}"
+make
+echo 
+echo 
+echo -e  "${BYell}${System} Running make install ${NC}"
+sudo make install

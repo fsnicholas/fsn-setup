@@ -1,0 +1,215 @@
+{
+    // Settings for python & black & pylance
+    // 23-11-27
+    // v 2.0 23-12-14 - pylint installed & settings added
+
+    // editor settings
+    "editor.bracketPairColorization.enabled": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.cursorStyle": "block",
+    "editor.fontFamily": "Fira Code", // "Fira Code", "MesloLGS NF",  "Caskaydia Cove",
+    "editor.fontLigatures": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.insertSpaces": true,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "selection", //   "boundary",
+    "editor.rulers": [120], // [80, 120],
+    "editor.multiCursorModifier": "ctrlCmd",
+
+    // "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.productIconTheme": "fluent-icons",
+    "workbench.colorTheme": "Winter is Coming (Dark Blue - No Italics)",
+
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "[Winter is Coming (Dark Blue - No Italics)]": {
+            // Apply to this theme only. From colorTheme above
+            "enabled": true,
+            "rules": {
+                "magicFunction:python": "#ee0000",
+                "function.declaration:python": "#990000",
+                "*.decorator:python": "#0000dd",
+                "*.typeHint:python": "#5500aa",
+                "*.typeHintComment:python": "#aaaaaa"
+            }
+        }
+    },
+
+    // have setup separately within python block
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always",
+        "source.fixAll": "always"
+    },
+
+    // Intellisense
+    "editor.suggest.shareSuggestSelections": true,
+    "editor.suggest.showStatusBar": true,
+    "editor.tabCompletion": "on",
+    "editor.snippetSuggestions": "top",
+
+    "editor.tokenColorCustomizations": {
+        "comments": "#cdaeda"
+    },
+
+    //   files
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "onWindowChange",
+    "files.hotExit": "onExitAndWindowClose",
+
+    // Extensions
+    "extensions.ignoreRecommendations": true,
+
+    // activity bar commandCenter & debug positions
+    "window.titleBarStyle": "custom", // needed for below
+    "debug.toolBarLocation": "commandCenter",
+    "workbench.activityBar.location": "top",
+
+    // window settings
+    "breadcrumbs.enabled": true, // default
+    "window.title": "${dirty}${activeEditorShort}${separator}${rootName}",
+    "window.openFilesInNewWindow": "on",
+
+    // workbench settings
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#282c34",
+        "breadcrumb.activeSelectionForeground": "#F44336",
+        "editorRuler.foreground": "#ff4081"
+    },
+
+    "workbench.commandPalette.experimental.suggestCommands": true,
+    "workbench.editor.enablePreview": true,
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.showTabs": "multiple",
+    "workbench.editor.splitInGroupLayout": "vertical",
+    "workbench.list.smoothScrolling": true,
+    "workbench.startupEditor": "none",
+    "workbench.trustedDomains.promptInTrustedWorkspace": true,
+
+    // terminal
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.enablePersistentSessions": true, //default
+    "terminal.integrated.showExitAlert": false,
+
+    // jsonc settings
+    "[jsonc]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace",
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+
+    // python
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always",
+            "source.fixAll": "always"
+        },
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true
+    },
+
+    // black-formatter
+    "black-formatter.showNotifications": "onError",
+    "black-formatter.args": ["--disable=C0111"], // missing docstring
+
+    // stuff for pylance
+    "python.languageServer": "Default", // "Pylance"
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.packageIndexDepths": [
+        {
+            "name": "sklearn",
+            "depth": 1
+        },
+        {
+            "name": "pandas",
+            "depth": 2,
+            "includeAllSymbols": true
+        },
+        {
+            "name": "numpy",
+            "depth": 2
+        },
+        {
+            "name": "matplotlib",
+            "depth": 2,
+            "includeAllSymbols": false
+        },
+        {
+            "name": "scipy",
+            "depth": 1
+        },
+        {
+            "name": "django",
+            "depth": 2
+        },
+        {
+            "name": "flask",
+            "depth": 2
+        },
+        {
+            "name": "fastapi",
+            "depth": 1
+        }
+    ],
+
+    // linting with pylint
+    "pylint.lintOnChange": true,
+    "pylint.showNotifications": "onWarning",
+    // "pylint.args":
+    //      F0401 - F0401 = Unable to import module
+    //      C0111 = Missing docstring
+    //      C0103 = snake_case naming style
+    //      C0301 = Line too long
+    //      W0611 - unused import
+    "pylint.args": ["--disable=C0111, C0103, F0401, W0611"],
+
+    // Code runner - python settings is workspace settings.json
+    "code-runner.executorMap": {
+        "shellscript": "zsh"
+    },
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.runInTerminal": true,
+
+    // Jupyter settings - important setting for jupyter
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "jupyter.pythonExportMethod": "nbconvert",
+
+    // git & gitlens
+    "gitlens.currentLine.enabled": false, // dom't show git status in editor
+    "git.enableSmartCommit": true,
+    //"git.confirmSync": false,
+
+    // PRETTIER
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+
+    // spelling
+    "cSpell.customDictionaries": {
+        "custom-dictionary-user": {
+            "name": "custom-dictionary-user",
+            "path": "~/.cspell/custom-dictionary-user.txt",
+            "addWords": true,
+            "scope": "user"
+        },
+        "custom": true,
+        "internal-terms": false
+    },
+    "cSpell.caseSensitive": false,
+    "cSpell.maxDuplicateProblems": 2,
+    "cSpell.enableFiletypes": ["*"]
+}

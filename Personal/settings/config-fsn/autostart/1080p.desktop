@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Exec=/home/nicholas/.screenlayout/1080p.sh
+Name=1080p
+GenericName=1080p
+Comment=Seup up screen layout
+Encoding=UTF-8
+Terminal=true
+Type=Application
+Categories=Application;

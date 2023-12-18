@@ -1,0 +1,24 @@
+#!/bin/bash
+#assign existing hostname to $hostn
+# v4 - 2023-09-08 for Arch Linux
+hostn=$(cat /etc/hostname)
+
+#display existing hostname
+echo "Existing hostname is $hostn"
+
+#ask for new hostname $newhost
+echo "Enter new hostname: "
+read newhost
+
+sudo hostnamectl set-hostname $newhost
+
+#change hostname in /etc/hosts & /etc/hostname
+sudo sed -i "s/$hostn/$newhost/g" /etc/hosts
+#sudo sed -i "s/$hostn/$newhost/g" /etc/hostname
+
+#display new hostname
+echo "Your new hostname is $newhost"
+
+# show status
+hostnamectl status | grep hostname
+

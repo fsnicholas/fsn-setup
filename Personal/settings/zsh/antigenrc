@@ -1,0 +1,48 @@
+## fsn antigenrc V2b amended 12 Aug 2022
+## fsn antigenrc V2c amended 14 Aug 2023 added different z dir jump
+
+# from https://github.com/zsh-users/antigen/wiki/Quick-start
+
+# -------- Load the oh-my-zsh's library
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+# antigen bundle git
+
+# toggles "sudo" before the current/previous command by pressing [ESC][ESC] 
+antigen bundle sudo
+
+# usage acs: show all aliases by group.
+antigen bundle aliases
+
+#  provide suggested packages to be installed if a command cannot be found
+antigen bundle command-not-found
+
+# ------ end of plugins from oh-my-zsh
+
+# from zsh-users - fish like auto-suggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-autosuggestions
+
+# antigen bundle zsh-users/zsh-syntax-highlighting 
+# using instead this Syntax highlighting bundle.
+antigen bundle zdharma-continuum/fast-syntax-highlighting
+
+# antigen bundle changyuheng/fz
+# antigen bundle rupa/z
+antigen bundle agkozak/zsh-z
+
+antigen bundle junegunn/fzf
+
+# run fuzzy-search in command history, etc
+# antigen bundle psprint/zsh-navigation-tools
+
+# Load the theme
+antigen theme romkatv/powerlevel10k
+
+# colored man pages
+antigen bundle ael-code/zsh-colored-man-pages
+
+# Tell Antigen that you're done.
+antigen apply

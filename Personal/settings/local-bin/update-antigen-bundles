@@ -1,0 +1,36 @@
+## this updates fsn bundles
+## amended 23-09-11
+##  https://github.com/zsh-users/antigen/wiki/Commands
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen update sudo
+antigen update aliases
+antigen update command-not-found
+
+# Fish-like auto suggestions
+antigen update zsh-users/zsh-autosuggestions
+
+# Extra zsh completions
+antigen update zsh-users/zsh-completions
+
+# Search history
+antigen update zsh-users/zsh-history-substring-search
+
+# Extra zsh auto suggestion
+antigen update zsh-users/zsh-autosuggestions
+
+# antigen update  changyuheng/fz
+# antigen update rupa/z
+antigen bundle agkozak/zsh-z
+
+antigen update junegunn/fzf
+
+# colored man pages
+antigen update ael-code/zsh-colored-man-pages
+
+# Syntax highlighting bundle.
+antigen update zdharma-continuum/fast-syntax-highlighting
+
+# Update the theme
+antigen update romkatv/powerlevel10k
+

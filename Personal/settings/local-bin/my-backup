@@ -1,0 +1,40 @@
+#!/bin/bash
+# This is only for Arch Linux. 
+# Exclude file has a different format than Ubuntu
+# Backup {f_dir} working folder
+# first create the working directory for any new {f_dir} machine 
+# the back up folders
+# in home directory single text file for any excludes - backup-exclude.txt
+# in home directory single text file for anyother includes - include.txt
+#
+# v03 - 2020-03-30
+
+set -e
+
+in='/home/nicholas/include.txt'
+
+root_dir='/home/nicholas/fn-docs/_working/ArcoB-Plasma-191215-backups'
+
+f_dir='06a-RStudio'
+
+mkdir -p ${root_dir}
+
+rsync -av -zz /home/nicholas/bin ${root_dir}/${f_dir}-$(date +'%Y-%m-%d')
+
+rsync -azzv /home/nicholas/.config --exclude-from='/home/nicholas/backup-exclude.txt'   ${root_dir}/${f_dir}-$(date +'%Y-%m-%d')
+
+rsync -azzv /home/nicholas/.local --exclude-from='/home/nicholas/backup-exclude.txt' ${root_dir}/${f_dir}-$(date +'%Y-%m-%d')
+
+# https://www.cyberciti.biz/faq/bash-read-file-names-from-a-text-file-and-take-action/
+
+[ ! -f "$in" ] && { echo "$0 - File $in not found."; exit 1; }
+ 
+while IFS= read -r file
+do
+	## avoid commented filename ##
+	[[ $file = \#* ]] && continue
+	rsync -azzv $file ${root_dir}/${f_dir}-$(date +'%Y-%m-%d')
+done < "${in}"
+
+
+

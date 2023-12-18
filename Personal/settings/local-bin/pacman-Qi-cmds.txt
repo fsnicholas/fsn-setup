@@ -1,0 +1,18 @@
+   63  pacman -Qi | awk '/^Name/{name=$3} /^Version/{print $4$5, name}' | sort -h
+   64  pacman -Qi
+   65  pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h
+   66  pacman -Qq | wc
+   69  pacman -Qq
+   70  pacman -Qq > qq.txt
+   71  pacman -Qi | awk '/^Name/{name=$3} /^Version/{print $4, name}' | sort -h > qi.txt
+  179  pacman -Qe
+  200  pacman -Qi | awk '/^Name/{name=$3} /^Version/{print $4, name}' | nc
+  202  pacman -Qi | awk '/^Name/{name=$3} /^Version/{print $4, name}' | sort -h | nc
+  203  pacman -Qi | nc
+  204  pacman -Qi | awk '/^Name/{name=$3} /^Version/{print $4, name}' | sort -h | wc
+  205  pacman -Qi | wc
+  206  pacman -Qi | awk '/^Name/{name=$3} /^Version/{print $4, name}' | sort -h > leftwmD-qi.txt
+  208  pacman -Qi | awk '/^Name/{name=$3} /^Version/{print $4, name}' | sort -h
+  212  sudo pacman -Qi | awk '/^Name/{name=$3} /^Version/{print $4, name}' | sort -h
+  292  h | grep pacman -Q
+  293  h | grep 'pacman -Q'

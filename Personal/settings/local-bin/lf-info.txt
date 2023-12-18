@@ -1,0 +1,8 @@
+LF is a terminal file manager
+
+The latest releases can be found here
+https://github.com/gokcehan/lf/releases
+
+download the file
+
+lf-linux-amd64.tar.gz

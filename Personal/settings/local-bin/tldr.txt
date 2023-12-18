@@ -1,0 +1,72 @@
+The tldr being used is 
+
+https://github.com/dbrgn/tealdeer/releases
+
+Install Tealdeer from static binaries
+
+You can also download the pre-compiled binaries from the GitHub releases page and move it to your $PATH like below.
+
+$ wget  https://github.com/dbrgn/tealdeer/releases/download/v1.4.1/tldr-linux-x86_64-musl
+
+$ sudo cp tldr-linux-x86_64-musl /usr/local/bin/tldr
+
+Make it executable:
+
+$ sudo chmod +x /usr/local/bin/tldr
+
+you can download the shell completion script for your $SHELL from the releases pages to enable auto completion feature.
+
+    Bash: copy bash_tealdeer file to /usr/share/bash-completion/completions/tldr
+    Fish: copy fish_tealdeer file to ~/.config/fish/completions/tldr.fish
+    Zsh: copy zsh_tealdeer file to /usr/share/zsh/site-functions/_tldr
+
+Display Linux Commands Cheatsheets With Tealdeer In Terminal
+
+Getting cheatsheets for Unix & Linux commands is made much easier with Tealdeer!
+
+Before start using Tealdeer, you must update its cache with command:
+
+$ tldr --update
+
+Now you can display any Unix and Linux command's cheatsheet with Tealdeer client like below:
+
+tldr command_name
+
+For example, I am going to display ls command's cheatsheet using Tealdeer using this command:
+
+$ tldr ls
+
+The Tealdeer client will fetch the requested cheatsheet from the tldr-pages project and display it in your Terminal.
+
+Here is the sample output of above command:
+
+  List directory contents.
+
+  List files one per line:
+
+      ls -1
+
+  List all files, including hidden files:
+
+      ls -a
+
+  List all files, with trailing `/` added to directory names:
+
+      ls -F
+
+  Long format list (permissions, ownership, size and modification date) of all files:
+
+      ls -la
+
+  Long format list with size displayed using human readable units (KB, MB, GB):
+
+      ls -lh
+
+  Long format list sorted by size (descending):
+
+      ls -lS
+
+  Long format list of all files, sorted by modification date (oldest first):
+
+      ls -ltr
+

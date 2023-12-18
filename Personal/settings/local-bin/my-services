@@ -1,0 +1,72 @@
+#! /bin/bash
+# The command is for Debian is from
+# https://bbs.archlinux.org/viewtopic.php?id=153483
+# script written by frank nicholas
+# v1 date 28th August 2016
+# v2 amended 120916
+# v3 amended for Arch Linux 020717
+# v4 amended 20 May 2018
+# v5 amended 08 July 2018 for Centos
+# v6 amended 14 May 2019 for ArchLinux
+# v7 amended 23 July 2019 for ArchLinux
+# v8 amended 22 Sept 2019 for Linux Mint
+# v9 amended 22 Jan 2020 for Plasma
+# v13 amended 28 July 2022 with disk usage added
+# v14 amended 08 Sept 2022 Distribution
+# v15 amended 08 Sept 2023 Qtile
+
+#Variables
+System='ArcoLinux Qtile'
+
+#Colour Varibles
+RED='\033[0;31m'
+BRED='\033[1;31m'         # Bold Red
+BYell='\033[1;33m'         # Bold Yellow
+NC='\033[0m' # No Color
+
+clear
+
+#printf "${RED}Show all running services${NC}\n"
+# with  echo command use the -e flag to allow backslash escapes.
+echo -e  "${BYell}${System} System Information & Running services ${NC}"
+echo
+
+echo -e  "${BRED}Kernel Release:${NC}   " `uname -r`
+#echo -e  "${BRED}Distribution:${NC}     " `cat /etc/os-release | grep PRETTY_NAME | awk '{printf "%s %s %s %s\n", $2,$3,$4,$5}'`
+echo -e  "${BRED}Distribution:${NC}     " `lsb_release -d -s`
+echo
+
+# Show who is logged on and what they are doing.
+# but remove first line of output of w which is uptime
+#echo -e  "${BRED}Logged on users & processes${NC}"
+#w | awk '{if(NR>1)print}'
+#echo
+
+# Remove the IPv6 addresses
+echo -e  "${BRED}IP Address:${NC}       " `ip addr show enp0s8 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//' | grep -v :`
+echo -e  "${BRED}Network Hostname:${NC} " `uname --nodename`
+#lsb_release -a
+echo
+
+echo -e  "${BRED}Uptime:${NC}           " `uptime | cut -c 13-75`
+echo
+
+# Remove Swap line
+echo -e  "${BRED}Memory Usage${NC}"
+free -h | grep -v Total 
+echo
+
+echo -e  "${BRED}Disk Usage${NC}"
+df -h | grep Filesystem | awk '{printf "%-15s %-7s %-7s %-7s %-7s\n", $1,$2,$3,$4,$5}'
+df -h | grep /dev/sda2  | awk '{printf "%-15s %-7s %-7s %-7s %-7s\n", $1,$2,$3,$4,$5}'
+echo
+
+#read -rsn1 -p"Press any key to continue";echo
+
+echo -e  "${BRED}Running daemons/services${NC}"
+# systemctl -t service --no-pager --no-legend | grep -v exited | grep -v systemd | awk  '{printf "%-33s - %s %s %s %s %s %s\n",  $1,$5,$6,$7,$8,$9,$10}'
+systemctl -t service --no-pager --no-legend | grep running | awk  '{printf "%-35s - %s %s %s %s %s %s %s\n",  $1,$5,$6,$7,$8,$9,$10,$11}'
+echo
+
+echo -e  "${BRED}Failed daemons/services${NC}"
+systemctl list-units --failed

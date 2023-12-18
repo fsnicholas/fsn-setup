@@ -1,4 +1,4 @@
-# Frank Nicholas Personal Arcolinux Setup (fsn-setup)
+# Frank Nicholas Personal Arcolinux Setup
 
 Installing all my personal settings and applications on `Arcolinux`, with the use of these scripts.
 
