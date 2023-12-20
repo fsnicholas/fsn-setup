@@ -1,0 +1,18 @@
+[user]
+	email = frank.nicholas@gmail.com
+	name = fsnicholas
+[core]
+	editor = code --wait
+[credential]
+	helper = cache
+[fetch]
+	prune = true
+[init]
+    	defaultBranch = main
+[help]
+	autocorrect = 8
+	
+[push]
+	default = simple
+[pull]
+	rebase = false

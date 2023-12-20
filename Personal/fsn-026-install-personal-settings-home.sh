@@ -25,10 +25,15 @@ echo "################### Personal settings to install - home"
 echo "################################################################"
 tput sgr0
 echo
-echo -e  "${BYell} Copying files to ~ ${NC}"
+echo -e  "${BYell} Copying files to home directory (~) ${NC}"
 echo
-cp -vf $installed_dir/settings/home/.ptconfig.toml ~/.ptconfig.toml
-cp -vf $installed_dir/settings/home/.Xresources ~/.Xresources
+#cp -vf $installed_dir/settings/home/.ptconfig.toml ~/.ptconfig.toml
+#cp -vf $installed_dir/settings/home/.gitconfig ~/.gitconfig
+#cp -vf $installed_dir/settings/home/.xinitrc ~/.xinitrc
+#cp -vf $installed_dir/settings/home/.Xresources ~/.Xresources
+
+cp -vf $installed_dir/settings/home/.*   /home/nicholas/
+
 echo
 tput setaf 6
 echo "################################################################"
@@ -36,4 +41,3 @@ echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo
-
