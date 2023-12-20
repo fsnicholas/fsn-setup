@@ -27,8 +27,8 @@ tput sgr0
 echo
 echo -e  "${BYell} Copying files to ~ ${NC}"
 echo
-cp -f $installed_dir/settings/home/.ptconfig.toml ~/.ptconfig.toml
-cp -f $installed_dir/settings/home/.Xresources ~/.Xresources
+cp -vf $installed_dir/settings/home/.ptconfig.toml ~/.ptconfig.toml
+cp -vf $installed_dir/settings/home/.Xresources ~/.Xresources
 echo
 tput setaf 6
 echo "################################################################"
