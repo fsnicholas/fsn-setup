@@ -65,6 +65,7 @@ sudo pacman -S --noconfirm --needed alacritty-themes
 sudo pacman -S --noconfirm --needed arandr
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
+sudo pacman -S --noconfirm --needed ast-firmware
 sudo pacman -S --noconfirm --needed awesome-terminal-fonts
 sudo pacman -S --noconfirm --needed bash-completion
 sudo pacman -S --noconfirm --needed bat
@@ -78,7 +79,6 @@ sudo pacman -S --noconfirm --needed dunst
 if [ ! -f /usr/bin/duf ]; then
   sudo pacman -S --noconfirm --needed duf
 fi
-sudo pacman -S --noconfirm --needed evince
 sudo pacman -S --noconfirm --needed expac
 sudo pacman -S --noconfirm --needed feh
 sudo pacman -S --noconfirm --needed file-roller
@@ -93,7 +93,7 @@ sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hardinfo-gtk3
 sudo pacman -S --noconfirm --needed htop
 sudo pacman -S --noconfirm --needed hw-probe
-sudo pacman -S --noconfirm --needed kvantum
+#sudo pacman -S --noconfirm --needed kvantum
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed lolcat
 sudo pacman -S --noconfirm --needed lshw
@@ -106,7 +106,7 @@ sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed most
 sudo pacman -S --noconfirm --needed nerd-fonts-source-code-pro
 sudo pacman -S --noconfirm --needed neofetch
-sudo pacman -S --noconfirm --needed nomacs
+#sudo pacman -S --noconfirm --needed nomacs
 sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed numlockx
@@ -122,7 +122,7 @@ sudo pacman -S --noconfirm --needed rate-mirrors-bin
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
-sudo pacman -S --noconfirm --needed sardi-icons
+#sudo pacman -S --noconfirm --needed sardi-icons
 sudo pacman -S --noconfirm --needed sublime-text-4
 sudo pacman -S --noconfirm --needed surfn-icons-git
 sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
