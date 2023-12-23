@@ -19,6 +19,7 @@
 # FSN v58a  23-09-20 has stuff for pyenv, rust, tilix
 # FSN v58b  23-10-14 setopt lines formatted + numeric_glob_sort. new compdef for z (no garuda additions here)
 # FSN v58c  23-11-06 added rust cargo to path
+# FSN v58d  23-12-23 added export MANROFFOPT to fix manpage formatting
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
