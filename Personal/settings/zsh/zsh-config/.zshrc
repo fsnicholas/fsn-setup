@@ -176,6 +176,9 @@ export VISUAL='nano'
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+# needed for formatting MAN pages correctly
+export MANROFFOPT="-c"
+
 # Include aliases dotfile
 
 # $ZOOTDIR -> $HOME/.config/zsh
