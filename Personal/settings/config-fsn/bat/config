@@ -8,6 +8,7 @@
 # --theme="hypnos"
 #--theme="Visual Studio Dark+"
 
+--color=always
 
 # Show line numbers, Git modifications and file header (but no grid)
 --style="numbers,changes,header"
