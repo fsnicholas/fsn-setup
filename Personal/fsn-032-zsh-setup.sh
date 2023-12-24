@@ -45,7 +45,8 @@ echo "Installing zsh"
 [ -d $HOME"/.config/zsh" ] || mkdir -p $HOME"/.config/zsh"
 cp $installed_dir/settings/zsh/antigenrc ~/.config/antigenrc
 cp $installed_dir/settings/zsh/zsh-home/.zshenv ~/.zshenv
-cp -R $installed_dir/settings/zsh/zsh-config/* ~/.config/zsh/*
+cp -vRf $installed_dir/settings/zsh/zsh/ ~/.config/
+
 echo
 tput setaf 6
 echo "################################################################"
@@ -53,4 +54,3 @@ echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo
-
