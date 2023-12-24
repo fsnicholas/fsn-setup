@@ -69,6 +69,7 @@ sudo pacman -S --noconfirm --needed ast-firmware
 sudo pacman -S --noconfirm --needed awesome-terminal-fonts
 sudo pacman -S --noconfirm --needed bash-completion
 sudo pacman -S --noconfirm --needed bat
+sudo pacman -S --noconfirm --needed gtop
 sudo pacman -S --noconfirm --needed catfish
 sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed dconf-editor
@@ -120,9 +121,11 @@ sudo pacman -S --noconfirm --needed python-pywal
 sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed rate-mirrors-bin
 sudo pacman -S --noconfirm --needed ripgrep
+sudo pacman -S --noconfirm --needed ripgrep-all
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
 #sudo pacman -S --noconfirm --needed sardi-icons
+sudo pacman -S --noconfirm --needed sofirem-git
 sudo pacman -S --noconfirm --needed sublime-text-4
 sudo pacman -S --noconfirm --needed surfn-icons-git
 sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
