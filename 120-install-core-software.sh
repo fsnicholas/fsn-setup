@@ -87,6 +87,7 @@ sudo pacman -S --noconfirm --needed firefox
 sudo pacman -S --noconfirm --needed font-manager
 sudo pacman -S --noconfirm --needed git
 sudo pacman -S --noconfirm --needed gitahead-bin
+sudo pacman -S --noconfirm --needed github-cli
 #sudo pacman -S --noconfirm --needed gnome-disk-utility
 sudo pacman -S --noconfirm --needed gtop
 sudo pacman -S --noconfirm --needed gvfs-smb
