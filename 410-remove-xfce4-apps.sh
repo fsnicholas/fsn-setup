@@ -44,9 +44,9 @@ sudo pacman -R --noconfirm xfce4-mailwatch-plugin
 sudo pacman -R --noconfirm xfce4-mpc-plugin 
 sudo pacman -R --noconfirm xfce4-netload-plugin 
 sudo pacman -R --noconfirm xfce4-notes-plugin
+sudo pacman -R --noconfirm xfce4-power-manager 
 sudo pacman -R --noconfirm xfce4-notifyd
 sudo pacman -R --noconfirm xfce4-panel-profiles 
-sudo pacman -R --noconfirm xfce4-power-manager 
 sudo pacman -R --noconfirm xfce4-pulseaudio-plugin
 sudo pacman -R --noconfirm xfce4-screensaver 
 sudo pacman -R --noconfirm xfce4-screenshooter
