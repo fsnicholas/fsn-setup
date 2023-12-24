@@ -43,9 +43,10 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 echo
 echo "Installing zsh"
 [ -d $HOME"/.config/zsh" ] || mkdir -p $HOME"/.config/zsh"
-cp $installed_dir/settings/zsh/antigenrc ~/.config/antigenrc
-cp $installed_dir/settings/zsh/zsh-home/.zshenv ~/.zshenv
-cp -vRf $installed_dir/settings/zsh/zsh/ ~/.config/
+cp -f   $installed_dir/settings/zsh/antigenrc ~/.config/antigenrc
+cp -f   $installed_dir/settings/zsh/zsh-home/.zshenv ~/.zshenv
+cp -vrf $installed_dir/settings/zsh/zsh-config/. ~/.config/zsh
+
 
 echo
 tput setaf 6
