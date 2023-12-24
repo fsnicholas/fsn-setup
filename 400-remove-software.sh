@@ -83,7 +83,51 @@ if grep -q "ArcoLinux" /etc/os-release; then
   tput sgr0
   echo
 
-  echo "Nothing to do"
+sudo pacman -R --noconfirm arcolinux-conky-collection-git
+sudo pacman -R --noconfirm arcolinux-local-applications-all-hide-git
+sudo pacman -R --noconfirm arcolinux-pipemenus-git 
+sudo pacman -R --noconfirm arcolinux-welcome-app-git
+sudo pacman -R --noconfirm arcolinux-xfce-panel-profiles-git
+sudo pacman -R --noconfirm bubblewrap
+sudo pacman -R --noconfirm cblas
+sudo pacman -R --noconfirm chromaprint
+sudo pacman -R --noconfirm clonezilla
+sudo pacman -R --noconfirm conky-lua-archers
+sudo pacman -Rns --noconfirm cups
+sudo pacman -R --noconfirm cups-filters
+sudo pacman -R --noconfirm cups-pdf
+sudo pacman -Rns --noconfirm dav1d
+sudo pacman -R --noconfirm gnome-bluetooth
+sudo pacman -R --noconfirm gnome-disk-utility
+sudo pacman -R --noconfirm gst-plugins-bad  
+sudo pacman -R --noconfirm gst-plugins-good
+sudo pacman -R --noconfirm gst-plugins-ugly
+sudo pacman -R --noconfirm gutenprint
+sudo pacman -R --noconfirm highway
+sudo pacman -R --noconfirm jack2
+sudo pacman -R --noconfirm mailcap
+sudo pacman -R --noconfirm menulibre
+sudo pacman -R --noconfirm mintstick-git
+sudo pacman -R --noconfirm parole
+sudo pacman -R --noconfirm partclone
+sudo pacman -R --noconfirm parted
+sudo pacman -R --noconfirm partimage
+sudo pacman -Rns --noconfirm snappy
+sudo pacman -R --noconfirm system-config-printer
+
+sudo pacman -Rns --noconfirm wpebackend-fdo
+echo these three part of wpebackend-fdo
+sudo pacman -R --noconfirm webkit2gtk
+sudo pacman -R --noconfirm webkit2gtk-4.1 
+sudo pacman -R --noconfirm webrtc-audio-processing
+
+sudo pacman -R --noconfirm xfburn
+sudo pacman -R --noconfirm xfwm4-themes 
+sudo pacman -R --noconfirm xvidcore
+sudo pacman -R --noconfirm zsh-completions
+sudo pacman -R --noconfirm zsh-syntax-highlighting 
+
+
 
   echo
   tput setaf 2
