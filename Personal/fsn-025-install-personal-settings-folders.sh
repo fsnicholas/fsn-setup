@@ -118,7 +118,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	[ -d $HOME"/.config/gtk-3.0" ] || mkdir -p $HOME"/.config/gtk-3.0"
 	cp  $installed_dir/settings/gtk3/settings.ini $HOME/.config/gtk-3.0
 	[ -d "/etc/skel/.config/gtk-3.0" ] || sudo mkdir -p "/etc/skel/.config/gtk-3.0"
-	sudo cp  $installed_dir/settings/gtk3/settings.ini /etc/skel/.config/gtk-3.0
+	sudo cp  $installed_dir/settings/gtk-3.0/settings.ini /etc/skel/.config/gtk-3.0
 	echo
 
 	echo
@@ -126,7 +126,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 	[ -d $HOME"/.config/Thunar" ] || mkdir -p $HOME"/.config/Thunar"
 	cp  $installed_dir/settings/thunar/uca.xml $HOME/.config/Thunar
 	[ -d /etc/skel/.config/Thunar ] || sudo mkdir -p /etc/skel/.config/Thunar
-	sudo cp  $installed_dir/settings/thunar/uca.xml /etc/skel/.config/Thunar
+	sudo cp  $installed_dir/settings/Thunar/uca.xml /etc/skel/.config/Thunar
 	echo
 
 	echo
