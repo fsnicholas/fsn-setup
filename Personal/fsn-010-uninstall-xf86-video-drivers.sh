@@ -41,20 +41,6 @@ sudo pacman -R --noconfirm xf86-video-vesa
 echo
 tput setaf 2
 echo "################################################################"
-echo "################### fix for variety problems "
-echo "################################################################"
-tput sgr0
-echo
-# 
-echo
-echo "Removing  variety config"
-sudo pacman -R --noconfirm  arcolinux-variety-git
-rm -Rf ~/.config/variety/*
-
-
-echo
-tput setaf 2
-echo "################################################################"
 echo "################### Done"
 echo "################################################################"
 tput sgr0
