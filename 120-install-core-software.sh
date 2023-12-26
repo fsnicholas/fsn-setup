@@ -99,7 +99,7 @@ sudo pacman -S --noconfirm --needed hw-probe
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed lolcat
 sudo pacman -S --noconfirm --needed lshw
-sudo pacman -S --noconfirm --needed lxappearance
+sudo pacman -S --noconfirm --needed lxappearance-gtk3
 sudo pacman -S --noconfirm --needed man-db
 sudo pacman -S --noconfirm --needed man-pages
 #sudo pacman -S --noconfirm --needed mkinitcpio-firmware
@@ -123,6 +123,7 @@ sudo pacman -S --noconfirm --needed pv
 sudo pacman -S --noconfirm --needed rate-mirrors-bin
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed ripgrep-all
+sudo pacman -S --noconfirm --needed rofi
 sudo pacman -S --noconfirm --needed rsync
 sudo pacman -S --noconfirm --needed scrot
 #sudo pacman -S --noconfirm --needed sardi-icons

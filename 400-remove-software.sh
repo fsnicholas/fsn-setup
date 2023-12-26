@@ -85,7 +85,7 @@ if grep -q "ArcoLinux" /etc/os-release; then
 
 sudo pacman -R --noconfirm arcolinux-conky-collection-git
 sudo pacman -R --noconfirm arcolinux-local-applications-all-hide-git
-sudo pacman -R --noconfirm arcolinux-pipemenus-git 
+sudo pacman -R --noconfirm arcolinux-pipemenus-git
 sudo pacman -R --noconfirm arcolinux-welcome-app-git
 sudo pacman -R --noconfirm arcolinux-xfce-panel-profiles-git
 sudo pacman -R --noconfirm bubblewrap
@@ -99,12 +99,13 @@ sudo pacman -R --noconfirm cups-pdf
 sudo pacman -Rns --noconfirm dav1d
 sudo pacman -R --noconfirm gnome-bluetooth
 sudo pacman -R --noconfirm gnome-disk-utility
-sudo pacman -R --noconfirm gst-plugins-bad  
+sudo pacman -R --noconfirm gst-plugins-bad
 sudo pacman -R --noconfirm gst-plugins-good
 sudo pacman -R --noconfirm gst-plugins-ugly
 sudo pacman -R --noconfirm gutenprint
 sudo pacman -R --noconfirm highway
 sudo pacman -R --noconfirm jack2
+sudo pacman -R --noconfirm lxappearance
 sudo pacman -R --noconfirm mailcap
 sudo pacman -R --noconfirm menulibre
 sudo pacman -R --noconfirm mintstick-git
@@ -118,14 +119,14 @@ sudo pacman -R --noconfirm system-config-printer
 sudo pacman -Rns --noconfirm wpebackend-fdo
 echo these three part of wpebackend-fdo
 sudo pacman -R --noconfirm webkit2gtk
-sudo pacman -R --noconfirm webkit2gtk-4.1 
+sudo pacman -R --noconfirm webkit2gtk-4.1
 sudo pacman -R --noconfirm webrtc-audio-processing
 
 sudo pacman -R --noconfirm xfburn
-sudo pacman -R --noconfirm xfwm4-themes 
+sudo pacman -R --noconfirm xfwm4-themes
 sudo pacman -R --noconfirm xvidcore
 sudo pacman -R --noconfirm zsh-completions
-sudo pacman -R --noconfirm zsh-syntax-highlighting 
+sudo pacman -R --noconfirm zsh-syntax-highlighting
 
 
 
@@ -192,11 +193,11 @@ if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
   sudo pacman -R --noconfirm amd-ucode
   sudo pacman -R --noconfirm b43-fwcutter
   sudo pacman -R --noconfirm broadcom-wl
-  sudo pacman -R --noconfirm broadcom-wl-dkms  
+  sudo pacman -R --noconfirm broadcom-wl-dkms
   sudo pacman -Rs --noconfirm cloud-init
   sudo pacman -R --noconfirm darkhttpd
   sudo pacman -R --noconfirm dhcpcd
-  sudo pacman -R --noconfirm ell  
+  sudo pacman -R --noconfirm ell
   sudo pacman -R --noconfirm grml-zsh-config
   sudo pacman -R --noconfirm iwd
   sudo pacman -R --noconfirm kitty-terminfo
@@ -287,11 +288,11 @@ if [ -f /usr/local/bin/get-nemesis-on-sierra ]; then
   sudo pacman -R --noconfirm amd-ucode
   sudo pacman -R --noconfirm b43-fwcutter
   sudo pacman -R --noconfirm broadcom-wl
-  sudo pacman -R --noconfirm broadcom-wl-dkms  
+  sudo pacman -R --noconfirm broadcom-wl-dkms
   sudo pacman -Rs --noconfirm cloud-init
   sudo pacman -R --noconfirm darkhttpd
   sudo pacman -R --noconfirm dhcpcd
-  sudo pacman -R --noconfirm ell  
+  sudo pacman -R --noconfirm ell
   sudo pacman -R --noconfirm grml-zsh-config
   sudo pacman -R --noconfirm iwd
   sudo pacman -R --noconfirm kitty-terminfo
@@ -391,52 +392,6 @@ if grep -q "archcraft" /etc/os-release; then
   sudo pacman -R --noconfirm archcraft-gtk-theme-arc
   sudo pacman -R --noconfirm archcraft-config-qt
   #sudo pacman -R --noconfirm archcraft-neofetch
-
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "################### Software removed"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-fi
-
-# when on BigLinux - remove conflicting files
-if grep -q "BigLinux" /etc/os-release; then
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "####### Removing software for BigLinux"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-  sudo rm -r /etc/skel/.config/variety/variety.conf
-  sudo pacman -R --noconfirm big-skel
-
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "################### Software removed"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-fi
-
-# when on BigLinux - remove conflicting files
-if grep -q "RebornOS" /etc/os-release; then
-  echo
-  tput setaf 2
-  echo "######################################################"
-  echo "####### Removing software for RebornOS"
-  echo "######################################################"
-  tput sgr0
-  echo
-
-  sudo rm -r /etc/skel/.config/variety/variety.conf
-  sudo pacman -Rs parole --noconfirm
 
   echo
   tput setaf 2
