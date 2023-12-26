@@ -95,7 +95,7 @@ sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hardinfo-gtk3
 sudo pacman -S --noconfirm --needed htop
 sudo pacman -S --noconfirm --needed hw-probe
-#sudo pacman -S --noconfirm --needed kvantum
+sudo pacman -S --noconfirm --needed kvantum
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed lolcat
 sudo pacman -S --noconfirm --needed lshw
