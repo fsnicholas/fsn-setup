@@ -17,9 +17,10 @@
 # FSN v57a added bindkey ^U & ^Y (to be sane as bash) Sept 16 2022
 # FSN v58  23-09-17 added fzf keybinds 
 # FSN v58a  23-09-20 has stuff for pyenv, rust, tilix
-# FSN v58b  23-10-14 setopt lines formatted + numeric_glob_sort. new compdef for z (no garuda additions here)
+# FSN v58b  23-10-14 setopt lines formatted + numeric_glob_sort. new compdef for z (no gharuda additions here)
 # FSN v58c  23-11-06 added rust cargo to path
 # FSN v58d  23-12-23 added export MANROFFOPT to fix manpage formatting
+# FSN v58e  23-12-28 added git functionality with less, paher & git-aliases
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -171,19 +172,29 @@ fi
 # for pacdiff
 export DIFFPROG='sudo meld'
 
+export GIT_PAGER=bat 
+
+# Set an evaporating environment variable to use 'cat' for your pager
+#GIT_PAGER=cat git diff
+
+# Tells 'less' not to paginate if less than a page
+export LESS="-F -X $LESS"
+
 # Make nano the default editor
 export EDITOR='nano'
 export VISUAL='nano'
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# needed for formatting MAN pages correctly
+# needed for formatting MAN pages
 export MANROFFOPT="-c"
 
 # Include aliases dotfile
 
 # $ZOOTDIR -> $HOME/.config/zsh
 [[ -f "$ZDOTDIR/.zsh-aliases" ]] && source  "$ZDOTDIR/.zsh-aliases"
+
+[[ -f "$ZDOTDIR/git-aliases" ]] && source  "$ZDOTDIR/git-aliases"
 
 [[ -f "$ZDOTDIR/.fzf.zsh" ]] && source  "$ZDOTDIR/.fzf.zsh"
 
