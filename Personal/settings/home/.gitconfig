@@ -3,16 +3,27 @@
 	name = fsnicholas
 [core]
 	editor = code --wait
+[color]
+	ui = true
 [credential]
 	helper = cache
 [fetch]
 	prune = true
 [init]
-    	defaultBranch = main
+   	defaultBranch = main
 [help]
 	autocorrect = 8
-	
 [push]
 	default = simple
 [pull]
-	rebase = false
+	rebase = true
+[pager]
+    branch = false
+[alias]
+	graph = log --oneline --graph --decorate
+	conflicts = diff --name-only --diff-filter=U
+	local-branches = !git branch -vv | cut -c 3- | awk '$3 !~/\\[/ { print $1 }'
+	recent-branches = !git branch --sort=-committerdate | head
+	authors = !git log --format='%aN <%aE>' | grep -v 'users.noreply.github.com' | sort -u --ignore-case
+
+
