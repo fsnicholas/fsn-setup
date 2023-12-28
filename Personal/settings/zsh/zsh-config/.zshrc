@@ -45,7 +45,7 @@ source "$HOME/.antigen/bin/antigen.zsh"
 antigen init "$HOME/.config/antigenrc"
 
 # Completion -- load after sourcing plugins
-. "$ZDOTDIR/.completion.zsh"
+source "$ZDOTDIR/.completion.zsh"
 
 
 # +------------+
