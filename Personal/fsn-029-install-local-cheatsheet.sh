@@ -47,4 +47,5 @@ echo "################### Done"
 echo "################################################################"
 tput sgr0
 echo
+##### application at https://github.com/cheat/cheat/releases
 

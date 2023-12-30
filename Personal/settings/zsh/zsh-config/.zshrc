@@ -6,7 +6,7 @@
 # FSN v4  - part of Garuda
 # FSN v5 -  2021-Aug-18 total-rewrite for zsh completion & using zshenv
 #           file now in ~/.config/zsh
-# FSN v5a - Aug-20-2021 - more changes to setopy etc
+# FSN v5a - Aug-20-2021 - more changes to setopt etc
 # FSN v51 - Sept-05-2021 - added powerlevel10 at top
 # FSN v52-debian - May-24-2022
 # FSN v53-manjaro - July 17 2022
@@ -15,12 +15,12 @@
 # FSN v56 only use pyenv and rust stuff if needed Aug 23 2022
 # FSN v57 changed path to make bin before sbin  Sept 12 2022
 # FSN v57a added bindkey ^U & ^Y (to be sane as bash) Sept 16 2022
-# FSN v58  23-09-17 added fzf keybinds 
+# FSN v58  23-09-17 added fzf keybinds
 # FSN v58a  23-09-20 has stuff for pyenv, rust, tilix
-# FSN v58b  23-10-14 setopt lines formatted + numeric_glob_sort. new compdef for z (no gharuda additions here)
+# FSN v58b  23-10-14 setopt lines formatted + numeric_glob_sort. new compdef for z (no garuda additions here)
 # FSN v58c  23-11-06 added rust cargo to path
 # FSN v58d  23-12-23 added export MANROFFOPT to fix manpage formatting
-# FSN v58e  23-12-28 added git functionality with less, paher & git-aliases
+# FSN v58e  23-12-28 added git functionality with less, pager & git-aliases
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -121,7 +121,7 @@ autoload run-help-sudo
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 
-# gives emacs style of line editing at the prompt = binkey -e
+# gives emacs style of line editing at the prompt = bindkey -e
 # Set vim mode for zsh
 bindkey -e
 
@@ -132,7 +132,7 @@ bindkey '^P' autosuggest-accept
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# FSN bind Ctrl-U to delete from cursour to beginning of line - same as bash & ^Y to undo
+# FSN bind Ctrl-U to delete from cursor to beginning of line - same as bash & ^Y to undo
 bindkey '^U' backward-kill-line
 bindkey '^Y' undo
 
@@ -172,7 +172,7 @@ fi
 # for pacdiff
 export DIFFPROG='sudo meld'
 
-export GIT_PAGER=bat 
+export GIT_PAGER=bat
 
 # Set an evaporating environment variable to use 'cat' for your pager
 #GIT_PAGER=cat git diff
@@ -189,9 +189,12 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # needed for formatting MAN pages
 export MANROFFOPT="-c"
 
+# cheat supports enhanced autocompletion via integration with fzf
+export CHEAT_USE_FZF=true
+
 # Include aliases dotfile
 
-# $ZOOTDIR -> $HOME/.config/zsh
+# $ZDOTDIR -> $HOME/.config/zsh
 [[ -f "$ZDOTDIR/.zsh-aliases" ]] && source  "$ZDOTDIR/.zsh-aliases"
 
 [[ -f "$ZDOTDIR/git-aliases" ]] && source  "$ZDOTDIR/git-aliases"
