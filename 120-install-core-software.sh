@@ -86,7 +86,7 @@ sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
 sudo pacman -S --noconfirm --needed font-manager
 sudo pacman -S --noconfirm --needed git
-sudo pacman -S --noconfirm --needed gitahead-bin
+#sudo pacman -S --noconfirm --needed gitahead-bin
 sudo pacman -S --noconfirm --needed github-cli
 #sudo pacman -S --noconfirm --needed gnome-disk-utility
 sudo pacman -S --noconfirm --needed gtop
@@ -95,9 +95,9 @@ sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hardinfo-gtk3
 sudo pacman -S --noconfirm --needed htop
 sudo pacman -S --noconfirm --needed hw-probe
-sudo pacman -S --noconfirm --needed kvantum
+sudo pacman -S --noconfirm --needed kvantum-qt5-git
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
-sudo pacman -S --noconfirm --needed lolcat
+#sudo pacman -S --noconfirm --needed lolcat
 sudo pacman -S --noconfirm --needed lshw
 sudo pacman -S --noconfirm --needed lxappearance-gtk3
 sudo pacman -S --noconfirm --needed man-db
