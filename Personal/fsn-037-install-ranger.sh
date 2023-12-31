@@ -20,19 +20,29 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 echo
 tput setaf 2
-echo "##################################################################"
-echo "################### Personal settings to install - .config  files"
-echo "##################################################################"
+echo "################################################################"
+echo "################### Installing ranger & needed software     ####"
+echo "################################################################"
 tput sgr0
 echo
-echo -e  "${BYell} Copying setting files  to ~/.config ${NC}"
+sudo pacman -Syy
 echo
-cp -vrf $installed_dir/settings/config-fsn/* ~/.config
-
+sudo pacman -S --noconfirm --needed ranger
+sudo pacman -S --noconfirm --needed highlight
+sudo pacman -S --noconfirm --needed atool
+sudo pacman -S --noconfirm --needed ueberzug
+echo
+echo -e  "${BYell} Creating directory $HOME"/.config/ranger"${NC}"
+echo
+[ -d $HOME"/.config/ranger" ] || mkdir -p $HOME"/.config/ranger"
+echo
+echo -e  "${BYell}Copying ranger config to local directory${NC}"
+echo
+cp -vrf $installed_dir/settings/ranger/* $HOME"/.config/ranger/"
 echo
 tput setaf 6
 echo "################################################################"
-echo "################### Done                                     ###"
+echo "###################        Done      ###########################"
 echo "################################################################"
 tput sgr0
 echo
