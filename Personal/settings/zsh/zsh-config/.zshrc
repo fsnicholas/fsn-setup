@@ -199,6 +199,10 @@ export CHEAT_USE_FZF=true
 
 [[ -f "$ZDOTDIR/git-aliases" ]] && source  "$ZDOTDIR/git-aliases"
 
+if [ -d "$HOME/.cargo/bin" ] ;
+  then [[ -f "$ZDOTDIR/cargo-aliases" ]] && source  "$ZDOTDIR/cargo-aliases"
+fi
+
 [[ -f "$ZDOTDIR/.fzf.zsh" ]] && source  "$ZDOTDIR/.fzf.zsh"
 
 # fsn added for pyenv
