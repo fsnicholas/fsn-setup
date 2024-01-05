@@ -11,7 +11,7 @@
 # V3Qe - sorted removed duplicates
 # V3Qf - changed mirrora
 # V3Qg - removed alias for duf (now runs duf-bin)
-# V4a -  removed all pyene, apache ph-fpm aliases
+# V4a -  removed all pyenv, apache ph-fpm aliases
 # V4b -  arranged aliases in groups (Arch Linux)
 # V4c -  changed all exa and ls aliases (Arch Linux), added duff - sorted again, new helpb using bat/bathelp
 # V4d -  22-08-18 changed exa again now ls -s exa 
@@ -24,7 +24,7 @@
 # V4j-left -  23-04-23 more editor alias
 # V4k -  23-08-28 using $EDITOR alias (inc leftwm themes) + skel & bupskel
 # V4ka - 23-09-10 added doas & new install-grub-efi, qtile-check. del att alias
-# noothing for qtile or zram (@ 23-10-20)
+# nothing for qtile or zram (@ 23-10-20)
 # V4kc - 23-10-14 - changed exa to using eza (install eza)
 # V4kd - 23-12-15 - added another eza alias 
 # V5a - 23-12-18 - major additions. new editor +, more to.. aliases, kernels, boot, cpu
@@ -133,11 +133,9 @@ alias cdd='cd ~/Downloads/
 alias cdo='cd ~/Documents/
 
 # Git CLI aliases
-alias g='git'
 alias gi='git init'
-alias gra='git remote add'
-alias gs='git status'
 alias gpom='git push origin master'
+
 
 # remove git cache
 alias rmgitcache="rm -r ~/.cache/git"
