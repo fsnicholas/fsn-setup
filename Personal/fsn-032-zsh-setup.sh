@@ -12,6 +12,10 @@
 #tput setaf 6 = cyan
 #tput setaf 7 = gray
 #tput setaf 8 = light blue
+RED='\033[0;31m'
+BRED='\033[1;31m'         # Bold Red
+BYell='\033[1;33m'         # Bold Yellow
+NC='\033[0m' # No Color
 ##################################################################################################################
 
 installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
@@ -30,21 +34,22 @@ echo
 # delete if file exists
 sudo rm -f -- /etc/doas.conf
 sudo cp $installed_dir/settings/doas/doas.conf   /etc/doas.conf
-
-echo "Installing antigen"
+echo
+echo -e  "${BYell}Installing antigen ${NC}"
 echo
 rm -rf ~/.antigen
 git clone https://github.com/zsh-users/antigen.git ~/.antigen
 echo
-echo "Installing fzf"
+echo -e  "${BYell}Installing fzf ${NC}"
 echo
 rm -rf ~/.fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 echo
-echo "Installing zsh"
+echo -e  "${BYell}Installing zsh ${NC}"
+echo
 [ -d $HOME"/.config/zsh" ] || mkdir -p $HOME"/.config/zsh"
-cp -f   $installed_dir/settings/zsh/antigenrc ~/.config/antigenrc
-cp -f   $installed_dir/settings/zsh/zsh-home/.zshenv ~/.zshenv
+cp -vf   $installed_dir/settings/zsh/antigenrc ~/.config/antigenrc
+cp -vf   $installed_dir/settings/zsh/zsh-home/.zshenv ~/.zshenv
 cp -vrf $installed_dir/settings/zsh/zsh-config/. ~/.config/zsh
 
 
