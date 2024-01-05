@@ -35,18 +35,18 @@ echo -e  "${BYell} Initial Copy: sublime_text to ~/Downloads ${NC}"
 echo
 cp -vf $installed_dir/fsn-sublime-text/sublime_text /home/nicholas/Downloads/
 echo
-echo -e  "${BRED}Setting up system permissions on sublime text ${NC}"
+echo -e  "${BYell}Setting up system permissions on sublime text ${NC}"
 cd $HOME/Downloads/
 sudo chmod 755 sublime_text
 sudo chown root sublime_text
 sudo chgrp root sublime_text
 echo
-echo -e  "${BRED}Renaming sublime_text to sublime_text.old ${NC}"
+echo -e  "${BYell}Renaming sublime_text to sublime_text.old ${NC}"
 echo
 sudo rm -f /opt/sublime_text/sublime_text.old
 sudo mv /opt/sublime_text/sublime_text  /opt/sublime_text/sublime_text.old
 echo
-echo -e  "${BRED}Moving new sublime_text to /opt directory${NC}"
+echo -e  "${BYell}Moving new sublime_text to /opt directory${NC}"
 echo
 sudo mv sublime_text /opt/sublime_text/
 echo
