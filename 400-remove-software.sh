@@ -88,6 +88,7 @@ sudo pacman -R --noconfirm arcolinux-local-applications-all-hide-git
 sudo pacman -R --noconfirm arcolinux-pipemenus-git
 sudo pacman -R --noconfirm arcolinux-welcome-app-git
 sudo pacman -R --noconfirm arcolinux-xfce-panel-profiles-git
+sudo pacman -R --noconfirm bibata-cursor-theme-bin
 sudo pacman -R --noconfirm bubblewrap
 sudo pacman -R --noconfirm cblas
 sudo pacman -R --noconfirm chromaprint
@@ -97,6 +98,7 @@ sudo pacman -Rns --noconfirm cups
 sudo pacman -R --noconfirm cups-filters
 sudo pacman -R --noconfirm cups-pdf
 sudo pacman -Rns --noconfirm dav1d
+sudo pacman -R --noconfirm firefox-adblock-plus
 sudo pacman -R --noconfirm gnome-bluetooth
 sudo pacman -R --noconfirm gnome-disk-utility
 sudo pacman -R --noconfirm gst-plugins-bad
