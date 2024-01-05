@@ -65,6 +65,9 @@ sudo pacman -S --noconfirm --needed alacritty-themes
 sudo pacman -S --noconfirm --needed arandr
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
+sudo pacman -S --noconfirm --needed arcolinux-qt5-git
+sudo pacman -S --noconfirm --needed arcolinux-variety-git
+sudo pacman -S --noconfirm --needed arcolinux-zsh-git
 sudo pacman -S --noconfirm --needed ast-firmware
 sudo pacman -S --noconfirm --needed awesome-terminal-fonts
 sudo pacman -S --noconfirm --needed bash-completion
@@ -81,13 +84,18 @@ if [ ! -f /usr/bin/duf ]; then
   sudo pacman -S --noconfirm --needed duf
 fi
 sudo pacman -S --noconfirm --needed expac
+sudo pacman -S --noconfirm --needed eza
 sudo pacman -S --noconfirm --needed feh
+sudo pacman -S --noconfirm --needed ffmpegthumbnailer
 sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
+sudo pacman -S --noconfirm --needed firefox-ublock-origin
 sudo pacman -S --noconfirm --needed font-manager
 sudo pacman -S --noconfirm --needed git
 #sudo pacman -S --noconfirm --needed gitahead-bin
 sudo pacman -S --noconfirm --needed github-cli
+sudo pacman -S --noconfirm --needed gnome-keyring
+sudo pacman -S --noconfirm --needed grub-customizer
 #sudo pacman -S --noconfirm --needed gnome-disk-utility
 sudo pacman -S --noconfirm --needed gtop
 sudo pacman -S --noconfirm --needed gvfs-smb
@@ -95,7 +103,13 @@ sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hardinfo-gtk3
 sudo pacman -S --noconfirm --needed htop
 sudo pacman -S --noconfirm --needed hw-probe
+sudo pacman -S --noconfirm --needed inetutils
+
+sudo pacman -S --noconfirm --needed inxi
+sudo pacman -S --noconfirm --needed perl-cpanel-json-xs
+
 sudo pacman -S --noconfirm --needed kvantum-qt5-git
+sudo pacman -S --noconfirm --needed kvantum-qt6-git
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 #sudo pacman -S --noconfirm --needed lolcat
 sudo pacman -S --noconfirm --needed lshw
@@ -105,21 +119,30 @@ sudo pacman -S --noconfirm --needed man-pages
 #sudo pacman -S --noconfirm --needed mkinitcpio-firmware
 sudo pacman -S --noconfirm --needed mlocate
 sudo pacman -S --noconfirm --needed meld
+sudo pacman -S --noconfirm --needed mkinitcpio-firmware
 sudo pacman -S --noconfirm --needed most
+sudo pacman -S --noconfirm --needed mousepad
+sudo pacman -S --noconfirm --needed ncdu
 sudo pacman -S --noconfirm --needed nerd-fonts-source-code-pro
 sudo pacman -S --noconfirm --needed neofetch
 #sudo pacman -S --noconfirm --needed nomacs
 sudo pacman -S --noconfirm --needed noto-fonts
+sudo pacman -S --noconfirm --needed npm
 sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed numlockx
 #sudo pacman -S --noconfirm --needed openresolv
 sudo pacman -S --noconfirm --needed pacutils
+sudo pacman -S --noconfirm --needed pamac-aur
 sudo pacman -S --noconfirm --needed paru-bin
 sudo pacman -S --noconfirm --needed picom-git
 sudo pacman -S --noconfirm --needed polkit-gnome
+sudo pacman -S --noconfirm --needed python-keyutils
 sudo pacman -S --noconfirm --needed python-pylint
 sudo pacman -S --noconfirm --needed python-pywal
+sudo pacman -S --noconfirm --needed python-xapp
+sudo pacman -S --noconfirm --needed python-yaml
 sudo pacman -S --noconfirm --needed pv
+sudo pacman -S --noconfirm --needed qt6-base
 sudo pacman -S --noconfirm --needed rate-mirrors-bin
 sudo pacman -S --noconfirm --needed ripgrep
 sudo pacman -S --noconfirm --needed ripgrep-all
@@ -149,9 +172,14 @@ sudo pacman -S --noconfirm --needed wget
 sudo pacman -S --noconfirm --needed wttr
 sudo pacman -S --noconfirm --needed xcolor
 sudo pacman -S --noconfirm --needed xdg-user-dirs
+sudo pacman -S --noconfirm --needed xfce4-mount-plugin
+sudo pacman -S --noconfirm --needed xfce4-taskmanager
 sudo pacman -S --noconfirm --needed xorg-xkill
 sudo pacman -S --noconfirm --needed yay-bin
+sudo pacman -S --noconfirm --needed zbar
+sudo pacman -S --noconfirm --needed zenity
 sudo pacman -S --noconfirm --needed zsh
+
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable ntpd.service
 
