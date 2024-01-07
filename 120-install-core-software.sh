@@ -72,10 +72,15 @@ sudo pacman -S --noconfirm --needed ast-firmware
 sudo pacman -S --noconfirm --needed awesome-terminal-fonts
 sudo pacman -S --noconfirm --needed bash-completion
 sudo pacman -S --noconfirm --needed bat
+
+sudo pacman -S --noconfirm --needed btop
+sudo pacman -S --noconfirm --needed arcolinux-btop-git
+
 sudo pacman -S --noconfirm --needed gtop
 sudo pacman -S --noconfirm --needed catfish
 sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed dconf-editor
+sudo pacman -S --noconfirm --needed dex
 sudo pacman -S --noconfirm --needed dmenu
 sudo pacman -S --noconfirm --needed doas
 sudo pacman -S --noconfirm --needed downgrade
