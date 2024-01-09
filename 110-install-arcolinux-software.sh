@@ -65,9 +65,9 @@ sudo pacman -S --noconfirm --needed a-candy-beauty-icon-theme-git
 sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
 #sudo pacman -S --noconfirm --needed arcolinux-pamac-all
-sudo pacman -S --needed octopi
-sudo pacman -S --needed octopi-notifier-qt5
-sudo pacman -S --needed pacmanlogviewer
+#sudo pacman -S --needed octopi
+#sudo pacman -S --needed octopi-notifier-qt5
+sudo pacman -S --noconfirm --needed pacmanlogviewer
 
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
 sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
