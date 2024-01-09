@@ -61,7 +61,7 @@ echo
 sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
 sudo pacman -S --noconfirm --needed aic94xx-firmware
 sudo pacman -S --noconfirm --needed alacritty
-sudo pacman -S --noconfirm --needed alacritty-themes
+# sudo pacman -S --noconfirm --needed alacritty-themes
 sudo pacman -S --noconfirm --needed arandr
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
