@@ -100,11 +100,14 @@ alias xl.='eza -aF --icons .*'
 alias xld='eza -aF --group-directories-first --icons'
 alias xld.='eza l --group-directories-first --icons .* '
 alias xls='eza -al --group-directories-first  --icons'
-alias xll='eza -lag --group-directories-first  --icons --color-always --octal-permissions'
+alias xll='eza -lag --group-directories-first  --icons --octal-permissions'
 
-alias xll='eza -lag --icons --color=always --group-directories-first --octal-permissions'
-alias xllg='eza -bghl --git --icons'
-alias xlag='eza -abhl --git --icons'
+#alias xllg='eza -bghl --git --icons'
+alias ll='eza -bghl --git --icons'
+
+#alias xlag='eza -abhl --git --icons'
+alias la='eza -abhl --git --icons'
+alias l='eza -abhl --git --icons'
 
 TREE_IGNORE="cache|log|logs|node_modules|vendor"
 alias lt='eza --tree -D --level=2 -I ${TREE_IGNORE}'
@@ -135,7 +138,6 @@ alias cdo='cd ~/Documents/
 # Git CLI aliases
 alias gi='git init'
 alias gpom='git push origin master'
-
 
 # remove git cache
 alias rmgitcache="rm -r ~/.cache/git"
