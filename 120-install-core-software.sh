@@ -65,6 +65,7 @@ sudo pacman -S --noconfirm --needed alacritty
 sudo pacman -S --noconfirm --needed arandr
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
+sudo pacman -S --noconfirm --needed arcolinux-powermenu-git
 sudo pacman -S --noconfirm --needed arcolinux-qt5-git
 sudo pacman -S --noconfirm --needed arcolinux-variety-git
 sudo pacman -S --noconfirm --needed arcolinux-zsh-git
@@ -102,15 +103,17 @@ sudo pacman -S --noconfirm --needed github-cli
 sudo pacman -S --noconfirm --needed gnome-keyring
 sudo pacman -S --noconfirm --needed grub-customizer
 #sudo pacman -S --noconfirm --needed gnome-disk-utility
-sudo pacman -S --noconfirm --needed gtop
+#sudo pacman -S --noconfirm --needed gtop
 sudo pacman -S --noconfirm --needed gvfs-smb
+
 sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hardinfo-gtk3
-sudo pacman -S --noconfirm --needed htop
+#sudo pacman -S --noconfirm --needed htop
 sudo pacman -S --noconfirm --needed hw-probe
-sudo pacman -S --noconfirm --needed inetutils
 
+sudo pacman -S --noconfirm --needed inetutils
 sudo pacman -S --noconfirm --needed inxi
+
 sudo pacman -S --noconfirm --needed perl-cpanel-json-xs
 
 sudo pacman -S --noconfirm --needed kvantum-qt5-git
