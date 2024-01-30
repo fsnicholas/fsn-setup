@@ -65,21 +65,40 @@ sudo pacman -S --noconfirm --needed alacritty
 sudo pacman -S --noconfirm --needed arandr
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
+sudo pacman -S --noconfirm --needed archlinux-logout-git
+sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
+sudo pacman -S --noconfirm --needed arcolinux-bin-git
+sudo pacman -S --noconfirm --needed arcolinux-btop-git
+sudo pacman -S --noconfirm --needed arcolinux-common-git
+sudo pacman -S --noconfirm --needed arcolinux-config-all-desktops-git
+sudo pacman -S --noconfirm --needed arcolinux-dconf-all-desktops-git
+sudo pacman -S --noconfirm --needed arcolinux-gtk3-arcolinux-candy-beauty-git
+sudo pacman -S --noconfirm --needed arcolinux-hblock-git
+sudo pacman -S --noconfirm --needed arcolinux-arc-kde
+sudo pacman -S --noconfirm --needed arcolinux-kvantum-git
+sudo pacman -S --noconfirm --needed arcolinux-local-xfce4-git
+sudo pacman -S --noconfirm --needed arcolinux-mirrorlist-git
+sudo pacman -S --noconfirm --needed arcolinux-neofetch-git
 sudo pacman -S --noconfirm --needed arcolinux-powermenu-git
 sudo pacman -S --noconfirm --needed arcolinux-qt5-git
+sudo pacman -S --noconfirm --needed arcolinux-rofi-git
+sudo pacman -S --noconfirm --needed arcolinux-rofi-themes-git
+sudo pacman -S --noconfirm --needed arcolinux-root-git
+sudo pacman -S --noconfirm --needed arcolinux-system-config-git
+sudo pacman -S --noconfirm --needed arcolinux-variety-autostart-git
 sudo pacman -S --noconfirm --needed arcolinux-variety-git
 sudo pacman -S --noconfirm --needed arcolinux-zsh-git
 sudo pacman -S --noconfirm --needed ast-firmware
+sudo pacman -S --noconfirm --needed autorandr 
 sudo pacman -S --noconfirm --needed awesome-terminal-fonts
 sudo pacman -S --noconfirm --needed bash-completion
 sudo pacman -S --noconfirm --needed bat
-
+sudo pacman -S --noconfirm --needed betterlockscreen 
 sudo pacman -S --noconfirm --needed btop
-sudo pacman -S --noconfirm --needed arcolinux-btop-git
-
-sudo pacman -S --noconfirm --needed gtop
 sudo pacman -S --noconfirm --needed catfish
 sudo pacman -S --noconfirm --needed curl
+sudo pacman -S --noconfirm --needed dash
+sudo pacman -S --noconfirm --needed dbus-python
 sudo pacman -S --noconfirm --needed dconf-editor
 sudo pacman -S --noconfirm --needed dex
 sudo pacman -S --noconfirm --needed dmenu
@@ -89,7 +108,9 @@ sudo pacman -S --noconfirm --needed dunst
 if [ ! -f /usr/bin/duf ]; then
   sudo pacman -S --noconfirm --needed duf
 fi
+sudo pacman -S --noconfirm --needed eww
 sudo pacman -S --noconfirm --needed expac
+sudo pacman -S --noconfirm --needed exiv2
 sudo pacman -S --noconfirm --needed eza
 sudo pacman -S --noconfirm --needed feh
 sudo pacman -S --noconfirm --needed ffmpegthumbnailer
@@ -97,25 +118,23 @@ sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
 sudo pacman -S --noconfirm --needed firefox-ublock-origin
 sudo pacman -S --noconfirm --needed font-manager
+sudo pacman -S --noconfirm --needed fzf
 sudo pacman -S --noconfirm --needed git
-#sudo pacman -S --noconfirm --needed gitahead-bin
+sudo pacman -S --noconfirm --needed gitahead-bin
 sudo pacman -S --noconfirm --needed github-cli
 sudo pacman -S --noconfirm --needed gnome-keyring
 sudo pacman -S --noconfirm --needed grub-customizer
 #sudo pacman -S --noconfirm --needed gnome-disk-utility
 #sudo pacman -S --noconfirm --needed gtop
 sudo pacman -S --noconfirm --needed gvfs-smb
-
 sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hardinfo-gtk3
+sudo pacman -S --noconfirm --needed hblock
 #sudo pacman -S --noconfirm --needed htop
 sudo pacman -S --noconfirm --needed hw-probe
-
 sudo pacman -S --noconfirm --needed inetutils
 sudo pacman -S --noconfirm --needed inxi
-
 sudo pacman -S --noconfirm --needed perl-cpanel-json-xs
-
 sudo pacman -S --noconfirm --needed kvantum-qt5-git
 sudo pacman -S --noconfirm --needed kvantum-qt6-git
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
@@ -124,10 +143,9 @@ sudo pacman -S --noconfirm --needed lshw
 sudo pacman -S --noconfirm --needed lxappearance-gtk3
 sudo pacman -S --noconfirm --needed man-db
 sudo pacman -S --noconfirm --needed man-pages
-#sudo pacman -S --noconfirm --needed mkinitcpio-firmware
-sudo pacman -S --noconfirm --needed mlocate
 sudo pacman -S --noconfirm --needed meld
 sudo pacman -S --noconfirm --needed mkinitcpio-firmware
+sudo pacman -S --noconfirm --needed mlocate
 sudo pacman -S --noconfirm --needed most
 sudo pacman -S --noconfirm --needed mousepad
 sudo pacman -S --noconfirm --needed ncdu
@@ -139,11 +157,15 @@ sudo pacman -S --noconfirm --needed npm
 sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed numlockx
 #sudo pacman -S --noconfirm --needed openresolv
+sudo pacman -S --noconfirm --needed pacman-contrib
+sudo pacman -S --noconfirm --needed pacmanlogviewer
 sudo pacman -S --noconfirm --needed pacutils
 sudo pacman -S --noconfirm --needed pamac-aur
 sudo pacman -S --noconfirm --needed paru-bin
 sudo pacman -S --noconfirm --needed picom-git
+sudo pacman -S --noconfirm --needed pkgfile
 sudo pacman -S --noconfirm --needed polkit-gnome
+sudo pacman -S --noconfirm --needed python-beautifulsoup4
 sudo pacman -S --noconfirm --needed python-keyutils
 sudo pacman -S --noconfirm --needed python-pylint
 sudo pacman -S --noconfirm --needed python-pywal
@@ -161,7 +183,11 @@ sudo pacman -S --noconfirm --needed scrot
 sudo pacman -S --noconfirm --needed sofirem-git
 sudo pacman -S --noconfirm --needed sublime-text-4
 sudo pacman -S --noconfirm --needed surfn-icons-git
+sudo pacman -S --noconfirm --needed sxhkd
 sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
+sudo pacman -S --noconfirm --needed thunar-archive-plugin
+sudo pacman -S --noconfirm --needed thunar-media-tags-plugin
+sudo pacman -S --noconfirm --needed thunar-volman
 sudo pacman -S --noconfirm --needed tree
 sudo pacman -S --noconfirm --needed ttf-bitstream-vera
 sudo pacman -S --noconfirm --needed ttf-dejavu
@@ -224,11 +250,11 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
   tput sgr0
   echo
 
-#  sudo pacman -S --noconfirm --needed menulibre
-#  sudo pacman -S --noconfirm --needed mugshot
-#  sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
-#  sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
-  sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
+#sudo pacman -S --noconfirm --needed menulibre
+#sudo pacman -S --noconfirm --needed mugshot
+#sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
+#sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
+sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
 
 fi
 
