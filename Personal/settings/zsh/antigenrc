@@ -1,3 +1,4 @@
+## fsn antogenrc V2a amended 24 July 2022
 ## fsn antigenrc V2b amended 12 Aug 2022
 ## fsn antigenrc V2c amended 14 Aug 2023 added different z dir jump
 
@@ -12,7 +13,7 @@ antigen use oh-my-zsh
 # toggles "sudo" before the current/previous command by pressing [ESC][ESC] 
 antigen bundle sudo
 
-# usage acs: show all aliases by group.
+# usage als: show all aliases by group.
 antigen bundle aliases
 
 #  provide suggested packages to be installed if a command cannot be found
