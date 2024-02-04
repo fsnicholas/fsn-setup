@@ -2,11 +2,10 @@
     ### Display ###
     monitor = 0
     follow = mouse
-    geometry = "300x5-30+20"
     offset = 10x50
-    #origin = top-right
-    #width = 300
-    #height = 300
+    origin = top-right
+    width = 300
+    height = 300
 
     progress_bar = true
     progress_bar_height = 10
