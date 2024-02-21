@@ -4,7 +4,7 @@
     follow = mouse
     offset = 10x50
     origin = top-right
-    width = 300
+    width = 350
     height = 300
 
     progress_bar = true
