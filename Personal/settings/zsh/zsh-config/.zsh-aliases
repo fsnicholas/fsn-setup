@@ -28,6 +28,7 @@
 # V4kc - 23-10-14 - changed exa to using eza (install eza)
 # V4kd - 23-12-15 - added another eza alias 
 # V5a - 23-12-18 - major additions. new editor +, more to.. aliases, kernels, boot, cpu
+# V5b - 24-02-29 added nmakepkg
 
 ## FSN Alias
 
@@ -345,6 +346,7 @@ alias nmkinitcpio="sudo $EDITOR /etc/mkinitcpio.conf"
 alias nneofetch="$EDITOR ~/.config/neofetch/config.conf"
 alias nnsswitch="sudo $EDITOR /etc/nsswitch.conf"
 alias nloader="sudo $EDITOR /boot/efi/loader/loader.conf"
+alias nmakepkg="sudo $EDITOR /etc/makepkg.conf"
 alias npacman="sudo $EDITOR /etc/pacman.conf"
 alias nplymouth="sudo $EDITOR /etc/plymouth/plymouthd.conf"
 alias nresolv="sudo $EDITOR /etc/resolv.conf"
