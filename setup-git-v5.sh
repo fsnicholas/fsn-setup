@@ -25,7 +25,6 @@ echo
 
 # Problem solving commands
 
-# Read before using it.
 # https://www.atlassian.com/git/tutorials/undoing-changes/git-reset
 # git reset --hard origin/master
 # ONLY if you are very sure and no coworkers are on your github.
