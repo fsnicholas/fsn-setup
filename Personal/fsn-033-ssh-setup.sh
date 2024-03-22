@@ -40,10 +40,10 @@ echo
 echo -e  "${BYell} Setting up ssh directories permission ${NC}"
 sudo chmod 700 ~/.ssh
 sudo chmod 700 ~/.ssh/config
-sudo chmod 644 ~/.ssh/id_rsa.pub
-sudo chmod 644 ~/.ssh/id_rsa
 sudo chmod 600 ~/.ssh/id_ed25519
 sudo chmod 644 ~/.ssh/id_ed25519.pub
+sudo chmod 600 ~/.ssh/id_ed25519_gitlab
+sudo chmod 644 ~/.ssh/id_ed25519_gitlab.pub
 tput setaf 6
 echo "################################################################"
 echo "################### Done"
