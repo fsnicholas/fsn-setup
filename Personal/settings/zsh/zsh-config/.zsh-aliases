@@ -324,8 +324,9 @@ alias ssn="sudo shutdown now"
 alias sr="reboot"
 
 ## download mirrorlist
-alias mirrorf="sudo reflector -c AU -c NZ -c SG -f 105 -l 105 -n 40 --verbose --sort rate --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector -c AU -c NZ --download-timeout 25  -a 48 -l 20 -f 20 --threads 5 --sort rate  --save /etc/pacman.d/mirrorlist"
+alias mirrorf="sudo reflector -c AU -c SG -f 105 -l 105 -n 40 --verbose --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector -c AU --download-timeout 25  -a 48 -l 20 -f 20 --threads 5 --sort rate  --save /etc/pacman.d/mirrorlist"
+alias mirroran="sudo reflector -c AU -c NZ --download-timeout 25  -a 48 -l 20 -f 20 --threads 5 --sort rate  --save /etc/pacman.d/mirrorlist"
 
 # $EDITOR/nano for important configration files
 # know what you do in these files
