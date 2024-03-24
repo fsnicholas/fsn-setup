@@ -29,7 +29,7 @@
 # V4kd - 23-12-15 - added another eza alias 
 # V5a - 23-12-18 - major additions. new editor +, more to.. aliases, kernels, boot, cpu
 # V5b - 24-02-29 added nmakepkg
-# V5c - 24-03-24 added alias howold
+# V5c - 24-03-24 added alias howold. mirroran. Amended mirrora & mirrorf (removed NZ)
 
 ## FSN Alias
 
