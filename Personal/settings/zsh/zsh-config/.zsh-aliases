@@ -29,6 +29,7 @@
 # V4kd - 23-12-15 - added another eza alias 
 # V5a - 23-12-18 - major additions. new editor +, more to.. aliases, kernels, boot, cpu
 # V5b - 24-02-29 added nmakepkg
+# V5c - 24-03-24 added alias howold
 
 ## FSN Alias
 
@@ -412,6 +413,8 @@ alias awa="arcolinux-welcome-app"
 #give the list of all installed desktops - xsessions desktops
 alias xd="ls /usr/share/xsessions"
 
+# approximately how old is hardware
+alias howold="sudo lshw | grep -B 3 -A 8 BIOS"
 
 # switch between bash and zsh
 alias tobash="sudo chsh $USER -s /usr/bin/bash && echo 'Now log out.'"
