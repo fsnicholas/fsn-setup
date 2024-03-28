@@ -375,7 +375,7 @@ alias kernel="ls /usr/lib/modules"
 alias kernels="ls /usr/lib/modules"
 
 #am I on grub or systemd-boot
-alias boot="sudo bootctl status"
+alias boot="sudo bootctl status | grep Product | awk '{print $2}'"
 alias boot-what="sudo bootctl status | grep Product"
 
 # youtube download
