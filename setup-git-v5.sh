@@ -52,7 +52,7 @@ git config --global push.default simple
 git config --global fetch.prune = true
 git config --global user.name "fsnicholas"
 git config --global user.email "frank.nicholas@gmail.com"
-git config --system core.editor code --wait
+git config --global core.editor code --wait
 git config --global credential.helper cache
 #git config --global credential.helper 'cache --timeout=32000'
 
