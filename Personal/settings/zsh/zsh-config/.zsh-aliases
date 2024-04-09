@@ -30,7 +30,7 @@
 # V5a - 23-12-18 - major additions. new editor +, more to.. aliases, kernels, boot, cpu
 # V5b - 24-02-29 added nmakepkg
 # V5c - 24-03-24 added alias howold. mirroran. Amended mirrora & mirrorf (removed NZ)
-# V5d - 24-03-24 changed boot alias
+# V5d - 24-03-24 changed boot alias. added readling calmares log file
 
 ## FSN Alias
 
@@ -357,6 +357,9 @@ alias nsamba="sudo nano /etc/samba/smb.conf"
 alias nsddm="sudo $EDITOR /etc/sddm.conf"
 alias nsddmk="sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf"
 alias nvconsole="sudo $EDITOR /etc/vconsole.conf"
+
+#reading logs with sublime-text-4
+alias scal="subl /var/log/Calamares.log"
 
 alias nb="${=EDITOR} $HOME/.bashrc"
 alias sz="source ${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
