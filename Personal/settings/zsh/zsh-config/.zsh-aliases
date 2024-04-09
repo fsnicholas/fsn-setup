@@ -30,6 +30,7 @@
 # V5a - 23-12-18 - major additions. new editor +, more to.. aliases, kernels, boot, cpu
 # V5b - 24-02-29 added nmakepkg
 # V5c - 24-03-24 added alias howold. mirroran. Amended mirrora & mirrorf (removed NZ)
+# V5d - 24-03-24 changed boot alias
 
 ## FSN Alias
 
@@ -374,8 +375,9 @@ alias install-grub-efi="sudo grub-install --target=x86_64-efi --efi-directory=/b
 alias kernel="ls /usr/lib/modules"
 alias kernels="ls /usr/lib/modules"
 
-#am I on grub or systemd-boot
-alias boot="sudo bootctl status"
+#am I on grub,systemd-boot or refind
+# alias boot="sudo bootctl status"
+alias boot="sudo /usr/local/bin/arcolinux-boot"
 alias boot-what="sudo bootctl status | grep Product"
 
 # youtube download
