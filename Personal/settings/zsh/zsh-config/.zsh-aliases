@@ -417,6 +417,11 @@ alias atm="arcolinux-tellme"
 alias avs="arcolinux-vbox-share"
 alias awa="arcolinux-welcome-app"
 
+#removing packages
+alias rvariety="arcolinux-remove-variety"
+alias rkmix="arcolinux-remove-kmix"
+alias rconky="arcolinux-remove-conky"
+
 #give the list of all installed desktops - xsessions desktops
 alias xd="ls /usr/share/xsessions"
 
