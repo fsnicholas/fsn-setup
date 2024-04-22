@@ -332,6 +332,7 @@ alias mirroran="sudo reflector -c AU -c NZ --download-timeout 25  -a 48 -l 20 -f
 # $EDITOR/nano for important configration files
 # know what you do in these files
 alias mirrorlist="cat /etc/pacman.d/mirrorlist"
+alias nalacritty="nano /home/$USER/.config/alacritty/alacritty.toml"
 alias narcomirrorlist="sudo $EDITOR /etc/pacman.d/arcolinux-mirrorlist"
 alias nb="$EDITOR ~/.bashrc"
 alias nconfgrub="sudo $EDITOR /boot/grub/grub.cfg"
