@@ -408,6 +408,9 @@ alias kernels="ls /usr/lib/modules"
 alias boot="sudo /usr/local/bin/arcolinux-boot"
 alias boot-what="sudo bootctl status | grep Product"
 
+#audio check pulseaudio or pipewire
+alias audio="pactl info | grep 'Server Name'"
+
 # youtube download
 alias yta-aac='yt-dlp --extract-audio --audio-format aac '
 alias yta-best='yt-dlp --extract-audio --audio-format best '
@@ -463,7 +466,6 @@ alias togrub="sudo /usr/local/bin/arcolinux-togrub"
 #switch between lightdm and sddm
 alias tolightdm="sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm --needed ; sudo systemctl enable lightdm.service -f ; echo 'Lightm is active - reboot now'"
 alias tosddm="sudo pacman -S sddm --noconfirm --needed ; sudo systemctl enable sddm.service -f ; echo 'Sddm is active - reboot now'"
-
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
