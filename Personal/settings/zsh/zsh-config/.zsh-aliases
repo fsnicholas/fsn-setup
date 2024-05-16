@@ -452,6 +452,11 @@ alias rvariety="arcolinux-remove-variety"
 alias rkmix="arcolinux-remove-kmix"
 alias rconky="arcolinux-remove-conky"
 
+# kill applications quickly commands
+alias kc='killall conky'
+alias kp='killall polybar'
+alias kpi='killall picom'
+
 #give the list of all installed desktops - xsessions desktops
 alias xd="ls /usr/share/xsessions"
 
