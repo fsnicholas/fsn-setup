@@ -217,10 +217,6 @@ sudo pacman -S --noconfirm --needed zsh
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable ntpd.service
 
-sudo pacman -S --noconfirm --needed urxvt-fullscreen
-sudo pacman -S --noconfirm --needed urxvt-perls
-sudo pacman -S --noconfirm --needed urxvt-resize-font-git
-
 sudo pacman -S --noconfirm --needed gzip
 sudo pacman -S --noconfirm --needed p7zip
 sudo pacman -S --noconfirm --needed unace
