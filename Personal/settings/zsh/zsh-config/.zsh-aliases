@@ -376,6 +376,12 @@ alias nsddmk="sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf"
 alias nvconsole="sudo $EDITOR /etc/vconsole.conf"
 alias nz="$EDITOR ~/.zshrc"
 
+#reading logs with bat
+alias lcalamares="bat /var/log/Calamares.log"
+alias lpacman="bat /var/log/pacman.log"
+alias lxorg="bat /var/log/Xorg.0.log"
+alias lxorgo="bat /var/log/Xorg.0.log.old"
+
 #reading logs with sublime-text-4
 alias scal="subl /var/log/Calamares.log"
 
