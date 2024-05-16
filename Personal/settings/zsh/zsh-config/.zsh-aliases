@@ -457,6 +457,9 @@ alias kc='killall conky'
 alias kp='killall polybar'
 alias kpi='killall picom'
 
+#fastfetch --short
+alias ffh="fastfetch"
+
 #give the list of all installed desktops - xsessions desktops
 alias xd="ls /usr/share/xsessions"
 
