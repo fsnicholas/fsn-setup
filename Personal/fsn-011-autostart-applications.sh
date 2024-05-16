@@ -31,7 +31,7 @@ echo
 
 sleep 1
 
-cp -f $installed_dir/settings/autostart/* $HOME"/.config/autostart"
+cp -f $installed_dir/settings/config-fsn/autostart/* $HOME"/.config/autostart"
 
 echo
 tput setaf 6
