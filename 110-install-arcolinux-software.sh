@@ -64,13 +64,13 @@ sudo pacman -S --noconfirm --needed a-candy-beauty-icon-theme-git
 
 sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
-#sudo pacman -S --noconfirm --needed arcolinux-pamac-all
+#sudo pacman -S --noconfirm --needed arcolinux-pamac-aur
 #sudo pacman -S --needed octopi
 #sudo pacman -S --needed octopi-notifier-qt5
 sudo pacman -S --noconfirm --needed pacmanlogviewer
 
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
-sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
+#sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
 
 if [ ! -f /usr/bin/startplasma-x11 ]; then
   sudo pacman -S --noconfirm --needed archlinux-logout-git
