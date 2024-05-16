@@ -31,6 +31,7 @@
 # V5b - 24-02-29 added nmakepkg
 # V5c - 24-03-24 added alias howold. mirroran. Amended mirrora & mirrorf (removed NZ)
 # V5d - 24-03-24 changed boot alias. added readling calmares log file
+# V5e - 24-05-16 many changes
 
 ## FSN Alias
 
@@ -216,9 +217,12 @@ alias ipa="ip a | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]
 #backup contents of /etc/skel to hidden backup folder in home/user
 alias bupskel="mkdir -p ~/backup-skel &&  cp -Rf /etc/skel ~/backup-skel/.skel-backup-$(date +%Y.%m.%d-%H.%M.%S)"
 alias bupconf="mkdir -p ~/backup-skel &&  cp -Rf ~/.config/ ~/backup-skel/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)"
+
 ## PACMAN stuff Arch Linux
 # Update and Upgrade Packages
+alias pacman="sudo pacman --color auto"
 alias update='sudo pacman -Syu'
+alias upd='sudo pacman -Syu'
 
 # Install and Remove Packages
 alias pacinn='sudo pacman -S --needed'  # install if not already
