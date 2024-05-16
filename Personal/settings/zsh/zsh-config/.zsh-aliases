@@ -444,6 +444,9 @@ alias atm="arcolinux-tellme"
 alias avs="arcolinux-vbox-share"
 alias awa="arcolinux-welcome-app"
 
+#mounting the folder Public for exchange between host and guest on virtualbox
+alias vbm="sudo /usr/local/bin/arcolinux-vbox-share"
+
 #removing packages
 alias rvariety="arcolinux-remove-variety"
 alias rkmix="arcolinux-remove-kmix"
