@@ -35,18 +35,16 @@ echo "######################################################"
 tput sgr0
 echo
 
+sudo pacman -Rs --noconfirm vim vim-runtime
 sudo pacman -R --noconfirm archinstall
 sudo pacman -Rs pragha --noconfirm
 sudo pacman -Rs lftp --noconfirm
 sudo pacman -Rs xf86-video-amdgpu --noconfirm
 sudo pacman -Rs xf86-video-fbdev --noconfirm
 sudo pacman -Rs xf86-video-openchrome --noconfirm
-#if pacman -Qi xf86-video-vmware &> /dev/null; then
-#  sudo pacman -Rs xf86-video-vmware --noconfirm
-#fi
-
-sudo pacman -R --noconfirm yay
-
+if pacman -Qi xf86-video-vmware &> /dev/null; then
+  sudo pacman -Rs xf86-video-vmware --noconfirm
+fi
 sudo pacman -Rs xf86-video-ati --noconfirm
 sudo pacman -Rs xf86-video-nouveau --noconfirm
 sudo pacman -Rs xf86-video-vesa --noconfirm
@@ -107,6 +105,8 @@ sudo pacman -R --noconfirm gst-plugins-ugly
 sudo pacman -R --noconfirm gutenprint
 sudo pacman -R --noconfirm highway
 sudo pacman -R --noconfirm jack2
+sudo pacman -R --noconfirm kvantum-git
+sudo pacman -R --noconfirm kvantum-qt5-git
 sudo pacman -R --noconfirm lxappearance
 sudo pacman -R --noconfirm mailcap
 sudo pacman -R --noconfirm menulibre
