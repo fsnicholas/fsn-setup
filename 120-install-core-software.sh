@@ -121,7 +121,7 @@ sudo pacman -S --noconfirm --needed firefox-ublock-origin
 sudo pacman -S --noconfirm --needed font-manager
 sudo pacman -S --noconfirm --needed fzf
 sudo pacman -S --noconfirm --needed git
-sudo pacman -S --noconfirm --needed gitahead-bin
+sudo pacman -S --noconfirm --needed gitahead
 sudo pacman -S --noconfirm --needed github-cli
 sudo pacman -S --noconfirm --needed gnome-keyring
 sudo pacman -S --noconfirm --needed grub-customizer
