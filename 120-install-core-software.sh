@@ -90,12 +90,14 @@ sudo pacman -S --noconfirm --needed arcolinux-variety-git
 sudo pacman -S --noconfirm --needed arcolinux-zsh-git
 sudo pacman -S --noconfirm --needed ast-firmware
 sudo pacman -S --noconfirm --needed autorandr 
+sudo pacman -S --noconfirm --needed avahi
 sudo pacman -S --noconfirm --needed awesome-terminal-fonts
 sudo pacman -S --noconfirm --needed bash-completion
 sudo pacman -S --noconfirm --needed bat
 sudo pacman -S --noconfirm --needed betterlockscreen 
 sudo pacman -S --noconfirm --needed btop
 sudo pacman -S --noconfirm --needed catfish
+sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed dash
 sudo pacman -S --noconfirm --needed dbus-python
@@ -108,7 +110,6 @@ sudo pacman -S --noconfirm --needed dunst
 if [ ! -f /usr/bin/duf ]; then
   sudo pacman -S --noconfirm --needed duf
 fi
-sudo pacman -S --noconfirm --needed eww
 sudo pacman -S --noconfirm --needed expac
 sudo pacman -S --noconfirm --needed exiv2
 sudo pacman -S --noconfirm --needed eza
@@ -125,20 +126,21 @@ sudo pacman -S --noconfirm --needed github-cli
 sudo pacman -S --noconfirm --needed gnome-keyring
 sudo pacman -S --noconfirm --needed grub-customizer
 #sudo pacman -S --noconfirm --needed gnome-disk-utility
+sudo pacman -S --noconfirm --needed gparted
 #sudo pacman -S --noconfirm --needed gtop
 sudo pacman -S --noconfirm --needed gvfs-smb
 sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hardinfo-gtk3
 sudo pacman -S --noconfirm --needed hblock
-#sudo pacman -S --noconfirm --needed htop
+sudo pacman -S --noconfirm --needed htop
 sudo pacman -S --noconfirm --needed hw-probe
 sudo pacman -S --noconfirm --needed inetutils
 sudo pacman -S --noconfirm --needed inxi
 sudo pacman -S --noconfirm --needed perl-cpanel-json-xs
-sudo pacman -S --noconfirm --needed kvantum-qt5-git
+sudo pacman -S --noconfirm --needed kvantum
+sudo pacman -S --noconfirm --needed kvantum-qt5
 sudo pacman -S --noconfirm --needed kvantum-qt6-git
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
-#sudo pacman -S --noconfirm --needed lolcat
 sudo pacman -S --noconfirm --needed lshw
 sudo pacman -S --noconfirm --needed lxappearance-gtk3
 sudo pacman -S --noconfirm --needed man-db
@@ -151,7 +153,7 @@ sudo pacman -S --noconfirm --needed mousepad
 sudo pacman -S --noconfirm --needed ncdu
 sudo pacman -S --noconfirm --needed nerd-fonts-source-code-pro
 sudo pacman -S --noconfirm --needed neofetch
-#sudo pacman -S --noconfirm --needed nomacs
+sudo pacman -S --noconfirm --needed nomacs-qt6-git
 sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed npm
 sudo pacman -S --noconfirm --needed nss-mdns
@@ -161,7 +163,7 @@ sudo pacman -S --noconfirm --needed pacman-contrib
 sudo pacman -S --noconfirm --needed pacmanlogviewer
 sudo pacman -S --noconfirm --needed pacutils
 sudo pacman -S --noconfirm --needed pamac-aur
-sudo pacman -S --noconfirm --needed paru-bin
+sudo pacman -S --noconfirm --needed paru-git
 sudo pacman -S --noconfirm --needed picom-git
 sudo pacman -S --noconfirm --needed pkgfile
 sudo pacman -S --noconfirm --needed polkit-gnome
@@ -201,16 +203,17 @@ sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
 sudo pacman -S --noconfirm --needed upd72020x-fw
 sudo pacman -S --noconfirm --needed variety
 sudo pacman -S --noconfirm --needed visual-studio-code-bin
+sudo pacman -S --noconfirm --needed vlc
 sudo pacman -S --noconfirm --needed wd719x-firmware
 sudo pacman -S --noconfirm --needed wget
 sudo pacman -S --noconfirm --needed wttr
+sudo pacman -S --noconfirm --needed xorg-xkill
 sudo pacman -S --noconfirm --needed xcolor
 sudo pacman -S --noconfirm --needed xdg-user-dirs
 sudo pacman -S --noconfirm --needed xfce4-mount-plugin
 sudo pacman -S --noconfirm --needed xfce4-taskmanager
 sudo pacman -S --noconfirm --needed xorg-xkill
-sudo pacman -S --noconfirm --needed yay-bin
-sudo pacman -S --noconfirm --needed zbar
+sudo pacman -S --noconfirm --needed yay-git
 sudo pacman -S --noconfirm --needed zenity
 sudo pacman -S --noconfirm --needed zsh
 
