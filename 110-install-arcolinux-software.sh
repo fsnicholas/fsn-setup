@@ -61,74 +61,14 @@ if grep -q arcolinux_repo /etc/pacman.conf; then
 fi
 
 sudo pacman -S --noconfirm --needed a-candy-beauty-icon-theme-git
-
+sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
 sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
-<<<<<<< HEAD
-#sudo pacman -S --noconfirm --needed arcolinux-pamac-aur
-#sudo pacman -S --needed octopi
-#sudo pacman -S --needed octopi-notifier-qt5
-=======
->>>>>>> eedaa6b (not installig pamac stuff)
 sudo pacman -S --noconfirm --needed pacmanlogviewer
-
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
-#sudo pacman -S --noconfirm --needed arcolinux-wallpapers-git
-
-if [ ! -f /usr/share/wayland-sessions/plasma.desktop ]; then
-  sudo pacman -S --noconfirm --needed archlinux-logout-git
-  sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
-fi
+sudo pacman -S --noconfirm --needed archlinux-logout-git
 
 ###############################################################################
-
-# when on Plasma
-
-if [ -f /usr/bin/startplasma-x11 ]; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Plasma X11 related applications"
-  echo "################################################################"
-  tput sgr0
-  echo
-
-  #sudo pacman -S --noconfirm --needed arcolinux-plasma-arc-dark-candy-git
-  #sudo pacman -S --noconfirm --needed arcolinux-plasma-nordic-darker-candy-git
-  #sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
-  #sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
-fi
-
-# when on Plasma Wayland
-
-if [ -f /usr/share/wayland-sessions/plasma.desktop ]; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Plasma wayland related applications"
-  echo "################################################################"
-  tput sgr0
-  echo
-  sudo pacman -S --noconfirm --needed surfn-plasma-dark-icons-git
-  sudo pacman -S --noconfirm --needed surfn-plasma-light-icons-git
-fi
-
-
-if [ -f /usr/share/xsessions/xfce.desktop ]; then
-
-  echo
-  tput setaf 2
-  echo "################################################################"
-  echo "################### Installing software for Xfce"
-  echo "################################################################"
-  tput sgr0
-  echo
-
-  sudo pacman -S --noconfirm --needed arcolinux-arc-kde
-
-fi
 
 echo
 tput setaf 6
