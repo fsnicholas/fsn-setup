@@ -33,12 +33,12 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 echo "Deleting current /etc/pacman.d/mirrorlist and replacing with"
 echo
-echo "Server = https://mirror.osbeck.com/archlinux/\$repo/os/\$arch
-Server = http://mirror.osbeck.com/archlinux/\$repo/os/\$arch
-Server = https://geo.mirror.pkgbuild.com/\$repo/os/\$arch
-Server = http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
-Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch
-Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch" | sudo tee /etc/pacman.d/mirrorlist
+echo "Server = https://geo.mirror.pkgbuild.com/\$repo/os/\$arch
+Server = https://mirror.aarnet.edu.au/pub/archlinux/\$repo/os/\$arch
+Server = http://au.mirrors.cicku.me/archlinux/\$repo/os/\$arch
+Server = http://archlinux.mirror.digitalpacific.com.au/\$repo/os/\$arch
+Server = https://archlinux.mirror.digitalpacific.com.au/\$repo/os/\$arch
+Server = http://gsl-syd.mm.fcix.net/archlinux/\$repo/os/\$arch" | sudo tee /etc/pacman.d/mirrorlist
 echo
 tput setaf 2
 echo "########################################################################"
@@ -61,7 +61,7 @@ echo
 sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
 sudo pacman -S --noconfirm --needed aic94xx-firmware
 sudo pacman -S --noconfirm --needed alacritty
-# sudo pacman -S --noconfirm --needed alacritty-themes
+sudo pacman -S --noconfirm --needed alacritty-themes
 sudo pacman -S --noconfirm --needed arandr
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
@@ -93,6 +93,7 @@ sudo pacman -S --noconfirm --needed autorandr
 sudo pacman -S --noconfirm --needed avahi
 sudo pacman -S --noconfirm --needed awesome-terminal-fonts
 sudo pacman -S --noconfirm --needed bash-completion
+sudo pacman -S --noconfirm --needed baobab
 sudo pacman -S --noconfirm --needed bat
 sudo pacman -S --noconfirm --needed betterlockscreen 
 sudo pacman -S --noconfirm --needed btop
@@ -130,7 +131,7 @@ sudo pacman -S --noconfirm --needed gparted
 #sudo pacman -S --noconfirm --needed gtop
 sudo pacman -S --noconfirm --needed gvfs-smb
 sudo pacman -S --noconfirm --needed hardcode-fixer-git
-sudo pacman -S --noconfirm --needed hardinfo-gtk3
+sudo pacman -S --noconfirm --needed hardinfo2
 sudo pacman -S --noconfirm --needed hblock
 sudo pacman -S --noconfirm --needed htop
 sudo pacman -S --noconfirm --needed hw-probe
@@ -157,10 +158,14 @@ sudo pacman -S --noconfirm --needed nomacs-qt6-git
 sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed npm
 sudo pacman -S --noconfirm --needed nss-mdns
+sudo pacman -S --noconfirm --needed ntp
 sudo pacman -S --noconfirm --needed numlockx
 #sudo pacman -S --noconfirm --needed openresolv
 sudo pacman -S --noconfirm --needed pacman-contrib
 sudo pacman -S --noconfirm --needed pacmanlogviewer
+# hook to check whether there are any packages marked as unrequired (orphans) 
+# via pacman -Qttdq after every pacman run
+#sudo pacman -S --noconfirm --needed pacman-log-orphans-hook
 sudo pacman -S --noconfirm --needed pacutils
 sudo pacman -S --noconfirm --needed pamac-aur
 sudo pacman -S --noconfirm --needed paru-git
@@ -174,6 +179,7 @@ sudo pacman -S --noconfirm --needed python-pywal
 sudo pacman -S --noconfirm --needed python-xapp
 sudo pacman -S --noconfirm --needed python-yaml
 sudo pacman -S --noconfirm --needed pv
+sudo pacman -S --noconfirm --needed qt5ct
 sudo pacman -S --noconfirm --needed qt6-base
 sudo pacman -S --noconfirm --needed rate-mirrors-bin
 sudo pacman -S --noconfirm --needed ripgrep
@@ -187,23 +193,24 @@ sudo pacman -S --noconfirm --needed sublime-text-4
 sudo pacman -S --noconfirm --needed surfn-icons-git
 sudo pacman -S --noconfirm --needed sxhkd
 sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
+sudo pacman -S --noconfirm --needed thunar
 sudo pacman -S --noconfirm --needed thunar-archive-plugin
-sudo pacman -S --noconfirm --needed thunar-media-tags-plugin
+#sudo pacman -S --noconfirm --needed thunar-media-tags-plugin
 sudo pacman -S --noconfirm --needed thunar-volman
 sudo pacman -S --noconfirm --needed tree
 sudo pacman -S --noconfirm --needed ttf-bitstream-vera
 sudo pacman -S --noconfirm --needed ttf-dejavu
 sudo pacman -S --noconfirm --needed ttf-droid
 sudo pacman -S --noconfirm --needed ttf-hack
+sudo pacman -S --noconfirm --needed ttf-inconsolata
 sudo pacman -S --noconfirm --needed ttf-jetbrains-mono-nerd
+sudo pacman -S --noconfirm --needed ttf-liberation
 sudo pacman -S --noconfirm --needed ttf-meslo-nerd-font-powerlevel10k
 sudo pacman -S --noconfirm --needed ttf-roboto
 sudo pacman -S --noconfirm --needed ttf-roboto-mono
 sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
 sudo pacman -S --noconfirm --needed upd72020x-fw
-sudo pacman -S --noconfirm --needed variety
 sudo pacman -S --noconfirm --needed visual-studio-code-bin
-sudo pacman -S --noconfirm --needed vlc
 sudo pacman -S --noconfirm --needed wd719x-firmware
 sudo pacman -S --noconfirm --needed wget
 sudo pacman -S --noconfirm --needed wttr
@@ -220,6 +227,12 @@ sudo pacman -S --noconfirm --needed zsh
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable ntpd.service
 
+# music stuff
+#sudo pacman -S --noconfirm --needed lollypop
+#sudo pacman -S --noconfirm --needed playerctl
+sudo pacman -S --noconfirm --needed vlc
+
+# compressions
 sudo pacman -S --noconfirm --needed gzip
 sudo pacman -S --noconfirm --needed p7zip
 sudo pacman -S --noconfirm --needed unace
@@ -227,12 +240,10 @@ sudo pacman -S --noconfirm --needed unrar
 sudo pacman -S --noconfirm --needed unzip
 
 # for variety
+sudo pacman -S --noconfirm --needed variety
 sudo pacman -S --noconfirm --needed python-setuptools
 sudo pacman -S --noconfirm --needed python-cairo
 
-if [ ! -f /usr/share/xsessions/plasma.desktop ]; then
-  sudo pacman -S --noconfirm --needed qt5ct
-fi
 
 ###############################################################################################
 
@@ -248,10 +259,6 @@ if [ -f /usr/share/xsessions/xfce.desktop ]; then
   tput sgr0
   echo
 
-#sudo pacman -S --noconfirm --needed menulibre
-#sudo pacman -S --noconfirm --needed mugshot
-#sudo pacman -S --noconfirm --needed prot16-xfce4-terminal
-#sudo pacman -S --noconfirm --needed tempus-themes-xfce4-terminal-git
 sudo pacman -S --noconfirm --needed xfce4-terminal-base16-colors-git
 
 fi
