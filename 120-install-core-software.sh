@@ -140,7 +140,6 @@ sudo pacman -S --noconfirm --needed inxi
 sudo pacman -S --noconfirm --needed perl-cpanel-json-xs
 sudo pacman -S --noconfirm --needed kvantum
 sudo pacman -S --noconfirm --needed kvantum-qt5
-sudo pacman -S --noconfirm --needed kvantum-qt6-git
 sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed lshw
 sudo pacman -S --noconfirm --needed lxappearance-gtk3
