@@ -66,11 +66,13 @@ sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
 sudo pacman -S --noconfirm --needed archlinux-logout-git
 sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
+sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
 sudo pacman -S --noconfirm --needed arcolinux-bin-git
 sudo pacman -S --noconfirm --needed arcolinux-btop-git
 sudo pacman -S --noconfirm --needed arcolinux-common-git
 sudo pacman -S --noconfirm --needed arcolinux-config-all-desktops-git
 sudo pacman -S --noconfirm --needed arcolinux-dconf-all-desktops-git
+sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
 sudo pacman -S --noconfirm --needed arcolinux-gtk3-arcolinux-candy-beauty-git
 sudo pacman -S --noconfirm --needed arcolinux-hblock-git
 sudo pacman -S --noconfirm --needed arcolinux-arc-kde
