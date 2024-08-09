@@ -58,7 +58,6 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
 sudo pacman -S --noconfirm --needed aic94xx-firmware
 sudo pacman -S --noconfirm --needed alacritty
 sudo pacman -S --noconfirm --needed alacritty-themes
@@ -101,6 +100,7 @@ sudo pacman -S --noconfirm --needed catfish
 sudo pacman -S --noconfirm --needed cpuid
 sudo pacman -S --noconfirm --needed curl
 sudo pacman -S --noconfirm --needed dash
+sudo pacman -S --noconfirm --needed dconf-editor
 sudo pacman -S --noconfirm --needed dbus-python
 sudo pacman -S --noconfirm --needed dconf-editor
 sudo pacman -S --noconfirm --needed dex
@@ -130,6 +130,7 @@ sudo pacman -S --noconfirm --needed grub-customizer
 sudo pacman -S --noconfirm --needed gparted
 #sudo pacman -S --noconfirm --needed gtop
 sudo pacman -S --noconfirm --needed gvfs-smb
+sudo pacman -S --noconfirm --needed gvfs-dnssd
 sudo pacman -S --noconfirm --needed hardcode-fixer-git
 sudo pacman -S --noconfirm --needed hardinfo2
 sudo pacman -S --noconfirm --needed hblock
@@ -151,10 +152,9 @@ sudo pacman -S --noconfirm --needed mlocate
 sudo pacman -S --noconfirm --needed most
 sudo pacman -S --noconfirm --needed mousepad
 sudo pacman -S --noconfirm --needed ncdu
-sudo pacman -S --noconfirm --needed nerd-fonts-source-code-pro
 sudo pacman -S --noconfirm --needed neofetch
+sudo pacman -S --noconfirm --needed network-manager-applet
 sudo pacman -S --noconfirm --needed nomacs-qt6-git
-sudo pacman -S --noconfirm --needed noto-fonts
 sudo pacman -S --noconfirm --needed npm
 sudo pacman -S --noconfirm --needed nss-mdns
 sudo pacman -S --noconfirm --needed ntp
@@ -189,25 +189,14 @@ sudo pacman -S --noconfirm --needed scrot
 #sudo pacman -S --noconfirm --needed sardi-icons
 sudo pacman -S --noconfirm --needed sofirem-git
 sudo pacman -S --noconfirm --needed sublime-text-4
-sudo pacman -S --noconfirm --needed surfn-icons-git
 sudo pacman -S --noconfirm --needed sxhkd
 sudo pacman -S --noconfirm --needed the_platinum_searcher-bin
 sudo pacman -S --noconfirm --needed thunar
 sudo pacman -S --noconfirm --needed thunar-archive-plugin
 #sudo pacman -S --noconfirm --needed thunar-media-tags-plugin
 sudo pacman -S --noconfirm --needed thunar-volman
+sudo pacman -S --noconfirm --needed time
 sudo pacman -S --noconfirm --needed tree
-sudo pacman -S --noconfirm --needed ttf-bitstream-vera
-sudo pacman -S --noconfirm --needed ttf-dejavu
-sudo pacman -S --noconfirm --needed ttf-droid
-sudo pacman -S --noconfirm --needed ttf-hack
-sudo pacman -S --noconfirm --needed ttf-inconsolata
-sudo pacman -S --noconfirm --needed ttf-jetbrains-mono-nerd
-sudo pacman -S --noconfirm --needed ttf-liberation
-sudo pacman -S --noconfirm --needed ttf-meslo-nerd-font-powerlevel10k
-sudo pacman -S --noconfirm --needed ttf-roboto
-sudo pacman -S --noconfirm --needed ttf-roboto-mono
-sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
 sudo pacman -S --noconfirm --needed upd72020x-fw
 sudo pacman -S --noconfirm --needed visual-studio-code-bin
 sudo pacman -S --noconfirm --needed wd719x-firmware
@@ -237,6 +226,26 @@ sudo pacman -S --noconfirm --needed p7zip
 sudo pacman -S --noconfirm --needed unace
 sudo pacman -S --noconfirm --needed unrar
 sudo pacman -S --noconfirm --needed unzip
+
+# fonts
+sudo pacman -S --noconfirm --needed adobe-source-sans-fonts
+sudo pacman -S --noconfirm --needed awesome-terminal-fonts
+sudo pacman -S --noconfirm --needed nerd-fonts-source-code-pro
+sudo pacman -S --noconfirm --needed noto-fonts
+sudo pacman -S --noconfirm --needed ttf-bitstream-vera
+sudo pacman -S --noconfirm --needed ttf-dejavu
+sudo pacman -S --noconfirm --needed ttf-droid
+sudo pacman -S --noconfirm --needed ttf-hack
+sudo pacman -S --noconfirm --needed ttf-inconsolata
+sudo pacman -S --noconfirm --needed ttf-jetbrains-mono-nerd
+sudo pacman -S --noconfirm --needed ttf-liberation
+sudo pacman -S --noconfirm --needed ttf-meslo-nerd-font-powerlevel10k
+sudo pacman -S --noconfirm --needed ttf-roboto
+sudo pacman -S --noconfirm --needed ttf-roboto-mono
+sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
+
+# icons
+sudo pacman -S --noconfirm --needed surfn-icons-git
 
 # for variety
 sudo pacman -S --noconfirm --needed variety
