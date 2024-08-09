@@ -208,6 +208,7 @@ sudo pacman -S --noconfirm --needed xorg-xkill
 sudo pacman -S --noconfirm --needed xcolor
 sudo pacman -S --noconfirm --needed xdg-user-dirs
 sudo pacman -S --noconfirm --needed xfce4-mount-plugin
+sudo pacman -S --noconfirm --needed xfce4-settings
 sudo pacman -S --noconfirm --needed xfce4-taskmanager
 sudo pacman -S --noconfirm --needed xorg-xkill
 sudo pacman -S --noconfirm --needed yay-git
@@ -238,12 +239,15 @@ sudo pacman -S --noconfirm --needed ttf-bitstream-vera
 sudo pacman -S --noconfirm --needed ttf-dejavu
 sudo pacman -S --noconfirm --needed ttf-droid
 sudo pacman -S --noconfirm --needed ttf-hack
+sudo pacman -S --noconfirm --needed ttf-iosevka-nerd
 sudo pacman -S --noconfirm --needed ttf-inconsolata
 sudo pacman -S --noconfirm --needed ttf-jetbrains-mono-nerd
 sudo pacman -S --noconfirm --needed ttf-liberation
+sudo pacman -S --noconfirm --needed ttf-material-design-iconic-font
 sudo pacman -S --noconfirm --needed ttf-meslo-nerd-font-powerlevel10k
 sudo pacman -S --noconfirm --needed ttf-roboto
 sudo pacman -S --noconfirm --needed ttf-roboto-mono
+sudo pacman -S --noconfirm --needed ttf-sourcecodepro-nerd
 sudo pacman -S --noconfirm --needed ttf-ubuntu-font-family
 
 # icons
