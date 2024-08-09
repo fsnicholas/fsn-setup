@@ -51,6 +51,8 @@ sudo pacman -Rs --noconfirm xf86-video-ati
 sudo pacman -Rs --noconfirm xf86-video-nouveau
 sudo pacman -Rs --noconfirm xf86-video-vesa 
 sudo pacman -R --noconfirm xfce4-artwork
+
+# firmware
 sudo pacman -Rs --noconfirm broadcom-wl-dkms
 sudo pacman -Rs --noconfirm rtl8821cu-morrownr-dkms-git
 
