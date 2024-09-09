@@ -136,8 +136,8 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
-alias cdd='cd ~/Downloads/
-alias cdo='cd ~/Documents/
+alias cdd='cd ~/Downloads/'
+alias cdo='cd ~/Documents/'
 
 # Git CLI aliases
 alias gi='git init'
