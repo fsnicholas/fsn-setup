@@ -21,6 +21,7 @@
 # FSN v58c  23-11-06 added rust cargo to path
 # FSN v58d  23-12-23 added export MANROFFOPT to fix manpage formatting
 # FSN v58e  23-12-28 added git functionality with less, pager & git-aliases
+# FSN v58f  24-10-18 sorted and added to setopt - navigation & hstory - from nixos settings
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -51,39 +52,31 @@ source "$ZDOTDIR/.completion.zsh"
 # +------------+
 # | NAVIGATION |
 # +------------+
-
+setopt always_to_end            # when completing from middle of word, move the cursor to end of word
 setopt auto_cd                  # if cmd is directory than cd to that directory
-
+setopt auto_menu			          # Automatically show a menu of completion options
+setopt auto_list			          # Automatically list all completions when there are multiple matches
+setopt auto_param_slash			    # Automatically append a '/' after directory completions
 setopt auto_pushd               # make cd push old dir in dir stack
+setopt cd_able_vars             # Change directory to a path stored in a variable.
+setopt complete_aliases         # complete alisases
+setopt complete_in_word         # allow completion from within a word/phrase
+setopt correct                  # spelling correction for commands
+setopt correct_all
+setopt extended_glob            # Use extended globbing syntax.
+setopt glob_dots                # Enable globbing to match dotfiles (hidden files) - show them
+setopt hash_list_all            # hash everything before completion
+setopt interactive_comments     # Make commenting with '#' work
+setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
+setopt no_case_glob             # globbing and tab-completion to be case-insensitive
+setopt no_nomatch               # nonomatch means wildcard * works - does this globally like in bash
+setopt numeric_glob_sort        # Sort filenames numerically when it makes sense
+setopt path_dirs			          # Automatically add PATH directories to cdpath
 setopt pushd_ignore_dups        # no duplicates in dir stack
 setopt pushd_silent             # no dir stack after pushd or popd
 setopt pushd_to_home            # `pushd` = `pushd $HOME`
 
-setopt correct                  # spelling correction for commands
-setopt correct_all
-setopt cd_able_vars             # Change directory to a path stored in a variable.
-
-setopt complete_in_word         # allow completion from within a word/phrase
-setopt complete_aliases         # complete alisases
-compdef _zshz ${ZSHZ_CMD:-${_Z_CMD:-z}}  # fix issues with z for complete_aliases
-
-setopt always_to_end            # when completing from middle of word, move the cursor to end of word
-
-setopt extended_glob            # Use extended globbing syntax.
-setopt glob_dots
-setopt no_case_glob             # globbing and tab-completion to be case-insensitive
-
-setopt numeric_glob_sort        # Sort filenames numerically when it makes sense
-
-## setopt nonomatch means wildcard * works - does this globally like in bash
-setopt nonomatch
-
 # autoload -Uz bd; bd
-
-
-setopt hash_list_all            # hash everything before completion
-setopt interactivecomments      # Make commenting with '#' work
-setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
 
 # +---------------+
 # | HISTORY |
@@ -93,22 +86,21 @@ export HISTSIZE=32768
 export SAVEHIST=50000
 export HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
 
+setopt bang_hist			           # Enable history expansion with the '!' (bang)
 setopt extended_history          # write the history file in the ':start:elapsed;command' format.
-setopt share_history             # share history between all sessions.
 setopt hist_expire_dups_first    # expire a duplicate event first when trimming history.
-setopt hist_ignore_dups          # do not record an event that was just recorded again.
-setopt hist_ignore_all_dups      # delete an old recorded event if a new event is a duplicate.
 setopt hist_find_no_dups         # do not display a previously found event.
+setopt hist_ignore_all_dups      # delete an old recorded event if a new event is a duplicate.
+setopt hist_ignore_dups          # do not record an event that was just recorded again.
 setopt hist_ignore_space         # do not record an event starting with a space.
+setopt hist_reduce_blanks        # remove superfluous blanks from command
 setopt hist_save_no_dups         # do not write a duplicate event to the history file.
 setopt hist_verify               # do not execute immediately upon history expansion.
-setopt hist_reduce_blanks        # remove superfluous blanks from command
 setopt inc_append_history        # append to the history immediately, not when the shell exits
-
+setopt share_history             # share history between all sessions.
 ### end history
 
 ##  Autoload
-
 autoload -U colors && colors
 
 (( $+aliases[run-help] )) && unalias run-help
