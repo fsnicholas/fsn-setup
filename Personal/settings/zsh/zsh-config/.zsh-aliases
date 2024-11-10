@@ -32,6 +32,7 @@
 # V5c - 24-03-24 added alias howold. mirroran. Amended mirrora & mirrorf (removed NZ)
 # V5d - 24-03-24 changed boot alias. added readling calmares log file
 # V5e - 24-05-16 many changes
+# V5f - 24-11-11 changed boot aliases; added ff
 
 ## FSN Alias
 
@@ -121,6 +122,7 @@ alias t3='tree -dlx -L 3'
 alias '?=man'
 alias cat='bat'
 alias cls='clear'
+alias ff='fastfetch'
 alias h='history'
 alias less='less -R'
 alias now='date +"%T"'
@@ -404,9 +406,10 @@ alias kernel="ls /usr/lib/modules"
 alias kernels="ls /usr/lib/modules"
 
 #am I on grub,systemd-boot or refind
-# alias boot="sudo bootctl status"
+# alias boot-c="sudo bootctl status"
 alias boot="sudo /usr/local/bin/arcolinux-boot"
 alias boot-what="sudo bootctl status | grep Product"
+alias boot-a="sudo /usr/local/bin/arcolinux-boot"
 
 #audio check pulseaudio or pipewire
 alias audio="pactl info | grep 'Server Name'"
