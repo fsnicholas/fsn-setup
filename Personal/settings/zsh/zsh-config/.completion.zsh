@@ -101,5 +101,8 @@ zmodload zsh/complist
 # complete dotfile
 _comp_options+=(globdots)		# Include hidden files.
 
-
+# Load completion system
 autoload -Uz compinit && compinit
+
+# fix issues with z for complete_aliases (after autoload)
+compdef _zshz ${ZSHZ_CMD:-${_Z_CMD:-z}} 
