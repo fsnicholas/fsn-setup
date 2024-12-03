@@ -465,6 +465,7 @@ alias ffh="fastfetch"
 
 #give the list of all installed desktops - xsessions desktops
 alias xd="ls /usr/share/xsessions"
+alias xdw="ls /usr/share/wayland-sessions"
 
 # approximately how old is hardware
 alias howold="sudo lshw | grep -B 3 -A 8 BIOS"
