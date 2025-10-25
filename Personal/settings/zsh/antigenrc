@@ -34,7 +34,8 @@ antigen bundle zdharma-continuum/fast-syntax-highlighting
 # antigen bundle rupa/z
 antigen bundle agkozak/zsh-z
 
-antigen bundle junegunn/fzf
+# installed in os
+# antigen bundle junegunn/fzf
 
 # run fuzzy-search in command history, etc
 # antigen bundle psprint/zsh-navigation-tools
