@@ -62,7 +62,7 @@ else
 echo '
 
 [nemesis_repo]
-SigLevel = Optional TrustedOnly
+SigLevel = Never
 Server = https://erikdubois.github.io/$repo/$arch' | sudo tee -a /etc/pacman.conf
 fi
 

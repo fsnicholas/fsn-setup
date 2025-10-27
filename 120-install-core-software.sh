@@ -1,16 +1,8 @@
 #!/bin/bash
 #set -e
 ##################################################################################################################
-# Author    : Erik Dubois
-# Website   : https://www.erikdubois.be
-# Website   : https://www.alci.online
-# Website   : https://www.ariser.eu
-# Website   : https://www.arcolinux.info
-# Website   : https://www.arcolinux.com
-# Website   : https://www.arcolinuxd.com
-# Website   : https://www.arcolinuxb.com
-# Website   : https://www.arcolinuxiso.com
-# Website   : https://www.arcolinuxforum.com
+# Author    : Frank Nicholas
+# Website   : 
 ##################################################################################################################
 #
 #   DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK.
@@ -31,23 +23,7 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 
 ##################################################################################################################
 
-echo "Deleting current /etc/pacman.d/mirrorlist and replacing with"
-echo
-echo "Server = https://geo.mirror.pkgbuild.com/\$repo/os/\$arch
-Server = https://mirror.aarnet.edu.au/pub/archlinux/\$repo/os/\$arch
-Server = http://au.mirrors.cicku.me/archlinux/\$repo/os/\$arch
-Server = http://archlinux.mirror.digitalpacific.com.au/\$repo/os/\$arch
-Server = https://archlinux.mirror.digitalpacific.com.au/\$repo/os/\$arch
-Server = http://gsl-syd.mm.fcix.net/archlinux/\$repo/os/\$arch" | sudo tee /etc/pacman.d/mirrorlist
-echo
-tput setaf 2
-echo "########################################################################"
-echo "Arch Linux Servers have been written to /etc/pacman.d/mirrorlist"
-echo "Use nmirrorlist to inspect"
-echo "########################################################################"
-tput sgr0
-echo
-
+# update the package database
 sudo pacman -Syy
 
 echo
@@ -58,38 +34,11 @@ echo "################################################################"
 tput sgr0
 echo
 
-sudo pacman -S --noconfirm --needed aic94xx-firmware
 sudo pacman -S --noconfirm --needed alacritty
 sudo pacman -S --noconfirm --needed alacritty-themes
 sudo pacman -S --noconfirm --needed arandr
 sudo pacman -S --noconfirm --needed arc-darkest-theme-git
 sudo pacman -S --noconfirm --needed arc-gtk-theme
-sudo pacman -S --noconfirm --needed archlinux-logout-git
-sudo pacman -S --noconfirm --needed archlinux-tweak-tool-git
-sudo pacman -S --noconfirm --needed arcolinux-arc-dawn-git
-sudo pacman -S --noconfirm --needed arcolinux-bin-git
-sudo pacman -S --noconfirm --needed arcolinux-btop-git
-sudo pacman -S --noconfirm --needed arcolinux-common-git
-sudo pacman -S --noconfirm --needed arcolinux-config-all-desktops-git
-sudo pacman -S --noconfirm --needed arcolinux-dconf-all-desktops-git
-sudo pacman -S --noconfirm --needed arcolinux-fastfetch-git
-sudo pacman -S --noconfirm --needed arcolinux-gtk3-arcolinux-candy-beauty-git
-sudo pacman -S --noconfirm --needed arcolinux-hblock-git
-sudo pacman -S --noconfirm --needed arcolinux-arc-kde
-sudo pacman -S --noconfirm --needed arcolinux-kvantum-git
-sudo pacman -S --noconfirm --needed arcolinux-local-xfce4-git
-sudo pacman -S --noconfirm --needed arcolinux-mirrorlist-git
-sudo pacman -S --noconfirm --needed arcolinux-neofetch-git
-sudo pacman -S --noconfirm --needed arcolinux-powermenu-git
-sudo pacman -S --noconfirm --needed arcolinux-qt5-git
-sudo pacman -S --noconfirm --needed arcolinux-rofi-git
-sudo pacman -S --noconfirm --needed arcolinux-rofi-themes-git
-sudo pacman -S --noconfirm --needed arcolinux-root-git
-sudo pacman -S --noconfirm --needed arcolinux-system-config-git
-sudo pacman -S --noconfirm --needed arcolinux-variety-autostart-git
-sudo pacman -S --noconfirm --needed arcolinux-variety-git
-sudo pacman -S --noconfirm --needed arcolinux-zsh-git
-sudo pacman -S --noconfirm --needed ast-firmware
 sudo pacman -S --noconfirm --needed autorandr 
 sudo pacman -S --noconfirm --needed avahi
 sudo pacman -S --noconfirm --needed awesome-terminal-fonts
@@ -143,13 +92,11 @@ sudo pacman -S --noconfirm --needed inxi
 sudo pacman -S --noconfirm --needed perl-cpanel-json-xs
 sudo pacman -S --noconfirm --needed kvantum
 sudo pacman -S --noconfirm --needed kvantum-qt5
-sudo pacman -S --noconfirm --needed linux-firmware-qlogic
 sudo pacman -S --noconfirm --needed lshw
 sudo pacman -S --noconfirm --needed lxappearance-gtk3
 sudo pacman -S --noconfirm --needed man-db
 sudo pacman -S --noconfirm --needed man-pages
 sudo pacman -S --noconfirm --needed meld
-sudo pacman -S --noconfirm --needed mkinitcpio-firmware
 sudo pacman -S --noconfirm --needed mlocate
 sudo pacman -S --noconfirm --needed most
 sudo pacman -S --noconfirm --needed mousepad
@@ -201,7 +148,6 @@ sudo pacman -S --noconfirm --needed time
 sudo pacman -S --noconfirm --needed tree
 sudo pacman -S --noconfirm --needed upd72020x-fw
 sudo pacman -S --noconfirm --needed visual-studio-code-bin
-sudo pacman -S --noconfirm --needed wd719x-firmware
 sudo pacman -S --noconfirm --needed wget
 sudo pacman -S --noconfirm --needed wttr
 sudo pacman -S --noconfirm --needed xorg-xkill
