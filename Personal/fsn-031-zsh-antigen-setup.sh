@@ -45,6 +45,9 @@ echo
 rm -rf ~/.fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 echo
+echo -e  "${BYell}Running fzf install ${NC}"
+~/.fzf/install
+echo
 echo -e  "${BYell}Installing zsh ${NC}"
 echo
 [ -d $HOME"/.config/zsh" ] || mkdir -p $HOME"/.config/zsh"

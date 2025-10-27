@@ -71,7 +71,6 @@ sudo pacman -S --noconfirm --needed file-roller
 sudo pacman -S --noconfirm --needed firefox
 sudo pacman -S --noconfirm --needed firefox-ublock-origin
 sudo pacman -S --noconfirm --needed font-manager
-sudo pacman -S --noconfirm --needed fzf
 sudo pacman -S --noconfirm --needed git
 sudo pacman -S --noconfirm --needed gitahead
 sudo pacman -S --noconfirm --needed github-cli
