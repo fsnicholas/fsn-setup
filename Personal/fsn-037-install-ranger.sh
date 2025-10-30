@@ -35,6 +35,7 @@ sudo pacman -S --noconfirm --needed ranger
 sudo pacman -S --noconfirm --needed highlight
 sudo pacman -S --noconfirm --needed atool
 sudo pacman -S --noconfirm --needed ueberzug
+sudo pacman -S --noconfirm --needed 7zip
 echo
 echo -e  "${BYell} Creating directory $HOME"/.config/ranger"${NC}"
 echo
