@@ -1,0 +1,465 @@
+################# Start of all the settings
+
+# FSN setting for endeavour os i3-wm
+# v2 25-10-30 EndeavourOS 
+#    all keybundings & workspaces setup 
+
+# KEY DEFINITIONS TO REMEMBER
+# $mod = Set below
+# Mod4 = Super key
+# Mod1 = ALT key
+# Control = CTRL key
+# Shift = SHIFT key
+# Escape = ESCAPE key
+# Return = ENTER or RETURN key
+# KP_Enter = Keypad Enter
+# Pause = PAUSE key
+# Print = PRINT key
+# Tab = TAB key
+
+################# Define the $mod variable/key
+# Key to rule them all : Super(Windows)
+# set Super key
+set $mod Mod4
+
+################# choose the font                  
+#font pango: Noto Sans Regular 10
+font pango:Noto Mono Regular 13
+# font pango: source code pro 10
+
+################# Single screen
+# Display Resolution (FSN)
+exec_always --no-startup-id xrandr --output Virtual-1 --mode 1920x1080
+
+####################
+#  Virtualbox - fsn 25-10-21
+####################
+# VirtualBox Guest Additions - Consolidated to VBoxClient-all
+exec --no-startup-id VBoxClient-all
+exec --no-startup-id VBoxClient --display
+
+############################################
+##    reload changed configuration        ##
+############################################
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+############################################
+###    System & TRAY APPLICATIONS        ###
+############################################
+# Autotiling
+exec_always --no-startup-id autotiling
+
+# make sure it loads gtk configs endeavour
+exec_always $HOME/.config/i3/scripts/import-gsettings
+
+# others
+exec --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
+exec --no-startup-id /usr/bin/dunst
+exec --no-startup-id variety
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id feh --bg-fill --randomize  /home/nicholas/.local/share/backgrounds/* 
+# control+mod1+o piconm-tgggle script
+exec_always --no-startup-id picom --config  ~/.config/i3/picom-fsn.conf
+
+############################################
+##    Exit, logoff, shutdown, reboot      ##
+############################################
+
+################# Stopping an application          
+# kill focused window
+bindsym $mod+Shift+q kill
+bindsym $mod+q kill
+# brute force kill 
+bindsym --release $mod+Escape exec xkill
+
+
+############### exit-menu
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
+
+# Press ctrl+alt+x - check toolbar for next choices
+bindsym control+mod1+X mode "$mode_system"
+set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
+mode "$mode_system" {
+    bindsym k exec --no-startup-id ~/.config/i3/scripts/i3exit.sh lock, mode "default"
+    bindsym l exec --no-startup-id ~/.config/i3/scripts/i3exit.sh logout, mode "default"
+    bindsym u exec --no-startup-id ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+############################################
+##       Applications keybinds            ##
+############################################
+bindsym control+mod1+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
+
+################# application shortcuts
+# terminal
+bindsym $mod+Return exec --no-startup-id alacritty;focus
+bindsym $mod+KP_Enter exec --no-startup-id alacritty;focus
+bindsym control+mod1+t exec --no-startup-id alacritty; focus
+bindsym control+mod1+Return exec --no-startup-id alacritty; focus
+bindsym control+mod1+KP_Enter exec --no-startup-id alacritty; focus
+bindsym F12 exec --no-startup-id xfce4-terminal --drop-down; focus
+
+# file management
+for_window [class="Thunar"] focus
+bindsym $mod+F8 exec --no-startup-id thunar;focus
+bindsym $mod+Shift+Return exec --no-startup-id thunar;focus
+bindsym $mod+Shift+KP_Enter exec --no-startup-id thunar;focus
+bindsym control+mod1+b exec --no-startup-id thunar;focus
+
+# ranger
+bindsym $mod+F9 exec --no-startup-id alacritty -e ranger;focus
+
+# Browser
+bindsym $mod+F6 exec --no-startup-id firefox;focus
+bindsym control+mod1+f exec --no-startup-id firefox;focus
+bindsym $mod+F7 exec --no-startup-id microsoft-edge-stable;focus
+bindsym control+mod1+w exec --no-startup-id microsoft-edge-stable;focus
+
+# Editors / IDEs
+bindsym $mod+F2 exec --no-startup-id code;focus
+bindsym control+mod1+v exec --no-startup-id code;focus
+bindsym $mod+F3 exec --no-startup-id subl
+bindsym control+mod1+s exec --no-startup-id subl;focus
+
+# bindsym control+mod1+e exec --no-startup-id 
+bindsym $mod+F5 exec --no-startup-id meld;focus
+bindsym control+Shift+Escape exec --no-startup-id xfce4-taskmanager;focus
+bindsym control+mod1+c exec --no-startup-id catfish;focus
+bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
+bindsym control+mod1+p exec --no-startup-id pamac-manager
+bindsym mod1+F3 exec --no-startup-id xfce4-appfinder
+bindsym control+mod1+a exec --no-startup-id xfce4-appfinder
+bindsym control+mod1+h exec --no-startup-id htop;focus
+
+################# menus
+# start dmenu
+bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+
+# start rofi
+# from endeavour
+bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun \
+        -config ~/.config/rofi/rofidmenu.rasi
+
+# start rofi full
+bindsym $mod+F11 exec --no-startup-id "rofi -font 'Noto Sans 13' -theme-str 'window {width: 100%;height: 100%;}' -show drun"
+
+# start rofi small
+bindsym $mod+F12 exec --no-startup-id rofi -show drun -font "Noto Sans Regular 10"
+
+# keybinding in fancy rofi (automated): from endeavour
+bindsym $mod+F1 exec --no-startup-id ~/.config/i3/scripts/keyhint-2
+
+## rofi bindings for window menu - from endeavour but using mod+shift+t
+bindsym $mod+shift+t exec --no-startup-id rofi -show window \
+        -config ~/.config/rofi/rofidmenu.rasi
+
+bindsym control+mod1+r exec --no-startup-id rofi-theme-selector
+
+################# variety for wallpapers      
+# Variety keybindings mod1 = ALT next wallpaper / previous wallpaper
+bindsym mod1+n exec --no-startup-id variety -n
+bindsym mod1+p exec --no-startup-id variety -p
+
+################# variety with pywal for your wallpapers/colour schemes
+bindsym mod1+Shift+n exec --no-startup-id variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+bindsym mod1+Shift+p exec --no-startup-id variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+############################################
+##       workspace layout: fsn            ##
+############################################
+
+################# Tiling parameters                
+# default i3 tiling mode:
+workspace_layout default
+
+# orientation for new workspaces
+default_orientation horizontal
+
+# split in horizontal / vertical / toggle orientation 
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+t split toggle
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+# bindsym $mod+d focus child
+
+##############################################
+###        Monitor & Workspaces
+##############################################
+set $firstMonitor Virtual-1
+
+# FSN set all to $firstMonitor
+workspace 1 output $firstMonitor
+workspace 2 output $firstMonitor
+workspace 3 output $firstMonitor
+workspace 4 output $firstMonitor
+workspace 5 output $firstMonitor
+workspace 6 output $firstMonitor
+workspace 7 output $firstMonitor
+workspace 8 output $firstMonitor
+workspace 9 output $firstMonitor
+workspace 10 output $firstMonitor
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1; workspace 1
+bindsym $mod+Shift+2 move container to workspace 2; workspace 2
+bindsym $mod+Shift+3 move container to workspace 3; workspace 3
+bindsym $mod+Shift+4 move container to workspace 4; workspace 4
+bindsym $mod+Shift+5 move container to workspace 5; workspace 5
+bindsym $mod+Shift+6 move container to workspace 6; workspace 6
+bindsym $mod+Shift+7 move container to workspace 7; workspace 7
+bindsym $mod+Shift+8 move container to workspace 8; workspace 8
+bindsym $mod+Shift+9 move container to workspace 9; workspace 9
+bindsym $mod+Shift+0 move container to workspace 10; workspace 10
+
+##############################################
+##            Moving around in i3           ##              
+##############################################
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+################# moving around workspaces         
+
+# next/previous workspace
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+bindsym $mod+Tab workspace back_and_forth
+
+# navigate workspaces next / previous
+bindsym Mod1+Ctrl+Right workspace next
+bindsym Mod1+Ctrl+Left workspace prev
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+################# resize  
+# Resizing by 1
+bindsym $mod+Mod1+Ctrl+Right resize shrink width 1 px or 1 ppt
+bindsym $mod+Mod1+Ctrl+Up resize grow height 1 px or 1 ppt
+bindsym $mod+Mod1+Ctrl+Down resize shrink height 1 px or 1 ppt
+bindsym $mod+Mod1+Ctrl+Left resize grow width 1 px or 1 ppt
+
+################# assign applications to workspaces 
+# Assign application to start on a specific workspace
+# you can find the class with the program xprop
+                                                                                                                                          
+# Workspace 2 
+# assign [class="Xed|xed|Brackets|Code|Code|Geany"]                             2
+
+# Workspace 3 
+
+# Workspace 4 VS Code
+assign [class="Code|code"]                                                      4
+                                                                                                                                                                                   
+# Workspace 5 
+# sublime $mod+F3
+assign [class="sublime_text|Sublime_text|Subl4"]                                5
+for_window [class="Sublime_text|sublime_text"] move to workspace                5
+for_window [class="sublime_text|Sublime_text|Subl4"]  focus
+
+
+# Workspace 6 Firefox
+assign [class="Firefox|firefox"]                                                6
+for_window [class="firefox"] move to workspace                                  6
+for_window [class="Firefox|firefox"] focus
+
+# Workspace 7 MS Edge
+assign [class="microsoft-edge|Microsoft-edge"]                                  7
+for_window [class="microsoft-edge|Microsoft-edge"] move to workspace            7
+for_window [class="Microsoft-edge"] focus
+
+# Workspace 8 file managers
+# assign [class="Nemo|Thunar|Caja|nautilus|Nautilus"]                           8
+
+# Workspace 9 email clients
+# assign [class="Geary|Evolution"]                                              9
+
+# Workspace 10 music related
+# assign [class="Spotify|spotify"]                                              10
+# for_window [class="Spotify"] move to workspace 10
+
+################# floating or tiled rules         
+# floating enabled from some programs - find with xprop
+for_window [class="Bleachbit"] floating disable
+for_window [class="Font-manager"] floating enable
+# for_window [class="qt5ct|Lxappearance] floating enable
+for_window [class="Xfce4-appfinder"] floating enable
+for_window [class="Xfce4-settings-manager"] floating disable
+for_window [class="Xfce4-taskmanager"] floating enable
+
+for_window [instance="variety"] floating disable
+
+for_window [title="Copying"] floating enable
+for_window [title="Deleting"] floating enable
+for_window [title="Moving"] floating enable
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="^Preferences$"] floating enable
+for_window [window_role="setup"] floating enable
+
+################# give focus to applications       
+for_window [class="Xfce4-terminal"] focus
+for_window [class="Urxvt"] focus
+for_window [class="Alacritty"] focus
+
+################# bar toggle                       
+# bar toggle, hide or show
+bindsym $mod+b bar mode toggle
+
+################# border control                   
+# Border control
+hide_edge_borders both
+bindsym $mod+shift+b exec --no-startup-id i3-msg border toggle
+
+# changing border style
+bindsym $mod+n border normal
+bindsym $mod+y border pixel 1
+bindsym $mod+u border none
+
+# new_window - 2 pixels & tile
+new_window normal
+
+# new_float pixel 1
+new_float normal
+# new_float none
+
+################# Popups  control                  
+# Popups during fullscreen mode
+popup_during_fullscreen smart
+
+################# i3 gaps next                     
+# Settings for I3 next gap git
+# https://github.com/Airblader/i3/tree/gaps-next
+
+for_window [class="^.*"] border pixel 2
+gaps inner 3
+gaps outer 3
+
+################# i3 gaps change                   
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+################# bar appearance                   
+##START THEMING WM
+# Theme name : ArcoLinux Default
+
+# Window color settings
+# indicator column shows where next windows is going to go 
+# (line colour will be limegreen #00ff00)
+# whether vertically or horizontally
+
+# Window color settings (FSN)
+# indicator column shows where next windows is going to go 
+# (line colour will be green #00ff00)
+# whether vertically or horizontally
+
+# class                 border  backgr. text    indicator
+client.focused          #6790EB #6790EB #e5e5e5 #00ff00
+client.unfocused        #222222 #222222 #aaaaaa #00ff00
+client.focused_inactive #222222 #222222 #a9a9a9 #00ff00
+client.placeholder      #222222 #222222 #aaaaaa #00ff00
+client.urgent           #d42121 #d42121 #f7f7f7 #00ff00
+
+client.background       #242424
+
+##STOP THEMING WM
+
+######################################## THE END 
+
