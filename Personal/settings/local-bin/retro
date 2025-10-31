@@ -80,7 +80,7 @@ ARCH=$(uname -m)
 VERSION=$(cat /etc/lsb-release | awk -F '=' '/DISTRIB_RELEASE/ {print $2}')
 UPTIME=$(awk '{printf("%d:%02d:%02d:%02d",($1/60/60/24),($1/60/60%24),($1/60%60),($1%60))}' /proc/uptime)
 #MODEL=$(cat /sys/devices/virtual/dmi/id/board_{name,vendor} | awk '!(NR%2){print$1,p}{p=$0}')
-DE=$(wmctrl -m | awk 'NR==1 {print $2}' | perl -nle 'print ucfirst lc')
+DE=$(wmctrl -m | awk 'NR==1 {print $2}' | perl -nle 'print ucfirst lc') 
 CPU=$(awk < /proc/cpuinfo '/model name/{gsub(/[(TMR)]/,"");print $4,$5,$6}' | head -1)
 #GPU=$(nvidia-smi --query-gpu=gpu_name --format=csv|sed -n 2p)
 SHELL=$(echo "$SHELL" | awk -F/ '{for ( i=1; i <= NF; i++) sub(".", substr(toupper($i),1,1) , $i); print $NF}')
@@ -122,7 +122,7 @@ f1=$'\e[1;37m'
  echo -e "\e[94m     \e[39m$CPU"
  #echo -e "\e[94m     \e[39m$GPU"
  echo -e "\e[91m   --------------------"
- echo -e "\e[91m     \e[31m$DE"
+ echo -e "\e[91m     \e[31m$DE wm"
  echo -e "\e[94m     \e[39m$GtkTheme"
  echo -e "\e[94m     \e[39m$GtkIcon"
  echo -e "\e[94m   🆎 \e[39m$GtkFont"

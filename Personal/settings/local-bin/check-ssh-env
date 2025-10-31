@@ -1,0 +1,50 @@
+#! /bin/bash
+
+#Colour Varibles
+RED='\033[0;31m'
+BRED='\033[1;31m'         # Bold Red
+BYell='\033[1;33m'         # Bold Yellow
+BGren='\033[1;32m' 
+BBlue='\034[1;32m' 
+NC='\033[0m' # No Color
+ok='✅ '
+warn='⚠️ '
+
+echo
+echo -e ---------------------------------------
+echo -e "${BRED} 🔍 Checking SSH/keyring/notify status ${NC}"
+echo -e ---------------------------------------
+echo
+echo -e "${BYell} 🔍 Checking gnome keyring... ${NC}"
+if [[ -n "$(pgrep -f gnome-keyring-daemon)" ]]; then
+    echo -e "$ok gnome-keyring-daemon running"
+    ps aux | grep gnome-keyring | grep daemon | awk '{for(i=11;i<=NF;i++) if($i!="--foreground") printf "%s ",$i; print ""}'
+else
+    echo -e "$warn gnome-keyring-daemon NOT running"
+fi
+
+echo
+echo -e "${BYell} 🔍 Checking notification daemon... ${NC}"
+command -v notify-send >/dev/null && {
+      pgrep -f dunst >/dev/null 2>&1
+} && echo -e "$ok notification daemon dunst active" || echo -e "$warn no notification daemon detected"
+
+echo
+echo -e "${BYell} 🔍 Checking variables... ${NC}"
+echo -e "SSH_AUTH_SOCK " $SSH_AUTH_SOCK  
+echo -e "XDG_RUNTIME_DIR" $XDG_RUNTIME_DIR
+
+echo 
+echo -e "${BYell} 🔍 Checking SSH service status... ${NC}"
+#  [[ -n "$(pgrep -f ssh-agent)" ]] && echo -e "$ok ssh-agent running" || echo -e "$$warn ssh-agent NOT running"
+if [[ -n "$(pgrep -f ssh-agent)" ]]; then 
+    echo -e "$ok ssh-agent running" 
+    systemctl --user status ssh-agent.service 2>&1 | head -n 3
+else
+    echo -e "$$warn ssh-agent NOT running"
+fi
+
+echo
+echo -e "${BYell} 🔍 Checking ssh-add for key... ${NC}"
+ssh-add -l
+

@@ -2,4 +2,4 @@
 # this script that displays every package you've explicitly installed, excluding base and base-devel packages.  
 # Very useful for finding packages you don't really want anymore.
 #  can also see the description.
-pacman -Qei $(pacman -Qu|cut -d" " -f 1)|awk ' BEGIN {FS=":"}/^Name/{printf("\033[1;36m%s\033[1;37m", $2)}/^Description/{print $2}' | less
+pacman -Qei $(pacman -Qu|cut -d" " -f 1)|awk ' BEGIN {FS=":"}/^Name/{printf("\033[1;36m%s\033[1;37m", $2)}/^Description/{print $2}' | bat

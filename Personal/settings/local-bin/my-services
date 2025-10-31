@@ -1,22 +1,8 @@
 #! /bin/bash
-# The command is for Debian is from
-# https://bbs.archlinux.org/viewtopic.php?id=153483
-# script written by frank nicholas
-# v1 date 28th August 2016
-# v2 amended 120916
-# v3 amended for Arch Linux 020717
-# v4 amended 20 May 2018
-# v5 amended 08 July 2018 for Centos
-# v6 amended 14 May 2019 for ArchLinux
-# v7 amended 23 July 2019 for ArchLinux
-# v8 amended 22 Sept 2019 for Linux Mint
-# v9 amended 22 Jan 2020 for Plasma
-# v13 amended 28 July 2022 with disk usage added
-# v14 amended 08 Sept 2022 Distribution
-# v15 amended 08 Sept 2023 Qtile
+#
+# v17 - 25-10-25 Endeavour OS 
 
-#Variables
-System='ArcoLinux Qtile'
+System='EndeavourOS'
 
 #Colour Varibles
 RED='\033[0;31m'
@@ -63,9 +49,13 @@ echo
 
 #read -rsn1 -p"Press any key to continue";echo
 
-echo -e  "${BRED}Running daemons/services${NC}"
+echo -e  "${BRED}Running system daemons/services${NC}"
 # systemctl -t service --no-pager --no-legend | grep -v exited | grep -v systemd | awk  '{printf "%-33s - %s %s %s %s %s %s\n",  $1,$5,$6,$7,$8,$9,$10}'
 systemctl -t service --no-pager --no-legend | grep running | awk  '{printf "%-35s - %s %s %s %s %s %s %s\n",  $1,$5,$6,$7,$8,$9,$10,$11}'
+
+echo
+echo -e  "${BRED}Running user daemons/services${NC}"
+systemctl --user -t service --no-pager --no-legend | grep running | awk  '{printf "%-35s - %s %s %s %s %s %s %s\n",  $1,$5,$6,$7,$8,$9,$10,$11}'
 echo
 
 echo -e  "${BRED}Failed daemons/services${NC}"

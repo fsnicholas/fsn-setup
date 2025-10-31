@@ -1,4 +1,4 @@
 #! /bin/bash
 # this script that displays all package in sorted order
 # Very useful for finding packages you don't really want anymore.
-pacman -Qi | awk '/^Name/{name=$3} /^Version/{print $4, name}' | sort -h 
+pacman -Qi | awk '/^Name/{name=$3} /^Version/{print $4, name}' | sort -h | bat 

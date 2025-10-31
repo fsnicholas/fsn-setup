@@ -29,10 +29,11 @@
 # V4kd - 23-12-15 - added another eza alias 
 # V5a - 23-12-18 - major additions. new editor +, more to.. aliases, kernels, boot, cpu
 # V5b - 24-02-29 added nmakepkg
-# V5c - 24-03-24 added alias howold. mirroran. Amended mirrora & mirrorf (removed NZ)
+# V5c - 24-03-24 mirroran. Amended mirrora & mirrorf (removed NZ)
 # V5d - 24-03-24 changed boot alias. added readling calmares log file
 # V5e - 24-05-16 many changes
 # V5f - 24-11-11 changed boot aliases; added ff
+# V6  - 25-10-24 removed all arcolinux stuff
 
 ## FSN Alias
 
@@ -43,25 +44,25 @@ alias sudo='doas'
 alias su='sudo -i'
 
 # userlist
-alias userlist="cut -d: -f1 /etc/passwd | sort"
+alias userlist='cut -d: -f1 /etc/passwd | sort'
 alias grouplist='bat /etc/group | grep $USER | sort'
 
 # merge new settings
-alias merge="xrdb -merge ~/.Xresources"
+alias merge='xrdb -merge ~/.Xresources'
 
 ## System stuff
 # error messages from journalctl for today
-alias jctl="journalctl -rxb"
-alias jctl2="journalctl -rb"
-alias jctl3="journalctl -p 3 -xb"
+alias jctl='journalctl -rxb'
+alias jctl2='journalctl -rb'
+alias jctl3='journalctl -p 3 -xb'
 
-alias sysfailed="systemctl list-units --failed"
+alias sysfailed='systemctl list-units --failed'
 
 # systeminfo
-alias probe="sudo -E hw-probe -all -upload"
+alias probe='sudo -E hw-probe -all -upload'
 
 # hardware info --short
-alias hw="hwinfo --short"
+alias hw='hwinfo --short'
 
 # improve png
 alias fixpng='find . -type f -name "*.png" -exec convert {} -strip {} \;'
@@ -98,6 +99,7 @@ fi
 
 # ls aliases
 # alias lr='ls -alhR | bat' # recursive
+alias ls='ls --color'
 
 # eza aliases
 alias xl='eza -aF --icons'
@@ -114,7 +116,7 @@ alias ll='eza -bghl --git --icons'
 alias la='eza -abhl --git --icons'
 alias l='eza -abhl --git --icons'
 
-TREE_IGNORE="cache|log|logs|node_modules|vendor"
+TREE_IGNORE='cache|log|logs|node_modules|vendor'
 alias lt='eza --tree -D --level=2 -I ${TREE_IGNORE}'
 alias ltl='eza --tree -D --level=2 -I ${TREE_IGNORE} | bat'
 alias t3='tree -dlx -L 3'
@@ -123,12 +125,12 @@ alias '?=man'
 alias cat='bat'
 alias cls='clear'
 alias ff='fastfetch'
+alias history='history 1'
 alias h='history'
 alias less='less -R'
-alias now='date +"%T"'
-alias nowtime=now
-alias nowdate='date +"%d-%m-%Y"'
+alias today='date +"%a %d %b %Y"'
 alias path='echo -e ${PATH//:/\\n}'
+alias fpath='echo "${fpath// /\n}"'
 
 # directory
 alias home='cd ~'
@@ -146,8 +148,8 @@ alias gi='git init'
 alias gpom='git push origin master'
 
 # remove git cache
-alias rmgitcache="rm -r ~/.cache/git"
-alias grh="git reset --hard"
+alias rmgitcache='rm -r ~/.cache/git'
+alias grh='git reset --hard'
 
 # do not delete / (root system) or prompt if deleting more than 3 files at a time
 alias rd='sudo rm -I -R --preserve-root'
@@ -168,7 +170,7 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
 # fix permissions for user directories
-alias fix-permissions="sudo chown -R $USER:$USER ~/.config ~/.local"
+alias fix-permissions='sudo chown -R $USER:$USER ~/.config ~/.local'
 
 alias meminfo='free -l'
 alias free='free -hmt'
@@ -178,10 +180,10 @@ alias dfa='df -x tmpfs -x devtmpfs -h'
 alias duff='duf --hide-fs tmpfs,devtmpfs'
 
 #check cpu
-alias cpu="cpuid -i | grep uarch | head -n 1"
+alias cpu='cpuid -i | grep uarch | head -n 1'
 
 # Arch linux maintenance
-alias big="expac -H M '%m\t%n' | sort -h | nl"
+alias big='expac -H M '%m\t%n' | sort -h | nl'
 
 # directory size. Usage: dirsize directoryname
 # alias dirsize='du -hx --max-depth=1'
@@ -191,13 +193,13 @@ alias duh='du -d -h 1'
 
 # SEARCHING
 # search content with ripgrep
-alias rg="rg --sort path"
-alias rga="rga -i"
-alias rga-c2="rga -C 2"
+alias rg='rg --sort path'
+alias rga='rga -i'
+alias rga-c2='rga -C 2'
 
 alias ffind='find / -name' #find a file. Usage: ffind 'filename'
 (( $+commands[fd] )) || alias fd='find . -type d -name'
-alias ff='find . -type f -name'
+alias ffn='find . -type f -name'
 
 # locate ignore case
 alias locate='locate -i'
@@ -205,32 +207,34 @@ alias locate='locate -i'
 # ps
 alias psa='ps auxf'
 alias p='ps -f'
-# alias psgrep="ps aux | grep "
-alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+# alias psgrep='ps aux | grep '
+alias psgrep='ps aux | grep -v grep | grep -i -e VSZ -e'
 pspt (){ ps aux | pt -v pt |  pt 'VSZ|'$1'';} # pt platinum search
 
 # Show ip address
-alias ips="ip a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
-alias ipa="ip a | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
+#alias ips="ip a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+#alias ipa="ip a | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
-#copy/paste all content of /etc/skel over to home folder - backup of config created - beware
-#skel alias has been replaced with a script at /usr/local/bin/skel
+alias ips="ip a | grep -E 'inet '"
 
-#backup contents of /etc/skel to hidden backup folder in home/user
-alias bupskel="mkdir -p ~/backup-skel &&  cp -Rf /etc/skel ~/backup-skel/.skel-backup-$(date +%Y.%m.%d-%H.%M.%S)"
-alias bupconf="mkdir -p ~/backup-skel &&  cp -Rf ~/.config/ ~/backup-skel/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)"
+ipa() {
+    ip a | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
+}
+
+#backup contents of .config
+alias bupconf='mkdir -p ~/backup-conf &&  cp -Rf ~/.config/ ~/backup-conf/.config-backup-$(date +%Y.%m.%d-%H.%M.%S)'
 
 ## PACMAN stuff Arch Linux
 # Update and Upgrade Packages
-alias pacman="sudo pacman --color auto"
-alias update='sudo pacman -Syu'
+alias pacman='sudo pacman --color auto'
+alias update='sudo pacman -Syu && paru -Syu'
 alias upd='sudo pacman -Syu'
 
 # Install and Remove Packages
 alias pacinn='sudo pacman -S --needed'  # install if not already
 alias pacin='sudo pacman -S'  # install or reinstall
-alias pacre='sudo pacman -R '  ## remove package but keep settings & dependencies
-alias pacrm='sudo pacman -Rnsc'  ## -Rc rm package, settings & unneeded dependencies
+alias pacre='sudo pacman -R'  ## remove package but keep settings & dependencies
+alias pacrm='sudo pacman -Rns'  ## -Rc rm package, settings & unneeded dependencies
 
 #pacman alias sp
 alias sps='sudo pacman -S'
@@ -250,7 +254,7 @@ alias depends='function_depends'
 
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'  #Cleanup orphaned packages
 
-alias pacq="pacman -Qe | awk '{print \$1}' "   # print package list
+alias pacq="pacman -Qe | awk '{print \$1}' | bat "   # print package list
 
 # Search repository
 alias pacshow='sudo pacman -Ss' ## there is a pacsearch utility in Arch
@@ -261,10 +265,6 @@ alias paclsrem='sudo pacman -Si' ## Display remote package full information
 #Recent Installed Packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -100"
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
-
-#iso and version used to install ArcoLinux
-alias iso="cat /etc/dev-rel | awk -F '=' '/ISO/ {print $2}'"
-alias isoo="cat /etc/dev-rel"
 
 # This will generate a list of explicitly installed packages
 alias list="sudo pacman -Qqe"
@@ -286,8 +286,8 @@ alias yayshow='yay -Ss' # search for packages in repos & AUR
 # Using paru
 # paru as aur helper - updates everything
 alias pacupdp='update && paru -Syu'
-alias pksyua="paru -Syu --noconfirm"
-alias upallp="paru -Syu --noconfirm"
+alias pksyua='paru -Syu --noconfirm'
+alias upallp='paru -Syu --noconfirm'
 #alias parin='paru -S'  # paru implies paru -S install or reinstall packages from repos or AUR
 alias parre='paru -R '  ## remove package but keep settings & dependencies
 alias parrm='paru -Rns'  ## rm package, settings & unneeded dependencies
@@ -298,121 +298,75 @@ alias paruskip='paru -S --mflags --skipinteg'  #skip integrity check
 alias pacclean='sudo paccache -ruk0 && sudo paccache -rk 0 && sudo pacman -Scc'
 
 # remove lock files for Arch Linux
-alias rmlogoutlock="sudo rm /tmp/arcologout.lock"
-alias rmpacmanlock="sudo rm /var/lib/pacman/db.lck"
-alias fixpacman="sudo rm /var/lib/pacman/db.lck"
-alias unlock="sudo rm /var/lib/pacman/db.lck"
-alias pamac-unlock="sudo rm /var/tmp/pamac/dbs/db.lock"
-
-#gpg
-#verify signature for isos
-alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
-alias fix-gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
-#receive the key of a developer
-alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
-alias fix-gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
-alias fix-keyserver="[ -d ~/.gnupg ] || mkdir ~/.gnupg ; cp /etc/pacman.d/gnupg/gpg.conf ~/.gnupg/ ; echo 'done'"
+alias rmpacmanlock='sudo rm /var/lib/pacman/db.lck'
+alias fixpacman='sudo rm /var/lib/pacman/db.lck'
+alias unlock='sudo rm /var/lib/pacman/db.lck'
+alias pamac-unlock='sudo rm /var/tmp/pamac/dbs/db.lock'
 
 #fixes
-alias fix-permissions="sudo chown -R $USER:$USER ~/.config ~/.local"
-alias keyfix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
-alias key-fix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
-alias keys-fix="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
-alias fixkey="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
-alias fixkeys="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
-alias fix-key="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
-alias fix-keys="/usr/local/bin/arcolinux-fix-pacman-databases-and-keys"
-#fix-sddm-config is no longer an alias but an application - part of ATT
-alias fix-pacman-conf="/usr/local/bin/arcolinux-fix-pacman-conf"
-alias fix-pacman-keyserver="/usr/local/bin/arcolinux-fix-pacman-gpg-conf"
-alias fix-grub="sudo /usr/local/bin/arcolinux-fix-grub"
-alias fixgrub="sudo /usr/local/bin/arcolinux-fix-grub"
+alias fix-permissions='sudo chown -R $USER:$USER ~/.config ~/.local'
 
 #check vulnerabilities microcode
 alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
 
 # Shutdown and Reboot
-alias ssn="sudo shutdown now"
-alias sr="reboot"
+alias ssn='sudo shutdown now'
+alias sr='reboot'
 
 ## download mirrorlist
-alias mirrorf="sudo reflector -c AU -c SG -f 105 -l 105 -n 40 --verbose --sort rate --save /etc/pacman.d/mirrorlist"
-alias mirrora="sudo reflector -c AU --download-timeout 25  -a 48 -l 20 -f 20 --threads 5 --sort rate  --save /etc/pacman.d/mirrorlist"
-alias mirroran="sudo reflector -c AU -c NZ --download-timeout 25  -a 48 -l 20 -f 20 --threads 5 --sort rate  --save /etc/pacman.d/mirrorlist"
+alias mirrorf='sudo reflector -c AU -c SG -f 105 -l 105 -n 40 --verbose --sort rate --save /etc/pacman.d/mirrorlist'
+alias mirrora='sudo reflector -c AU --download-timeout 25  -a 48 -l 20 -f 20 --threads 5 --sort rate  --save /etc/pacman.d/mirrorlist'
+alias mirroran='sudo reflector -c AU -c NZ --download-timeout 25  -a 48 -l 20 -f 20 --threads 5 --sort rate  --save /etc/pacman.d/mirrorlist'
 
 # our experimental - best option for the moment
-alias mirrorx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
-alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
+alias mirrorx='sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
+alias mirrorxx='sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist'
 alias ram='rate-mirrors --allow-root --disable-comments arch | sudo tee /etc/pacman.d/mirrorlist'
 alias rams='rate-mirrors --allow-root --disable-comments --protocol https arch  | sudo tee /etc/pacman.d/mirrorlist'
 
 # $EDITOR/nano for important configration files
-alias mirrorlist="cat /etc/pacman.d/mirrorlist"
-alias nalacritty="nano /home/$USER/.config/alacritty/alacritty.toml"
-alias narcomirrorlist="sudo $EDITOR /etc/pacman.d/arcolinux-mirrorlist"
-alias nb="$EDITOR ~/.bashrc"
-alias nconfgrub="sudo $EDITOR /boot/grub/grub.cfg"
-alias nenvironment="sudo $EDITOR /etc/environment"
-alias nf="$EDITOR ~/.config/fish/config.fish"
-alias nfastfetch="$EDITOR ~/.config/fastfetch/config.jsonc"
-alias nfstab="sudo $EDITOR /etc/fstab"
-alias ngnupgconf="sudo $EDITOR /etc/pacman.d/gnupg/gpg.conf"
-alias ngrub="sudo $EDITOR /etc/default/grub"
-alias nhostname="sudo $EDITOR /etc/hostname"
-alias nhosts="sudo $EDITOR /etc/hosts"
-alias nlightdm="sudo $EDITOR /etc/lightdm/lightdm.conf"
-alias nloader="sudo $EDITOR /boot/efi/loader/loader.conf"
-alias nlxdm="sudo $EDITOR /etc/lxdm/lxdm.conf"
-alias nmakepkg="sudo $EDITOR /etc/makepkg.conf"
-alias nmirrorlist="sudo $EDITOR /etc/pacman.d/mirrorlist"
-alias nmkinitcpio="sudo $EDITOR /etc/mkinitcpio.conf"
-alias nneofetch="$EDITOR ~/.config/neofetch/config.conf"
-alias nnsswitch="sudo $EDITOR /etc/nsswitch.conf"
-alias npacman="sudo $EDITOR /etc/pacman.conf"
-alias nplymouth="sudo $EDITOR /etc/plymouth/plymouthd.conf"
-alias nrefind="sudo $EDITOR /boot/refind_linux.conf"
-alias nresolv="sudo $EDITOR /etc/resolv.conf"
-alias nsamba="sudo nano /etc/samba/smb.conf"
-alias nsddm="sudo $EDITOR /etc/sddm.conf"
-alias nsddmk="sudo $EDITOR /etc/sddm.conf.d/kde_settings.conf"
-alias nvconsole="sudo $EDITOR /etc/vconsole.conf"
-alias nz="$EDITOR ~/.zshrc"
+alias mirrorlist='cat /etc/pacman.d/mirrorlist'
+alias nalacritty='nano /home/$USER/.config/alacritty/alacritty.toml'
+alias nb='$EDITOR ~/.bashrc'
+alias nconfgrub='sudo $EDITOR /boot/grub/grub.cfg'
+alias nenvironment='sudo $EDITOR /etc/environment'
+alias nfastfetch='$EDITOR ~/.config/fastfetch/config.jsonc'
+alias nfstab='sudo $EDITOR /etc/fstab'
+alias ngnupgconf='sudo $EDITOR /etc/pacman.d/gnupg/gpg.conf'
+alias nhostname='sudo $EDITOR /etc/hostname'
+alias nhosts='sudo $EDITOR /etc/hosts'
+alias nlxdm='sudo $EDITOR /etc/lxdm/lxdm.conf'
+alias nmakepkg='sudo $EDITOR /etc/makepkg.conf'
+alias nmirrorlist='sudo $EDITOR /etc/pacman.d/mirrorlist'
+alias nnsswitch='sudo $EDITOR /etc/nsswitch.conf'
+alias npacman='sudo $EDITOR /etc/pacman.conf'
+alias nresolv='sudo $EDITOR /etc/resolv.conf'
+alias nsamba='sudo nano /etc/samba/smb.conf'
+alias nvconsole='sudo $EDITOR /etc/vconsole.conf'
 
 #reading logs with bat
-alias lcalamares="bat /var/log/Calamares.log"
-alias lpacman="bat /var/log/pacman.log"
-alias lxorg="bat /var/log/Xorg.0.log"
-alias lxorgo="bat /var/log/Xorg.0.log.old"
+alias lpaclog='bat /var/log/pacman.log'
+alias lpaclog-r='tail -n 100 /var/log/pacman.log | bat --language=log'
+alias lxorg='tail -n 100 /var/log/Xorg.0.log | bat --language=log' 
+alias lxorgo='tail -n 100 /var/log/Xorg.0.log.old | bat --language=log' 
 
 #reading logs with sublime-text-4
-alias scal="subl /var/log/Calamares.log"
-alias spac="subl /etc/pacman.conf"
+alias spac='subl /etc/pacman.conf'
 
-alias nb="${=EDITOR} $HOME/.bashrc"
-alias sz="source ${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc"
-alias nz="${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc" # Quick access to the .zshrc file
-alias nza="${=EDITOR} ${ZDOTDIR:-$HOME}/.zsh-aliases" # Quick access to .zsh-aliases file
-
-# grub update
-alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias grub-update="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-#grub issue 08/2022
-#alias install-grub-efi="sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi"
-# new as 23-09-04
-alias install-grub-efi="sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArcoLinux"
+alias nb='${=EDITOR} $HOME/.bashrc'
+alias sz='source ${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc'
+alias nz='${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc' # Quick access to the .zshrc file
+alias nza='${=EDITOR} ${ZDOTDIR:-$HOME}/.zsh-aliases' # Quick access to .zsh-aliases file
 
 #give a list of the kernels installed
-alias kernel="ls /usr/lib/modules"
-alias kernels="ls /usr/lib/modules"
+alias kernel='ls /usr/lib/modules'
 
 #am I on grub,systemd-boot or refind
-# alias boot-c="sudo bootctl status"
-alias boot="sudo /usr/local/bin/arcolinux-boot"
-alias boot-what="sudo bootctl status | grep Product"
-alias boot-a="sudo /usr/local/bin/arcolinux-boot"
+alias boot='sudo bootctl status'
+alias boot-what='sudo bootctl status | grep Product'
 
 #audio check pulseaudio or pipewire
-alias audio="pactl info | grep 'Server Name'"
+alias audio='pactl info | grep -iE "Server Name" '
 
 # youtube download
 alias yta-aac='yt-dlp --extract-audio --audio-format aac '
@@ -423,64 +377,21 @@ alias yta-mp3='yt-dlp --extract-audio --audio-format mp3 '
 # alias ytv-best-1='yt-dlp  --merge-output-format mkv '
 # alias ytv-small 'yt-dlp -f 'best -S +size,+br,+res,+fps' --merge-output-format mkv '
 
-alias ytv-best="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mkv "
-alias ytv-best4="yt-dlp -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 "
+alias ytv-best='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio" --merge-output-format mkv'
+alias ytv-best4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio" --merge-output-format mp4'
 alias ytv-small='yt-dlp -f "bv*[height<=480]+ba/b[height<=480] / wv*+ba/w"  --merge-output-format mkv '
 
-#Leftwm aliases
-alias lti="leftwm-theme install"
-alias ltu="leftwm-theme uninstall"
-alias lta="leftwm-theme apply"
-alias ltupd="leftwm-theme update"
-alias ltupg="leftwm-theme upgrade"
-
-#arcolinux applications
-#att is a symbolic link now
-## alias att="archlinux-tweak-tool"
-alias adt="arcolinux-desktop-trasher"
-alias abl="arcolinux-betterlockscreen"
-alias agm="arcolinux-get-mirrors"
-alias amr="arcolinux-mirrorlist-rank-info"
-alias aom="arcolinux-osbeck-as-mirror"
-alias ars="arcolinux-reflector-simple"
-alias atm="arcolinux-tellme"
-alias avs="arcolinux-vbox-share"
-alias awa="arcolinux-welcome-app"
-
-#mounting the folder Public for exchange between host and guest on virtualbox
-alias vbm="sudo /usr/local/bin/arcolinux-vbox-share"
-
-#removing packages
-alias rvariety="arcolinux-remove-variety"
-alias rkmix="arcolinux-remove-kmix"
-alias rconky="arcolinux-remove-conky"
-
 # kill applications quickly commands
-alias kc='killall conky'
 alias kp='killall polybar'
 alias kpi='killall picom'
 
-#fastfetch --short
-alias ffh="fastfetch"
-
 #give the list of all installed desktops - xsessions desktops
-alias xd="ls /usr/share/xsessions"
-alias xdw="ls /usr/share/wayland-sessions"
-
-# approximately how old is hardware
-alias howold="sudo lshw | grep -B 3 -A 8 BIOS"
+alias xd='ls /usr/share/xsessions'
+alias xdw='ls /usr/share/wayland-sessions'
 
 # switch between bash and zsh
-alias tobash="sudo chsh $USER -s /usr/bin/bash && echo 'Now log out.'"
-alias tozsh="sudo chsh $USER -s /usr/bin/zsh && echo 'Now log out.'"
-
-#switch between displaymanager or bootsystem
-alias toboot="sudo /usr/local/bin/arcolinux-toboot"
-alias togrub="sudo /usr/local/bin/arcolinux-togrub"
-
-#switch between lightdm and sddm
-alias tolightdm="sudo pacman -S lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings --noconfirm --needed ; sudo systemctl enable lightdm.service -f ; echo 'Lightm is active - reboot now'"
-alias tosddm="sudo pacman -S sddm --noconfirm --needed ; sudo systemctl enable sddm.service -f ; echo 'Sddm is active - reboot now'"
+alias tobash='sudo chsh $USER -s /usr/bin/bash && echo "Now log out." '
+alias tozsh='sudo chsh $USER -s /usr/bin/zsh && echo "Now log out."'
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
@@ -509,11 +420,20 @@ ex ()
   fi
 }
 
+# Function to show aliases by group
+show-als() {
+    local filter="${1:-.*}"
+    alias | grep -i "$filter" | sort | cat
+}
+
+
 ## usage help command e.g. helpb cp
 alias bathelp='bat --plain --language=help'
 helpb ()
 {
     "$@" --help 2>&1 | bathelp
 }
+
+
 
 

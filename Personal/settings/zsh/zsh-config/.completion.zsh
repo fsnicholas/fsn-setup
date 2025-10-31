@@ -1,8 +1,10 @@
-## FSN completion V3
-## 22-07-07
+# In ~/.completion.zsh
+
+## FSN completion V4b - zinit
+## 25-10-23
 
 
-# Load more completions
+# Load more completions (this is where Zinit places its functions)
 fpath=($ZDOTDIR/plugins $fpath)
 
 # +---------+
@@ -50,9 +52,11 @@ zstyle ':completion:alias-expension:*' completer _expand_alias
 
 #For autocompletion with an arrow-key driven interface
 # Allow you to select in a menu
-zstyle ':completion:*' menu select
+#zstyle ':completion:*' menu select
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
 
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}       # colorz !
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*:functions' ignored-patterns '_*'   # don't offer to complete functions
 
 # Colors for files and directory
@@ -63,7 +67,8 @@ zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-d
 
 zstyle ':completion:*' keep-prefix true
 
-zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+# don;t use this - error with fzf-completion. see the one in fzf-tab style
+# zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
 zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
 zstyle ':completion:*:*:*:*:warnings' format ' %F{red}-- no matches found --%f'
 
@@ -75,6 +80,37 @@ zstyle ':completion:*:*:-command-:*:*' group-order aliases builtins functions co
 zstyle ':urlglobber' url-other-schema
 
 zstyle :compinstall filename "$ZDOTDIR/.completion.zsh"
+
+# ---------------------------------------------------------------------------------------------
+# FZF-TAB STYLES 
+# ---------------------------------------------------------------------------------------------
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+
+# set descriptions format to enable group support
+# NOTE: don't use escape sequences (like '%F{red}%d%f') here, fzf-tab will ignore them
+zstyle ':completion:*:descriptions' format '[%d]'
+
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+
+# custom fzf flags
+# NOTE: fzf-tab does not follow FZF_DEFAULT_OPTS by default
+#zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+zstyle ':fzf-tab:*' fzf-flags --height=80% \
+    --color=fg:240,fg+:15,info:green,prompt:green,pointer:yellow
+
+# To make fzf-tab follow FZF_DEFAULT_OPTS.
+# NOTE: This may lead to unexpected behavior since some flags break this plugin. See Aloxaf/fzf-tab#455.
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+
+# switch group using `<` and `>`
+zstyle ':fzf-tab:*' switch-group '<' '>'
+
+# zoxide
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+## end fzf-tab
 
 #Typically, compinit will not automatically find new executables in the $PATH.
 # For example, after you install a new package, the files in /usr/bin/
@@ -99,10 +135,12 @@ add-zsh-hook -Uz precmd rehash_precmd
 # Should be called before compinit
 zmodload zsh/complist
 # complete dotfile
-_comp_options+=(globdots)		# Include hidden files.
+_comp_options+=(globdots)   # Include hidden files.
 
-# Load completion system
-autoload -Uz compinit && compinit
+
+# needed by zinit to cache completion
+#zinit cdreplay -q
 
 # fix issues with z for complete_aliases (after autoload)
-compdef _zshz ${ZSHZ_CMD:-${_Z_CMD:-z}} 
+compdef _zshz ${ZSHZ_CMD:-${_Z_CMD:-z}}
+
