@@ -34,6 +34,7 @@
 # V5e - 24-05-16 many changes
 # V5f - 24-11-11 changed boot aliases; added ff
 # V6  - 25-10-24 removed all arcolinux stuff
+# V6b - 25-10-30 changed " to ', doas changes for su, more xleanup of arco stuff
 
 ## FSN Alias
 

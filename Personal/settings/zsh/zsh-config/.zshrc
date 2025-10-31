@@ -22,6 +22,7 @@
 # FSN v58d  23-12-23 added export MANROFFOPT to fix manpage formatting
 # FSN v58e  23-12-28 added git functionality with less, pager & git-aliases
 # FSN v58f  24-10-18 sorted and added to setopt - navigation & hstory - from nixos settings
+# FSN v59   25-10-23 for zinit
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -36,8 +37,10 @@ DISABLE_MAGIC_FUNCTIONS=true
 # FSN resetting all path
 PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
 
-_comp_options+=(globdots) # With hidden files
-
+# ------------------------------------------------------------------------------------------------
+# ZINIT & PLUGINS
+# ------------------------------------------------------------------------------------------------
+#source "$ZDOTDIR/.zinit-set.zsh"
 # Load antigen plugin manager
 source "$HOME/.antigen/bin/antigen.zsh"
 
@@ -45,13 +48,23 @@ source "$HOME/.antigen/bin/antigen.zsh"
 # antigen init "$ZDOTDIR/.antigenrc"
 antigen init "$HOME/.config/antigenrc"
 
-# Completion -- load after sourcing plugins
+# ------------------------------------------------------------------------------------------------
+# ZSH COMPLETION SYSTEM (Run ONCE after plugins)
+# ------------------------------------------------------------------------------------------------
+autoload -Uz compinit && compinit
+
+# ------------------------------------------------------------------------------------------------
+# COMPLETION SETTINGS
+# Load custom completion styles and settings.
+# ------------------------------------------------------------------------------------------------
 source "$ZDOTDIR/.completion.zsh"
 
+# allows advanced Zsh themes, customizations to work correctly
+setopt promptsubst 
 
-# +------------+
-# | NAVIGATION |
-# +------------+
+# ------------------------------------------------------------------------------------------------
+# NAVIGATION 
+# ------------------------------------------------------------------------------------------------
 setopt always_to_end            # when completing from middle of word, move the cursor to end of word
 setopt auto_cd                  # if cmd is directory than cd to that directory
 setopt auto_menu			          # Automatically show a menu of completion options
@@ -76,16 +89,13 @@ setopt pushd_ignore_dups        # no duplicates in dir stack
 setopt pushd_silent             # no dir stack after pushd or popd
 setopt pushd_to_home            # `pushd` = `pushd $HOME`
 
-# autoload -Uz bd; bd
-
-# +---------------+
-# | HISTORY |
-# +---------------+
-
+# ------------------------------------------------------------------------------------------------
+# HISTORY 
+# ------------------------------------------------------------------------------------------------
 export HISTSIZE=32768
-export SAVEHIST=50000
+export SAVEHIST=$HISTSIZE
+export HISTFILE=$ZDOTDIR/.zhistory
 export HISTORY_IGNORE="(ls|cd|pwd|exit|cd ..)"
-
 setopt bang_hist			           # Enable history expansion with the '!' (bang)
 setopt extended_history          # write the history file in the ':start:elapsed;command' format.
 setopt hist_expire_dups_first    # expire a duplicate event first when trimming history.
@@ -113,16 +123,30 @@ autoload run-help-sudo
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 
-# gives emacs style of line editing at the prompt = bindkey -e
-# Set vim mode for zsh
+# ----------------------------------------------------------------------
+# MANUAL KEY BINDINGS & FUNCTIONS
+# ----------------------------------------------------------------------
+
+# Fix for HOME/END keys: Binds common terminal codes to Zsh functions
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+
+# FIX for DELETE key (Delete character under cursor)
+bindkey '^[[3~' delete-char-or-list 
+
+# gives emacs style of line editing at the prompt
 bindkey -e
 
-# use Ctrl-P to accept suggestion
+# use Ctrl-P to accept suggestion (from zsh-autosuggestions)
 bindkey '^P' autosuggest-accept
 
-# FSN to search history up arrow or down arrow
+# FSN to search history up arrow or down arrow (from zsh-history-substring-search)
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+# Standard history search (Emacs bindings)
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 
 # FSN bind Ctrl-U to delete from cursor to beginning of line - same as bash & ^Y to undo
 bindkey '^U' backward-kill-line
@@ -185,52 +209,44 @@ export MANROFFOPT="-c"
 export CHEAT_USE_FZF=true
 
 # Include aliases dotfile
-
 # $ZDOTDIR -> $HOME/.config/zsh
 [[ -f "$ZDOTDIR/.zsh-aliases" ]] && source  "$ZDOTDIR/.zsh-aliases"
 
-[[ -f "$ZDOTDIR/git-aliases" ]] && source  "$ZDOTDIR/git-aliases"
+#[[ -f "$ZDOTDIR/git-aliases" ]] && source  "$ZDOTDIR/git-aliases"
 
 if [ -d "$HOME/.cargo/bin" ] ;
   then [[ -f "$ZDOTDIR/cargo-aliases" ]] && source  "$ZDOTDIR/cargo-aliases"
-fi
-
-[[ -f "$ZDOTDIR/.fzf.zsh" ]] && source  "$ZDOTDIR/.fzf.zsh"
-
-# fsn added for pyenv
-if [ -d "$HOME/.pyenv" ] ; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  PATH="$PYENV_ROOT/bin:$PATH"
-fi
-
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-fi
-
-# enable auto-activation of virtualenvs
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv virtualenv-init -)"
-fi
-
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init --path)"
 fi
 
 # for rust
 # . "$HOME/.cargo/env"
 [[ -f "$HOME/.cargo/env" ]] && source  "$HOME/.cargo/env"
 
-# Key bindings
-# ------------
-source "/home/nicholas/.fzf/shell/key-bindings.zsh"
-
 # fsn added for tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
 
+# ------------------------------------------------------------------------------------------------
+# FINAL EVALUATIONS (Functions and Keybindings)
+# ------------------------------------------------------------------------------------------------
+# Zoxide and FZF should be loaded before the prompt.
+# eval "$(zoxide init --cmd cd zsh)"
+#eval "$(zoxide init zsh)"
+
+[[ -f "$ZDOTDIR/.fzf.zsh" ]] && source "$ZDOTDIR/.fzf.zsh"
+# Set up fzf key bindings and fuzzy completion (zsh)
+source <(fzf --zsh)
+
+# fzf-tab
+[[ -f "$HOME/.fzf-tab/fzf-tab.plugin.zsh" ]] && source  "$HOME/.fzf-tab/fzf-tab.plugin.zsh"
+
+# Github CLI completion
+eval "$(gh completion -s zsh)"
+
+# ------------------------------------------------------------------------------------------------
+# PROMPT CONFIGURATION (ABSOLUTE LAST)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# ------------------------------------------------------------------------------------------------
 [[ ! -f "$ZDOTDIR/.p10k.zsh" ]] || source "$ZDOTDIR/.p10k.zsh"
 
-# neofetch
