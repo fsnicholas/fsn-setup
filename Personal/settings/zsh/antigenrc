@@ -1,7 +1,6 @@
 ## fsn antogenrc V2a amended 24 July 2022
 ## fsn antigenrc V2b amended 12 Aug 2022
 ## fsn antigenrc V2c amended 14 Aug 2023 added different z dir jump
-## fsn antigenrc V2d 25-10-27
 
 # from https://github.com/zsh-users/antigen/wiki/Quick-start
 
@@ -31,11 +30,9 @@ antigen bundle zsh-users/zsh-autosuggestions
 # using instead this Syntax highlighting bundle.
 antigen bundle zdharma-continuum/fast-syntax-highlighting
 
-# antigen bundle changyuheng/fz
-# antigen bundle rupa/z
 antigen bundle agkozak/zsh-z
 
-# installed in os
+# already installed in ~/.fzf also ~/.fzf-tab
 # antigen bundle junegunn/fzf
 
 # run fuzzy-search in command history, etc
