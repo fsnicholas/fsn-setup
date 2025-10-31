@@ -39,9 +39,10 @@
 
 # using doas
 alias sudo='doas' 
+export SUDO_ASKPASS=/usr/bin/true
 
 # Using su
-alias su='sudo -i'
+alias su='command sudo -i'
 
 # userlist
 alias userlist='cut -d: -f1 /etc/passwd | sort'
