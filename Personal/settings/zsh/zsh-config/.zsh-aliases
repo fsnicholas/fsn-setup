@@ -34,13 +34,13 @@
 # V5e - 24-05-16 many changes
 # V5f - 24-11-11 changed boot aliases; added ff
 # V6  - 25-10-24 removed all arcolinux stuff
-# V6b - 25-10-30 changed " to ', doas changes for su, more xleanup of arco stuff
+# V6b - 25-10-30 changed " to ', doas changes for su, more xleanup of arco stuff, added fastfetch ff --config
 
 ## FSN Alias
 
 # using doas
 alias sudo='doas' 
-export SUDO_ASKPASS=/usr/bin/true
+#export SUDO_ASKPASS=/usr/bin/true
 
 # Using su
 alias su='command sudo -i'
@@ -126,7 +126,7 @@ alias t3='tree -dlx -L 3'
 alias '?=man'
 alias cat='bat'
 alias cls='clear'
-alias ff='fastfetch'
+alias ff='fastfetch --config .config/fastfetch/config-fancy.jsonc'
 alias history='history 1'
 alias h='history'
 alias less='less -R'
