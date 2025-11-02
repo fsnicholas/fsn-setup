@@ -35,6 +35,7 @@
 # V5f - 24-11-11 changed boot aliases; added ff
 # V6  - 25-10-24 removed all arcolinux stuff
 # V6b - 25-10-30 changed " to ', doas changes for su, more xleanup of arco stuff, added fastfetch ff --config
+# V6c - rg aliases were wrong corrected and added rg to search dotfiles
 
 ## FSN Alias
 
@@ -195,9 +196,8 @@ alias duh='du -d -h 1'
 
 # SEARCHING
 # search content with ripgrep
-alias rg='rg --sort path'
-alias rga='rga -i'
-alias rga-c2='rga -C 2'
+alias rgi='rg -i'
+alias rg='rg -uu --sort path --glob "!.git/" '
 
 alias ffind='find / -name' #find a file. Usage: ffind 'filename'
 (( $+commands[fd] )) || alias fd='find . -type d -name'
@@ -437,5 +437,11 @@ helpb ()
 }
 
 
-
+function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
+}
 
