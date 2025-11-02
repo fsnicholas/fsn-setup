@@ -82,12 +82,10 @@ bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 
 # Press ctrl+alt+x - check toolbar for next choices
 bindsym control+mod1+X mode "$mode_system"
-set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
+set $mode_system System (k) lock, (l) logout, (r) reboot, (s) shutdown
 mode "$mode_system" {
     bindsym k exec --no-startup-id ~/.config/i3/scripts/i3exit.sh lock, mode "default"
     bindsym l exec --no-startup-id ~/.config/i3/scripts/i3exit.sh logout, mode "default"
-    bindsym u exec --no-startup-id ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
-    bindsym h exec --no-startup-id ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
     bindsym r exec --no-startup-id ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
     bindsym s exec --no-startup-id ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
 
@@ -118,7 +116,8 @@ bindsym $mod+Shift+KP_Enter exec --no-startup-id thunar;focus
 bindsym control+mod1+b exec --no-startup-id thunar;focus
 
 # ranger
-bindsym $mod+F9 exec --no-startup-id alacritty -e ranger;focus
+bindsym mod1+F9 exec --no-startup-id alacritty -e ranger;focus
+bindsym mod1+F8 exec --no-startup-id kitty -e zsh -c 'yazi';focus
 
 # Browser
 bindsym $mod+F6 exec --no-startup-id firefox;focus
@@ -140,7 +139,7 @@ bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
 bindsym control+mod1+p exec --no-startup-id pamac-manager
 bindsym mod1+F3 exec --no-startup-id xfce4-appfinder
 bindsym control+mod1+a exec --no-startup-id xfce4-appfinder
-bindsym control+mod1+h exec --no-startup-id htop;focus
+bindsym control+mod1+h exec --no-startup-id alacritty -e htop;focus
 
 ################# menus
 # start dmenu
@@ -313,31 +312,22 @@ bindsym $mod+Mod1+Ctrl+Left resize grow width 1 px or 1 ppt
 # Workspace 4 VS Code
 assign [class="Code|code"]                                                      4
                                                                                                                                                                                    
-# Workspace 5 
-# sublime $mod+F3
-assign [class="sublime_text|Sublime_text|Subl4"]                                5
-for_window [class="Sublime_text|sublime_text"] move to workspace                5
-for_window [class="sublime_text|Sublime_text|Subl4"]  focus
+# Workspace 5 sublime $mod+F3
+for_window [class="Sublime_text|sublime_text"] move to workspace 5;   workspace 5
 
+# Workspace 6 Firefox $mod+F6                                                   6
+for_window [class="firefox"] move to workspace 6; workspace 6
 
-# Workspace 6 Firefox
-assign [class="Firefox|firefox"]                                                6
-for_window [class="firefox"] move to workspace                                  6
-for_window [class="Firefox|firefox"] focus
+# Workspace 7 MS Edge $mod+F7                                                   7
+for_window [class="microsoft-edge|Microsoft-edge"] move to workspace 7; workspace 7
 
-# Workspace 7 MS Edge
-assign [class="microsoft-edge|Microsoft-edge"]                                  7
-for_window [class="microsoft-edge|Microsoft-edge"] move to workspace            7
-for_window [class="Microsoft-edge"] focus
-
-# Workspace 8 file managers
-# assign [class="Nemo|Thunar|Caja|nautilus|Nautilus"]                           8
+# Workspace 8 file managers - using alt-F8 for yazi                             8
+for_window [title="^Yazi:"] move to workspace 8; workspace 8
 
 # Workspace 9 email clients
-# assign [class="Geary|Evolution"]                                              9
+# for_window [class="Geary|Evolution"]                                          9
 
-# Workspace 10 music related
-# assign [class="Spotify|spotify"]                                              10
+# Workspace 10 music related                                                    10
 # for_window [class="Spotify"] move to workspace 10
 
 ################# floating or tiled rules         

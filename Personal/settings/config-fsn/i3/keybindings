@@ -26,10 +26,6 @@ https://discovery.endeavouros.com/window-tiling-managers/i3-wm/
 # fancy exit-menu on bottom right:
 +Shift+e
 
-# Lock the system
-# lock with a picture or blurring the screen (options in config)
-+l
-
 # reload the configuration file
 +Shift+c
 
@@ -37,9 +33,6 @@ https://discovery.endeavouros.com/window-tiling-managers/i3-wm/
 +Shift+r
 
 # keybinding in fancy rofi (automated)
-F1
-
-# full keybinding list in editor:
 +F1
 
 # change window focus
