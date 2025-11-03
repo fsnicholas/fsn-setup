@@ -1,7 +1,6 @@
 #!/bin/bash
 #set -e
 ##################################################################################################################
-# Author    : Erik Dubois
 # Frank Nicholas with thanks
 ############################################################################################################
 #tput setaf 0 = black
@@ -27,7 +26,6 @@ echo "################################################################"
 tput sgr0
 echo
 
-tput setaf 3;echo "  DO NOT JUST RUN THIS. EXAMINE AND JUDGE. RUN AT YOUR OWN RISK."
 echo "  THIS MAY BRICK YOUR SYSTEM";tput sgr0
 
 sudo pacman -R --noconfirm xfce4-artwork
