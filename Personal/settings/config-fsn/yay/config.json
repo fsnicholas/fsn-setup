@@ -1,0 +1,22 @@
+{
+	"aururl": "https://aur.archlinux.org",
+	"aurrpcurl": "https://aur.archlinux.org/rpc?",
+	"buildDir": "/home/nicholas/.cache/yay",
+	"makepkgbin": "makepkg",
+	"pacmanbin": "pacman",
+	"pacmanconf": "/etc/pacman.conf",
+	"redownload": "no",
+	"answerclean": "",
+	"answerdiff": "",
+	"answeredit": "",
+	"answerupgrade": "",
+	"completionrefreshtime": 7,
+	"maxconcurrentdownloads": 4,
+	"removemake": "ask",
+	"sudobin": "doas",
+	"sudoflags": "",
+	"sudoloop": false,
+	"cleanAfter": true,
+	"keepSrc": false,
+	"rebuild": "no"
+}
