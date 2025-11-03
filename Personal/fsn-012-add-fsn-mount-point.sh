@@ -1,9 +1,5 @@
 #!/bin/bash
 
-######################################################################################################################
-
-# sudo pacman -S sed --noconfirm --needed
-
 echo "Amending /etc/fstab"
 
 if sed -n '/fn-docs/p' /etc/fstab | grep -q .; then
