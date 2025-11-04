@@ -1,27 +1,9 @@
-# FSN v3b - 2020-July-10
 # FSN v3c - 2020-09-27 added DIFFPROG for pacdiff using meld
-# FSN v3d - 2021-03-05 using node // cargo (for rust) // pk10 as per documentation
-# FSN v3e - 2021-04-08 added stuff at end similar to neofetch
-# FSN v3f - 2021-08-02 cleaned up different paths git installation
-# FSN v4  - part of Garuda
-# FSN v5 -  2021-Aug-18 total-rewrite for zsh completion & using zshenv
-#           file now in ~/.config/zsh
-# FSN v5a - Aug-20-2021 - more changes to setopt etc
-# FSN v51 - Sept-05-2021 - added powerlevel10 at top
-# FSN v52-debian - May-24-2022
-# FSN v53-manjaro - July 17 2022
 # FSN v54 changed history size & added MANPAGER using bat Aug 01 2022
-# FSN v55 removed all pyenv and rust stuff Aug 07 2022
-# FSN v56 only use pyenv and rust stuff if needed Aug 23 2022
-# FSN v57 changed path to make bin before sbin  Sept 12 2022
 # FSN v57a added bindkey ^U & ^Y (to be sane as bash) Sept 16 2022
 # FSN v58  23-09-17 added fzf keybinds
-# FSN v58a  23-09-20 has stuff for pyenv, rust, tilix
 # FSN v58b  23-10-14 setopt lines formatted + numeric_glob_sort. new compdef for z (no garuda additions here)
-# FSN v58c  23-11-06 added rust cargo to path
 # FSN v58d  23-12-23 added export MANROFFOPT to fix manpage formatting
-# FSN v58e  23-12-28 added git functionality with less, pager & git-aliases
-# FSN v58f  24-10-18 sorted and added to setopt - navigation & hstory - from nixos settings
 # FSN v59   25-10-23 for zinit
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -83,6 +65,7 @@ setopt interactive_comments     # Make commenting with '#' work
 setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
 setopt no_case_glob             # globbing and tab-completion to be case-insensitive
 setopt no_nomatch               # nonomatch means wildcard * works - does this globally like in bash
+setopt notify                   # prints background job completion messages immediately
 setopt numeric_glob_sort        # Sort filenames numerically when it makes sense
 setopt path_dirs			          # Automatically add PATH directories to cdpath
 setopt pushd_ignore_dups        # no duplicates in dir stack
@@ -232,11 +215,33 @@ fi
 # ------------------------------------------------------------------------------------------------
 # Zoxide and FZF should be loaded before the prompt.
 # eval "$(zoxide init --cmd cd zsh)"
-#eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
 
+#----------------------
+#  fzf setup
+#----------------------
 [[ -f "$ZDOTDIR/.fzf.zsh" ]] && source "$ZDOTDIR/.fzf.zsh"
 # Set up fzf key bindings and fuzzy completion (zsh)
 source <(fzf --zsh)
+
+# -- Use fd instead of fzf --
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+# ------  end fzf setup
 
 # fzf-tab
 [[ -f "$HOME/.fzf-tab/fzf-tab.plugin.zsh" ]] && source  "$HOME/.fzf-tab/fzf-tab.plugin.zsh"
