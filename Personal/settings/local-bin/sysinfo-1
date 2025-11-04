@@ -1,0 +1,96 @@
+#!/bin/bash
+# deepseek
+
+# Prefer environment variables over external commands
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+# Single pass for /etc/lsb-release
+if [[ -f /etc/lsb-release ]]; then
+    source /etc/lsb-release
+    OS="$DISTRIB_ID"
+    VERSION="$DISTRIB_RELEASE"
+else
+    OS="Unknown"
+    VERSION="Unknown"
+fi
+
+# Direct system calls (fast)
+KERNEL=$(uname -r)
+ARCH=$(uname -m)
+SHELL_BASENAME=$(basename "$SHELL")
+SHELL_UC=$(echo "$SHELL_BASENAME" | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')
+
+# Single read for multiple /proc files
+read UPTIME _ </proc/uptime
+UPTIME_FORMATTED=$(awk -v u="$UPTIME" 'BEGIN {
+    days=int(u/60/60/24); hours=int(u/60/60%24); 
+    mins=int(u/60%60); secs=int(u%60);
+    printf "%d:%02d:%02d:%02d", days, hours, mins, secs
+}')
+
+# Combined file reads
+MODEL=$(paste -d ' ' /sys/devices/virtual/dmi/id/board_{vendor,name} 2>/dev/null || echo "Unknown")
+
+# Cache expensive operations
+PACKAGES=$(pacman -Qq | wc -l)  # -q is faster than no flag
+
+# Parallelize slow operations in background
+UPDATES_COUNT=0
+(checkupdates 2>/dev/null | wc -l > /tmp/updates_count.$$) &
+UPDATES_PID=$!
+
+LAYOUT=$(setxkbmap -query 2>/dev/null | awk '/layout:/ {print $2}' | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')
+
+# GTK settings - use file-based fallback first (faster)
+GTK_SETTINGS_FILE="$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
+if [[ -f "$GTK_SETTINGS_FILE" ]]; then
+    GTK_THEME=$(awk -F= '/^gtk-theme-name/ {print $2; exit}' "$GTK_SETTINGS_FILE")
+    GTK_ICON=$(awk -F= '/^gtk-icon-theme-name/ {print $2; exit}' "$GTK_SETTINGS_FILE") 
+    GTK_FONT=$(awk -F= '/^gtk-font-name/ {print $2; exit}' "$GTK_SETTINGS_FILE")
+else
+    # Fallback to gsettings only if needed
+    if command -v gsettings >/dev/null 2>&1; then
+        GTK_THEME=$(gsettings get org.gnome.desktop.interface gtk-theme 2>/dev/null | tr -d "'")
+        GTK_ICON=$(gsettings get org.gnome.desktop.interface icon-theme 2>/dev/null | tr -d "'")
+        GTK_FONT=$(gsettings get org.gnome.desktop.interface font-name 2>/dev/null | tr -d "'")
+    fi
+fi
+
+# Wait for background updates check
+wait $UPDATES_PID 2>/dev/null
+UPDATES=$(</tmp/updates_count.$$ 2>/dev/null || echo 0)
+rm -f /tmp/updates_count.$$
+
+# Single xdpyinfo call for resolution
+RESOLUTION=$(xdpyinfo | awk '/dimensions:/ {print $2; exit}')
+
+# Single wmctrl call for DE/WM info
+WM_INFO=$(wmctrl -m 2>/dev/null)
+DE=$(echo "$WM_INFO" | awk 'NR==1 {print $2}' | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')
+
+# Single cpuinfo read
+CPU=$(awk -F: '/model name/ {gsub(/[()TMR)]+/, "", $2); print $2; exit}' /proc/cpuinfo | sed 's/^[ \t]*//;s/[ \t]*$//')
+
+# Output (unchanged)
+echo ""
+echo -e "\e[91m   --------------------"
+echo "   SYSTEM INFORMATION"
+echo "   --------------------"
+echo -e "\e[91m     $USER"
+echo -e "\e[94m     \e[39m$MODEL"
+echo -e "\e[94m     \e[39m$OS $ARCH $VERSION"
+echo -e "\e[94m   🧰 \e[39m$PACKAGES packages"
+echo -e "\e[94m     \e[39m$KERNEL"
+echo -e "\e[94m     \e[39m$UPTIME_FORMATTED"
+echo -e "\e[94m     \e[39m$SHELL_UC"
+echo -e "\e[94m     \e[39m$RESOLUTION"
+echo -e "\e[94m     \e[39m$CPU"
+echo -e "\e[91m   --------------------"
+echo -e "\e[91m     \e[31m$DE wm"
+echo -e "\e[94m     \e[39m$GTK_THEME"
+echo -e "\e[94m     \e[39m$GTK_ICON"
+echo -e "\e[94m   🆎 \e[39m$GTK_FONT"
+echo -e "\e[91m   --------------------"
+echo -e "\e[91m   🧰 \e[31m$UPDATES updates"
+echo -e "\e[94m     \e[39m$LAYOUT"
+echo ""

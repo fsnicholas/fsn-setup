@@ -1,0 +1,134 @@
+# some alias find functions
+fial() { 
+    alias | grep -i "$1" | sed "s/^alias //; s/='/ = /; s/'$//" | sort | \
+    awk '{
+        cmd = ""
+        for(i=3;i<=NF;i++) cmd = cmd $i (i==NF ? "" : " ")
+        printf "%-15s %-2s %s\n", $1, $2, cmd
+    }'
+}
+
+=====================
+
+find-aliases-3() {
+    if [ $# -eq 0 ]; then
+        echo "Usage: find-aliases <keyword>"
+        return 1
+    fi
+    
+    echo "Aliases for '$1':"
+    echo "================="
+    
+    # Get aliases and filter
+    alias | grep -E ".*$1.*" | while IFS= read -r line; do
+        # Remove 'alias ' prefix if present and split on first =
+        line="${line#alias }"
+        IFS='=' read -r name cmd <<< "$line"
+        
+        # Remove quotes from command
+        cmd="${cmd#\'}"
+        cmd="${cmd%\'}"
+        cmd="${cmd#\"}"
+        cmd="${cmd%\"}"
+        
+        # Only show if keyword is in alias name (before the =)
+        if [[ "$name" =~ $1 ]]; then
+            printf "%-15s = %s\n" "$name" "$cmd"
+        fi
+    done
+}
+
+=========================
+
+fin-al2
+#!/bin/bash
+
+# Check if keyword is provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <keyword>"
+    echo "Example: $0 git"
+    exit 1
+fi
+
+keyword="$1"
+
+echo "Aliases containing '$keyword':"
+echo "=============================="
+
+# Find aliases and format output
+alias | grep -E "${keyword}[[:space:]]*=" | while read -r line; do
+    # Extract alias name and command
+    alias_name="${line%%=*}"
+    alias_command="${line#*=}"
+    
+    # Remove leading ' and trailing ' from command
+    alias_command="${alias_command#\'}"
+    alias_command="${alias_command%\'}"
+    
+    # Format and print
+    printf "%-15s = %s\n" "$alias_name" "$alias_command"
+done
+
+=================
+
+#!/bin/bash
+
+# Check if keyword is provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <keyword>"
+    echo "Example: $0 git"
+    exit 1
+fi
+
+keyword="$1"
+
+echo "Aliases for '$keyword':"
+echo "======================="
+
+# Find aliases containing the keyword at the beginning (before =)
+alias | grep -E "^[^=]*${keyword}[^=]*=" | while IFS= read -r line; do
+    # Split on first = only
+    IFS='=' read -r alias_name alias_command <<< "$line"
+    
+    # Clean up the command (remove surrounding quotes if present)
+    alias_command="${alias_command#\'}"
+    alias_command="${alias_command%\'}"
+    alias_command="${alias_command#\"}"
+    alias_command="${alias_command%\"}"
+    
+    # Print formatted output
+    printf "%-12s = %s\n" "$alias_name" "$alias_command"
+done
+
+===========
+
+#!/usr/bin/env bash
+# -----------------------------------------------------------------------------
+# find-aliases.sh
+# -----------------------------------------------------------------------------
+# Search and display aliases containing a specific command or keyword.
+# Filters out false positives (like ".log" or ".d" suffixes).
+#
+# Usage:
+#   find-aliases.sh <keyword>
+# Example:
+#   find-aliases.sh pacman
+# -----------------------------------------------------------------------------
+
+# --- sanity check ---
+if [[ -z "$1" ]]; then
+  echo "Usage: $(basename "$0") <keyword>"
+  exit 1
+fi
+
+keyword="$1"
+
+# --- gather and filter aliases ---
+alias | grep -E "${keyword}[[:space:]]"  \
+| while IFS='=' read -r name definition; do
+    name="${name#alias }"
+    definition="${definition#\'}"
+    definition="${definition%\'}"
+    printf "%-20s = %s\n" "$name" "$definition"
+  done
+

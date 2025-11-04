@@ -1,0 +1,84 @@
+#!/bin/bash
+# sudo pacman -S wmctrl
+# perplexity
+
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
+
+# Read OS and VERSION in one pass
+read OS VERSION < <(awk -F'=' '/DISTRIB_ID/{print $2} /DISTRIB_RELEASE/{print $2}' /etc/lsb-release)
+
+KERNEL=$(uname -r)
+ARCH=$(uname -m)
+
+# Format uptime more efficiently
+UPTIME_RAW=$(awk '{print int($1)}' /proc/uptime)
+DAYS=$(( UPTIME_RAW / 86400 ))
+HOURS=$(( (UPTIME_RAW % 86400) / 3600 ))
+MINS=$(( (UPTIME_RAW % 3600) / 60 ))
+SECS=$(( UPTIME_RAW % 60 ))
+UPTIME=$(printf "%d:%02d:%02d:%02d" $DAYS $HOURS $MINS $SECS)
+
+# Model vendor and name combined in one awk reading both lines
+MODEL=$(awk 'NR==1{vendor=$0}NR==2{print $0, vendor}' /sys/devices/virtual/dmi/id/board_{name,vendor})
+
+# DE and CPU info simplified
+DE=$(wmctrl -m | awk 'NR==1 {print toupper(substr($2,1,1)) tolower(substr($2,2))}')
+CPU=$(awk -F: '/model name/ {print $2; exit}' /proc/cpuinfo | sed 's/[()]//g' | sed 's/^[ \t]*//')
+
+# Capitalize SHELL basename with built-in shell handling
+s=${SHELL##*/}
+SHELL_CAP="${s^}"
+
+# Screen resolution
+RESOLUTION=$(xdpyinfo | awk '/dimensions:/ {print $2}' | head -1)
+
+# Start slow commands in background to speed up script
+
+(
+  Packages=$(pacman -Q | wc -l)
+  echo "$Packages" > /tmp/packages_count
+) &
+
+(
+  Updates=$(checkupdates | wc -l)
+  echo "$Updates" > /tmp/updates_count
+) &
+
+# Keyboard layout with capitalization
+Layout=$(setxkbmap -print | awk -F"+" '/xkb_symbols/{print toupper(substr($2,1,1)) tolower(substr($2,2))}')
+
+# GTK theme info read once
+GtkTheme="$(gsettings get org.gnome.desktop.interface gtk-theme 2>/dev/null | tr -d "'")"
+GtkIcon="$(gsettings get org.gnome.desktop.interface icon-theme 2>/dev/null | tr -d "'")"
+GtkFont="$(gsettings get org.gnome.desktop.interface font-name 2>/dev/null | tr -d "'")"
+
+# Wait for slow commands started in background
+wait
+Packages=$(cat /tmp/packages_count)
+Updates=$(cat /tmp/updates_count)
+rm /tmp/packages_count /tmp/updates_count
+
+f1=$'\e[1;37m'
+
+echo ""
+echo -e "\e[91m   --------------------"
+echo "   SYSTEM INFORMATION"
+echo "   --------------------"
+echo -e "\e[91m     $USER"
+echo -e "\e[94m     \e[39m$MODEL"
+echo -e "\e[94m     \e[39m$OS $ARCH $VERSION"
+echo -e "\e[94m   🧰 \e[39m$Packages packages"
+echo -e "\e[94m     \e[39m$KERNEL"
+echo -e "\e[94m     \e[39m$UPTIME"
+echo -e "\e[94m     \e[39m$SHELL_CAP"
+echo -e "\e[94m     \e[39m$RESOLUTION"
+echo -e "\e[94m     \e[39m$CPU"
+echo -e "\e[91m   --------------------"
+echo -e "\e[91m     \e[31m$DE wm"
+echo -e "\e[94m     \e[39m$GtkTheme theme"
+echo -e "\e[94m     \e[39m$GtkIcon icon theme"
+echo -e "\e[94m   🆎 \e[39m$GtkFont font"
+echo -e "\e[91m   --------------------"
+echo -e "\e[91m   🧰 \e[31m$Updates updates"
+echo -e "\e[94m     \e[39m$Layout"
+echo ""
