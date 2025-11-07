@@ -136,7 +136,7 @@ bindsym $mod+F5 exec --no-startup-id meld;focus
 bindsym control+Shift+Escape exec --no-startup-id xfce4-taskmanager;focus
 bindsym control+mod1+c exec --no-startup-id catfish;focus
 bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
-bindsym control+mod1+p exec --no-startup-id pamac-manager
+bindsym control+mod1+p exec --no-startup-id fsearch
 bindsym mod1+F3 exec --no-startup-id xfce4-appfinder
 bindsym control+mod1+a exec --no-startup-id xfce4-appfinder
 bindsym control+mod1+h exec --no-startup-id alacritty -e htop;focus

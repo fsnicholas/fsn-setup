@@ -20,13 +20,13 @@ yellow = "#c4a000"
 
 [colors.primary]
 background = "#222222"
-foreground = "#FFFFFF"   # brighter white
+foreground = "#FFFFFF"     # previous  "#F9F9F9" "#FCFCFC"
 
 [font]
 size = 10.0
 
 [font.bold]
-family = "Source Code Pro"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
@@ -34,11 +34,11 @@ family = "monospace"
 style = "Bold Italic"
 
 [font.italic]
-family = "Source Code Pro"
+family = "JetBrainsMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "Source Code Pro"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
 [font.offset]
@@ -52,6 +52,12 @@ key = "F11"
 [scrolling]
 history = 50000
 
+[terminal.shell]
+program = "/bin/zsh"
+
+[terminal]
+osc52 = "CopyPaste"
+
 [window]
 dynamic_padding = false
 opacity = 0.8
@@ -62,5 +68,8 @@ general = "Alacritty"
 instance = "Alacritty"
 
 [window.padding]
-x = 6
-y = 6
+x = 4
+y = 4
+
+[env]
+LIBGL_ALWAYS_SOFTWARE = "1"

@@ -1,6 +1,9 @@
 [mgr]
 cwd = { fg = "#94e2d5" }
 
+[flavor]
+dark = "catppuccin-mocha"
+
 hovered         = { fg = "#1e1e2e", bg = "#f5e0dc" }
 preview_hovered = { fg = "#1e1e2e", bg = "#cdd6f4" }
 

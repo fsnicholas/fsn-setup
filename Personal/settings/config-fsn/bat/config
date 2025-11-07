@@ -6,9 +6,8 @@
 # for a list of all available themes
 --theme="Monokai Extended Bright"
 # --theme="hypnos"
-#--theme="Visual Studio Dark+"
+# --theme="Visual Studio Dark+"
 
---color=always
 
 # Show line numbers, Git modifications and file header (but no grid)
 --style="numbers,changes,header"
@@ -33,3 +32,5 @@
 #   Example 2: Use ".gitignore"-style highlighting for ".ignore" files
 #--map-syntax "*.ino:C++"
 #--map-syntax ".ignore:Git Ignore"
+
+--color=always
