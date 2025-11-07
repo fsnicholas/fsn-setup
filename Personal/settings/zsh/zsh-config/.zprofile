@@ -1,3 +1,7 @@
+#!/bin/sh
+# env vars to set on login, zsh settings in ~/config/zsh/.zshrc
+# add `export ZDOTDIR="$HOME/.config/zsh"` to /etc/zsh/zshenv in order to place this file at .config/zsh/.zprofile
+#
 # ~/.config/zsh/.zprofile rewrite for systemd ssh-agent
 # Connect to Systemd SSH Agent and Trigger Startup
 # FSN: has to be in zsh directory set in .zshenv

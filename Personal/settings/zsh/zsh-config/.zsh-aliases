@@ -2,39 +2,10 @@
 
 # .zshrc-personal for Plasma
 # F.S. Nicholas
-# lets call this V1 as a start
 # date-created 2021 Sept 25
-# using as base V3Qb  - aug-20-26 more changes use of editor to edit zshrc etc, keyserver, fix aliases
-#
-# https://wiki.archlinux.org/index.php/Zsh (used this for many commands)
 #  Amended June-30-2022 (Arch Linux)
-# V3Qe - sorted removed duplicates
-# V3Qf - changed mirrora
-# V3Qg - removed alias for duf (now runs duf-bin)
-# V4a -  removed all pyenv, apache ph-fpm aliases
-# V4b -  arranged aliases in groups (Arch Linux)
-# V4c -  changed all exa and ls aliases (Arch Linux), added duff - sorted again, new helpb using bat/bathelp
-# V4d -  22-08-18 changed exa again now ls -s exa 
-# V4e -  22-08-23 changed update to be -Syu (not -Syyu), added ytv-best4 - convert to mp4
-# V4f -  22-09-14 added grub-install alias
-# V4g -  23-01-01 amended exa alias to xl??; pamac unlock; fixes
-# V4h -  23-01-17 more pacman alias; depend to see what app depends on
-# V4i -  23-03-22 more pacman alias
-# V4j -  23-08-14 more editor alias
-# V4j-left -  23-04-23 more editor alias
-# V4k -  23-08-28 using $EDITOR alias (inc leftwm themes) + skel & bupskel
-# V4ka - 23-09-10 added doas & new install-grub-efi, qtile-check. del att alias
-# nothing for qtile or zram (@ 23-10-20)
-# V4kc - 23-10-14 - changed exa to using eza (install eza)
-# V4kd - 23-12-15 - added another eza alias 
-# V5a - 23-12-18 - major additions. new editor +, more to.. aliases, kernels, boot, cpu
-# V5b - 24-02-29 added nmakepkg
-# V5c - 24-03-24 mirroran. Amended mirrora & mirrorf (removed NZ)
-# V5d - 24-03-24 changed boot alias. added readling calmares log file
-# V5e - 24-05-16 many changes
-# V5f - 24-11-11 changed boot aliases; added ff
 # V6  - 25-10-24 removed all arcolinux stuff
-# V6b - 25-10-30 changed " to ', doas changes for su, more xleanup of arco stuff, added fastfetch ff --config
+# V6b - 25-10-30 changed " to ', doas changes for su, more cleanup of arco stuff, added fastfetch ff --config
 # V6c - rg aliases were wrong corrected and added rg to search dotfiles
 
 ## FSN Alias
@@ -154,8 +125,8 @@ alias rmgitcache='rm -r ~/.cache/git'
 alias grh='git reset --hard'
 
 # do not delete / (root system) or prompt if deleting more than 3 files at a time
-alias rd='sudo rm -I -R --preserve-root'
-alias rm='rm -I --preserve-root'
+alias rmd='sudo rm -I -R --preserve-root -v'
+alias rm='rm -I --preserve-root -v'
 
 # confirmation #
 alias mvi='mv -i --verbose'
@@ -174,15 +145,13 @@ alias chgrp='chgrp --preserve-root'
 # fix permissions for user directories
 alias fix-permissions='sudo chown -R $USER:$USER ~/.config ~/.local'
 
-alias meminfo='free -l'
-alias free='free -hmt'
-
 alias dfh='df -hPT'
 alias dfa='df -x tmpfs -x devtmpfs -h'
 alias duff='duf --hide-fs tmpfs,devtmpfs'
 
-#check cpu
 alias cpu='cpuid -i | grep uarch | head -n 1'
+alias free='free -hmt | bat -l cpuinfo -p'
+alias lsblk="lsblk | bat -l conf -p"
 
 # Arch linux maintenance
 alias big='expac -H M '%m\t%n' | sort -h | nl'
@@ -207,10 +176,15 @@ alias locate='locate -i'
 
 # ps
 alias psa='ps auxf'
-alias p='ps -f'
-# alias psgrep='ps aux | grep '
-alias psgrep='ps aux | grep -v grep | grep -i -e VSZ -e'
-pspt (){ ps aux | pt -v pt |  pt 'VSZ|'$1'';} # pt platinum search
+psg () {
+  ps aux | rg -i -v pt | rg -i "VSZ|$1"
+}
+psag () {
+  ps auxf | rg -i -v pt | rg -i "VSZ|$1"
+}
+
+
+alias p='ps -f'  # current user process
 
 # Show ip address
 #alias ips="ip a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
@@ -229,7 +203,7 @@ alias bupconf='mkdir -p ~/backup-conf &&  cp -Rf ~/.config/ ~/backup-conf/.confi
 # Update and Upgrade Packages
 alias pacman='sudo pacman --color auto'
 #alias update='sudo pacman -Syu && paru -Qu'
-alias update='paru -Syu'
+alias update='yay -Syu'
 alias upd='sudo pacman -Syu'
 
 # Install and Remove Packages

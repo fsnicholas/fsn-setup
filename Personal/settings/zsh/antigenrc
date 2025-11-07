@@ -1,21 +1,21 @@
+## ~/.config/antigenrc 
 ## fsn antogenrc V2a amended 24 July 2022
 ## fsn antigenrc V2b amended 12 Aug 2022
 ## fsn antigenrc V2c amended 14 Aug 2023 added different z dir jump
+## antigenrc V3 - 25-11-04 cleaned out for oh-my-posh 
 
 # from https://github.com/zsh-users/antigen/wiki/Quick-start
 
-# from zsh-users - fish like auto-suggestions
-antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zsh-users/zsh-autosuggestions
-
 antigen bundle zdharma-continuum/fast-syntax-highlighting
-
-# Load the theme
-antigen theme romkatv/powerlevel10k
-
-# colored man pages
 antigen bundle ael-code/zsh-colored-man-pages
 
 # Tell Antigen that you're done.
 antigen apply
+
+# After antigen apply in your antigenrc
+# Optimize plugin performance
+if [[ -n "$ZSH_AUTOSUGGEST_MANUAL_REBIND" ]]; then
+    _zsh_autosuggest_start
+fi
