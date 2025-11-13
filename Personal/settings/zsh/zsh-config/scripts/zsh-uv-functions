@@ -1,0 +1,110 @@
+# File SOURCED by .zshrc
+
+# UV search packages with pip & fzf
+uv_pkgs() {
+    uv pip list --format columns | tail -n +3 | fzf --header="Search installed packages" --preview "uv pip show {1}"
+}
+
+# Check if Python version is available via uv
+uv_pyavai() {
+    local python_version=${1:-3.13}
+    
+    if uv python list --all-versions | grep -E "^cpython-${python_version}\.[0-9]+-linux-x86_64-gnu" > /dev/null; then
+        echo "Python version ${python_version}.x is available via uv."
+        return 0
+    else
+        echo "Python version ${python_version}.x is not available via uv."
+        return 1
+    fi
+}
+
+# Install specific Python version if available
+uv_pyinst() {
+    local python_version=${1:-3.13}
+    
+    if uv-python-available "$python_version"; then
+        echo "Installing Python ${python_version}..."
+        uv python install "$python_version"
+    else
+        echo "Skipping installation - version not available."
+        return 1
+    fi
+}
+
+
+# Simple function to activate venv in current directory
+uv_ven() {
+    for venv_name in ".venv" "venv" "env"; do
+        if [[ -f "./${venv_name}/bin/activate" ]]; then
+            echo "🧪 Activating ${venv_name}"
+            source "./${venv_name}/bin/activate"
+            return 0
+        fi
+    done
+    
+    echo "❌ No virtual environment found in current directory"
+    echo "   Looked for: .venv/, venv/, env/"
+    return 1
+}
+
+uv_act() {
+    local project_dir venv_path project_name
+    
+    # List all directories in ~/python-dev and let user choose
+    project_dir=$(find ~/python-dev -maxdepth 1 -type d | \
+        tail -n +2 | \
+        fzf --height 40% --reverse \
+            --prompt="Select project: " \
+            --preview="echo 'Project: {}/'; ls -la {}" \
+            --preview-window=right:60%)
+    
+    if [[ -n "$project_dir" ]]; then
+        # Try different common venv directory names
+        for venv_name in ".venv" "venv" "env"; do
+            venv_path="${project_dir}/${venv_name}"
+            if [[ -f "${venv_path}/bin/activate" ]]; then
+                project_name=$(basename "$project_dir")
+                
+                echo "🧪 Activating virtual environment for: $project_name"
+                source "${venv_path}/bin/activate"
+                cd "$project_dir"
+                
+                echo "🐍 Python: $(python --version 2>/dev/null || echo 'Not available')"
+                echo "📦 Virtual environment: $venv_path"
+                return 0
+            fi
+        done
+        
+        echo "❌ No virtual environment found in $project_dir"
+        return 1
+    else
+        echo "💤 No project selected."
+    fi
+}
+
+# Add this to auto-activate when entering directories
+auto-venv() {
+    local current_dir="$PWD"
+    local venv_path=""
+    
+    # Check for venv in current directory
+    for venv_name in ".venv" "venv" "env"; do
+        if [[ -f "${current_dir}/${venv_name}/bin/activate" ]]; then
+            venv_path="${current_dir}/${venv_name}"
+            break
+        fi
+    done
+    
+    # Deactivate if we left a venv directory
+    if [[ -n "$VIRTUAL_ENV" && -z "$venv_path" ]]; then
+        deactivate 2>/dev/null || true
+    # Activate if we found a new venv
+    elif [[ -n "$venv_path" && "$VIRTUAL_ENV" != "$venv_path" ]]; then
+        source "${venv_path}/bin/activate"
+        echo "🔁 Auto-activated: $(basename "$(dirname "$venv_path")")"
+    fi
+}
+
+# Add to chpwd hook to run when changing directories
+autoload -U add-zsh-hook
+add-zsh-hook chpwd auto-venv

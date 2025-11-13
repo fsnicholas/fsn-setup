@@ -81,6 +81,7 @@ alias xld='eza -aF --group-directories-first --icons'
 alias xld.='eza l --group-directories-first --icons .* '
 alias xls='eza -al --group-directories-first  --icons'
 alias xll='eza -lag --group-directories-first  --icons --octal-permissions'
+alias xlg='exa --tree --level=3 --git-ignore --icons'
 
 #alias xllg='eza -bghl --git --icons'
 alias ll='eza -bghl --git --icons'
@@ -420,6 +421,7 @@ function y() {
 }
 
 source $ZDOTDIR/scripts/aliases/als.plugin.zsh
+source $ZDOTDIR/scripts/fuzzy-sys/fuzzy-sys.plugin.zsh
 
 # Enable command-not-found support (Arch / pkgfile)
 if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then

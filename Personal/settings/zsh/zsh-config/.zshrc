@@ -196,6 +196,8 @@ export CHEAT_USE_FZF=true  # cheat enhanced autocompletion with fzf
 # $ZDOTDIR -> $HOME/.config/zsh
 [[ -f "$ZDOTDIR/.zsh-aliases" ]] && source  "$ZDOTDIR/.zsh-aliases"
 
+[[ -f "$ZDOTDIR//scripts/zsh-uv-functions" ]] && source  "$ZDOTDIR/scripts/zsh-uv-functions"
+
 if [ -d "$HOME/.cargo/bin" ] ;
   then [[ -f "$ZDOTDIR/cargo-aliases" ]] && source  "$ZDOTDIR/cargo-aliases"
 fi
