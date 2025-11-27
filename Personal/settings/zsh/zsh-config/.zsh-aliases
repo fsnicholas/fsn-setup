@@ -7,6 +7,7 @@
 # V6  - 25-10-24 removed all arcolinux stuff
 # V6b - 25-10-30 changed " to ', doas changes for su, more cleanup of arco stuff, added fastfetch ff --config
 # V6c - rg aliases were wrong corrected and added rg to search dotfiles
+# 25-11-18 - some new utils procs, br, dust 
 
 ## FSN Alias
 
@@ -159,8 +160,9 @@ alias big='expac -H M '%m\t%n' | sort -h | nl'
 
 # directory size. Usage: dirsize directoryname
 # alias dirsize='du -hx --max-depth=1'
-alias dirsize='du -schx ./*'
-alias bighome='du -hs */ | sort -hr | head -15 | nl'
+alias du='dust'
+alias dirsize='command du -schx ./*'
+alias bighome='command du -hs */ | sort -hr | head -15 | nl'
 alias duh='du -d -h 1'
 
 # SEARCHING
@@ -204,8 +206,8 @@ alias bupconf='mkdir -p ~/backup-conf &&  cp -Rf ~/.config/ ~/backup-conf/.confi
 # Update and Upgrade Packages
 alias pacman='sudo pacman --color auto'
 #alias update='sudo pacman -Syu && paru -Qu'
-alias update='yay -Syu'
-alias upd='sudo pacman -Syu'
+alias upd='yay -Syu'
+alias update='sudo pacman -Syu'
 
 # Install and Remove Packages
 alias pacinn='sudo pacman -S --needed'  # install if not already
@@ -287,8 +289,9 @@ alias fix-permissions='sudo chown -R $USER:$USER ~/.config ~/.local'
 alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
 
 # Shutdown and Reboot
-alias ssn='sudo shutdown now'
-alias sr='reboot'
+#alias ssn='sudo shutdown now'
+alias ssn='systemctl poweroff'
+alias sr='systemctl reboot'
 
 ## download mirrorlist
 alias mirrorf='sudo reflector -c AU -c SG -f 105 -l 105 -n 40 --verbose --sort rate --save /etc/pacman.d/mirrorlist'
@@ -433,3 +436,7 @@ alf() {
     alias | grep -i "$1" | sed "s/^alias //; s/='/ = /; s/'$//" | sort | \
     awk '{printf "%-15s %-1s %s\n", $1, $2, substr($0, index($0,$3))}'
 }
+
+# uv update the global tools
+alias uv-tool='uv tool list'
+alias uv-tool-upd='uv tool list | awk "\$1 != \"-\" {print \$1}" | xargs -r -I {} uv tool upgrade {}'
