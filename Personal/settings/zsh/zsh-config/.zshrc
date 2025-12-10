@@ -252,5 +252,6 @@ if command -v gh >/dev/null 2>&1; then
     eval "$(gh completion -s zsh)"
 fi
 
+source /home/nicholas/.config/broot/launcher/bash/br
 
-. "$HOME/.local/share/../bin/env"
+

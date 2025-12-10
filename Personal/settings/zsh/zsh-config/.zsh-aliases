@@ -8,6 +8,7 @@
 # V6b - 25-10-30 changed " to ', doas changes for su, more cleanup of arco stuff, added fastfetch ff --config
 # V6c - rg aliases were wrong corrected and added rg to search dotfiles
 # 25-11-18 - some new utils procs, br, dust 
+# 25-12-11 xtl tree command
 
 ## FSN Alias
 
@@ -82,7 +83,7 @@ alias xld='eza -aF --group-directories-first --icons'
 alias xld.='eza l --group-directories-first --icons .* '
 alias xls='eza -al --group-directories-first  --icons'
 alias xll='eza -lag --group-directories-first  --icons --octal-permissions'
-alias xlg='exa --tree --level=3 --git-ignore --icons'
+alias xlt='eza --tree --level=2 --git-ignore --icons'
 
 #alias xllg='eza -bghl --git --icons'
 alias ll='eza -bghl --git --icons'
