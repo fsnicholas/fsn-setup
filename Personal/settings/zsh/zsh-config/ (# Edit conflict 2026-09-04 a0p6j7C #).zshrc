@@ -117,19 +117,14 @@ source "$HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-
 # -----------------------------
-# 6 Starship prompt
+# Starship prompt
 # -----------------------------
 
 eval "$(starship init zsh)"
 
-# 7. KEYBINDINGS (Custom shortcuts)
-# Example: bindkey '^[[A' history-search-backward
 
-
-
-# --- PLUGINS ---
+# --- PLUGINS (last) ---
 # -----------------------------
 # Syntax highlighting
 # last plugin loaded
