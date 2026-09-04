@@ -2,7 +2,6 @@
 # env vars to set on login, zsh settings in ~/config/zsh/.zshrc
 # add `export ZDOTDIR="$HOME/.config/zsh"` to /etc/zsh/zshenv in order to place this file at .config/zsh/.zprofile
 #
-
 # Use Zsh's PATH array and remove duplicate entries
 typeset -U path
 
