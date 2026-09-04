@@ -1,0 +1,35 @@
+#!/bin/sh
+# env vars to set on login, zsh settings in ~/config/zsh/.zshrc
+# add `export ZDOTDIR="$HOME/.config/zsh"` to /etc/zsh/zshenv in order to place this file at .config/zsh/.zprofile
+#
+
+# Use Zsh's PATH array and remove duplicate entries
+typeset -U path
+
+# Start with an empty PATH so unwanted entries, including games, are removed
+path=()
+
+# Personal executable directories, in desired search order
+for dir in \
+    "$HOME/.local/bin" \
+    "$HOME/.bin" \
+    "$HOME/bin" \
+    "$HOME/.cargo/bin"
+do
+    [[ -d "$dir" ]] && path+=("$dir")
+done
+
+# System paths, excluding games directories
+path+=(
+    /usr/local/bin
+    /usr/local/sbin
+    /usr/bin
+    /usr/sbin
+    /bin
+    /sbin
+    /usr/lib/wsl/lib
+    /snap/bin
+)
+
+# Keep only paths that currently exist and are directories
+path=(${^path}(N/))

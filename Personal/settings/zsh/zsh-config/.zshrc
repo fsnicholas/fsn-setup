@@ -76,6 +76,38 @@ else
   compinit
 fi
 
+# +---------------------------+
+# |    PATH                   +
+# Custom binaries and scripts +
+# +---------------------------+
+
+# Reset PATH for clean management
+PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin"
+
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "$HOME/.cargo/bin" ] ;
+  then PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+if [ -d "$HOME/.bin" ] ;
+  then PATH="$HOME/.bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ] ;
+  then PATH="$HOME/.local/bin:$PATH"
+fi
+
+
+### add aliases
+# Include aliases dotfile
+# $ZDOTDIR -> $HOME/.config/zsh
+[[ -f "$ZDOTDIR/.zsh-aliases" ]] && source  "$ZDOTDIR/.zsh-aliases"
+
+
+
 # -----------------------------
 # 4 Tools
 # -----------------------------
