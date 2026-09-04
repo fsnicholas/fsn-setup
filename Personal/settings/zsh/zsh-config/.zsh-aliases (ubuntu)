@@ -1,0 +1,258 @@
+# -*- sh -*-
+
+# .zsh-aliases for ubuntu (WSL)
+# F.S. Nicholas
+# date-created 2026 Sept 04
+# V1  - 2026-09-04
+
+# userlist
+alias userlist='cut -d: -f1 /etc/passwd | sort'
+alias grouplist='bat /etc/group | grep $USER | sort'
+
+## System stuff
+# error messages from journalctl for today
+alias jctl='journalctl -rxb'
+alias jctl2='journalctl -rb'
+alias jctl3='journalctl -p 3 -xb'
+
+alias sysfailed='systemctl list-units --failed'
+
+# add new fonts
+alias update-fc='sudo fc-cache -fv'
+
+# APPLICATIONS
+alias make='make -j4'
+alias wget='wget -c'   ## resume wget by default
+
+# FILE OPERATIONS
+alias fdisk='sudo fdisk -l'
+alias rfind='sudo find / -name'
+alias rrsync='sudo rsync --verbose -rtvogp --progress --force --delete'
+
+# Color support
+if (( $commands[dircolors] )); then
+    if [[ -r ~/.dircolors ]]; then
+        eval "$(dircolors -b ~/.dircolors)"
+    else
+        eval "$(dircolors -b)"
+    fi
+
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias diff='diff --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='grep -F --color=auto'
+    alias egrep='grep -E --color=auto'
+    alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS}'
+fi
+
+# ls aliases
+# alias lr='ls -alhR | bat' # recursive
+alias ls='ls --color'
+
+# eza aliases
+alias ll='eza -laF --group-directories-first --icons'
+alias lt3='eza --tree --level=3 --git-ignore --icons'
+alias lt2='eza --tree --level=2 --git-ignore --icons'
+alias lgi='eza -abhl --git --group-directories-first --icons'
+alias xll='eza -lag --group-directories-first --icons --octal-permissions'
+
+
+# Directories to omit from tree views
+typeset -r TREE_IGNORE='cache|log|logs|node_modules|vendor'
+alias lt='eza --tree -D --level=2 --ignore-glob "$TREE_IGNORE"'
+alias ltl='eza --tree -D --level=2 --ignore-glob "$TREE_IGNORE" | bat'
+
+# Requires the separate `tree` package
+alias t3='tree -d -l -x -L 3'
+
+
+alias '?=man'
+alias cat='bat'
+alias cls='clear'
+alias ff='fastfetch --config .config/fastfetch/config-fancy.jsonc'
+alias history='history 1'
+alias h='history'
+alias less='less -R'
+alias today='date +"%a %d %b %Y"'
+alias path='echo -e ${PATH//:/\\n}'
+alias fpath='echo "${fpath// /\n}"'
+
+# directory
+alias home='cd ~'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
+alias cdd='cd ~/Downloads/'
+alias cdo='cd ~/Documents/'
+
+# Git CLI aliases
+alias gi='git init'
+alias gpom='git push origin master'
+
+# remove git cache
+alias rmgitcache='rm -r ~/.cache/git'
+alias grh='git reset --hard'
+
+# do not delete / (root system) or prompt if deleting more than 3 files at a time
+alias rmd='sudo rm -I -R --preserve-root -v'
+alias rm='rm -I --preserve-root -v'
+
+# confirmation #
+alias mvi='mv -i --verbose'
+alias cpi='cp -i --verbose'
+alias ln='ln -i'
+
+## no error if exists, make parent directories as needed
+alias mkdir='mkdir -pv'
+alias md='mkdir -pv'
+
+# Parenting changing perms on / #
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+# fix permissions for user directories
+alias fix-permissions='sudo chown -R $USER:$USER ~/.config ~/.local'
+
+alias dfh='df -hPT'
+alias dfa='df -x tmpfs -x devtmpfs -h'
+alias duff='duf --hide-fs tmpfs,devtmpfs'
+
+alias cpu='cpuid -i | grep uarch | head -n 1'
+alias free='free -hmt | bat -l cpuinfo -p'
+alias lsblk="lsblk | bat -l conf -p"
+
+# directory size. Usage: dirsize directoryname
+# alias dirsize='du -hx --max-depth=1'
+alias du='dust'
+alias dirsize='command du -schx ./*'
+alias bighome='command du -hs */ | sort -hr | head -15 | nl'
+alias duh='du -d -h 1'
+
+# SEARCHING
+# search content with ripgrep
+alias rgi='rg -i'
+alias rg='rg -uu --sort path --glob "!.git/" '
+
+alias ffind='find / -name' #find a file. Usage: ffind 'filename'
+(( $+commands[fd] )) || alias fd='find . -type d -name'
+alias ffn='find . -type f -name'
+
+# locate ignore case
+alias locate='locate -i'
+
+# ps
+alias psa='ps auxf'
+psg () {
+  ps aux | rg -i -v pt | rg -i "VSZ|$1"
+}
+psag () {
+  ps auxf | rg -i -v pt | rg -i "VSZ|$1"
+}
+
+
+alias p='ps -f'  # current user process
+
+# Show ip address
+alias ips="ip a | grep -E 'inet '"
+
+ipa() {
+    ip a | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
+}
+
+# Update and Upgrade Packages
+alias upd='sudo apt update'
+alias update='sudo apt upgrade -y'
+
+#fixes
+alias fix-permissions='sudo chown -R $USER:$USER ~/.config ~/.local'
+
+# Shutdown and Reboot
+alias ssn='systemctl poweroff'
+alias sr='systemctl reboot'
+
+# $EDITOR/nano for important configration files
+alias nenvir='$EDITOR ~/.profile.d/environment.sh'
+alias nfstab='sudo $EDITOR /etc/fstab'
+alias nhostname='sudo $EDITOR /etc/hostname'
+alias nhosts='sudo $EDITOR /etc/hosts'
+
+alias sz='source ${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc'
+alias nz='${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc' # Quick access to the .zshrc file
+alias nza='${=EDITOR} ${ZDOTDIR:-$HOME}/.zsh-aliases' # Quick access to .zsh-aliases file
+
+#give a list of the kernels installed
+alias kernel='ls /usr/lib/modules'
+
+#audio check pulseaudio or pipewire
+alias audio='pactl info | grep -iE "Server Name" '
+
+# youtube download
+alias yta-aac='yt-dlp --extract-audio --audio-format aac '
+alias yta-best='yt-dlp --extract-audio --audio-format best '
+alias yta-flac='yt-dlp --extract-audio --audio-format flac '
+alias yta-mp3='yt-dlp --extract-audio --audio-format mp3 '
+
+alias ytv-best='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio" --merge-output-format mkv'
+alias ytv-best4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio" --merge-output-format mp4'
+alias ytv-small='yt-dlp -f "bv*[height<=480]+ba/b[height<=480] / wv*+ba/w"  --merge-output-format mkv '
+
+# switch between bash and zsh
+alias tobash='sudo chsh $USER -s /usr/bin/bash && echo "Now log out." '
+alias tozsh='sudo chsh $USER -s /usr/bin/zsh && echo "Now log out."'
+
+# # ex = EXtractor for all kinds of archives
+# # usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   tar $1       ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# Function to show aliases by group
+show-als() {
+    local filter="${1:-.*}"
+    alias | grep -i "$filter" | sort | cat
+}
+
+
+## usage help command e.g. helpb cp
+alias bathelp='bat --plain --language=help'
+helpb ()
+{
+    "$@" --help 2>&1 | bathelp
+}
+
+
+alf() {
+    alias | grep -i "$1" | sed "s/^alias //; s/='/ = /; s/'$//" | sort | \
+    awk '{printf "%-15s %-1s %s\n", $1, $2, substr($0, index($0,$3))}'
+}
+
+# uv update the global tools
+alias uv-tool='uv tool list'
+alias uv-tool-upd='uv tool list | awk "\$1 != \"-\" {print \$1}" | xargs -r -I {} uv tool upgrade {}'
