@@ -124,9 +124,15 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 eval "$(starship init zsh)"
 
+# -----------------------------
 # 7. KEYBINDINGS (Custom shortcuts)
-# Example: bindkey '^[[A' history-search-backward
-
+# -----------------------------
+# Smart history search with Up/Down arrows
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
 
 
 # --- PLUGINS ---
